@@ -1,21 +1,13 @@
-var req, play;
+var play;
 
 function windowLoad(){
-  req = new XMLHttpRequest();
-  req.overrideMimeType("application/json");
-  req.open('GET', 'index/play.json', true);
-  req.onreadystatechange = function(){
-    if(req.readyState == 4 && req.status == "200"){
-      onReqLoad(req.responseText);
-    }
-  }
-  req.send(null);
+  $.getJSON('index/play.json', onReqLoad);
 }
 
 window.addEventListener("load", windowLoad, false);
 
 function onReqLoad(data){
-  play = JSON.parse(data);
+  play = data;
   displayList(play);
 }
 
