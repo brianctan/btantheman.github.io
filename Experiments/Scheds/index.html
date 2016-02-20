@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scheds</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="main.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="navbar">
+      <a href="index.html">Schedules</a>
+      <a href="#">Timeline</a>
+      <a href="sched.html">Update Sched</a>
+      <a href="#">Log out</a>
+    </div>
+    <div id="calendarScroll">
+      <div id="calendar">
+        <div class="days">
+          <div class="day light">Monday</div>
+          <div class="day">Tuesday</div>
+          <div class="day light">Wednesday</div>
+          <div class="day">Thursday</div>
+          <div class="day light">Friday</div>
+          <div class="day">Saturday</div>
+          <br class="clear" />
+        </div>
+        <div id="schedules">
+          <div class="day" id="monday"></div>
+          <div class="day light" id="tuesday"></div>
+          <div class="day" id="wednesday"></div>
+          <div class="day light" id="thursday"></div>
+          <div class="day" id="friday"></div>
+          <div class="day light" id="saturday"></div>
+          <br class="clear" />
+        </div>
+      </div>
+    </div>
+    <div class="people">
+      <h1>Visible</h1>
+      <div class="list" id="visible">
+        <div class="person" onclick="alert('hola');">Mike del Castillo</div>
+        <div class="person" onclick="alert('hola');">Pia Lapid</div>
+        <div class="person" onclick="alert('hola');">Pia Zulueta</div>
+      </div>
+      <h1>Friends</h1>
+      <div class="list" id="choices">
+        <div class="person" onclick="alert('hola');">Jaia Corral</div>
+        <div class="person" onclick="alert('hola');">Mikiel Pedraja</div>
+        <div class="person" onclick="alert('hola');">Dana Argosino</div>
+        <div class="person" onclick="alert('hola');">Jo Torres</div>
+      </div>
+    </div>
+  </body>
+</html>
