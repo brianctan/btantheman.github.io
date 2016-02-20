@@ -1,0 +1,17 @@
+<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+<script>
+var peer = new Peer('pick-an-id', {key: 'yrydrxtffjsv2t9'});
+
+var conn = peer.connect('another-peers-id');
+conn.on('open', function(){
+  conn.send('hi!');
+  console.log("open");
+});
+
+peer.on('connection', function(conn) {
+  conn.on('data', function(data){
+    // Will print 'hi!'
+    console.log(data);
+  });
+});
+</script>
