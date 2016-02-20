@@ -10,8 +10,6 @@ function windowLoad(){
     }
   }
   req.send(null);
-
-  //get elements
 }
 
 window.addEventListener("load", windowLoad, false);
