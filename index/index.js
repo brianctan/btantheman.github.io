@@ -12,12 +12,18 @@ function windowLoad(){
   req.send(null);
 
   //get elements
-
-  
 }
 
 window.addEventListener("load", windowLoad, false);
 
 function onReqLoad(data){
   play = JSON.parse(data);
+  displayList();
+}
+
+function displayList(){
+  for(var i in play){
+    var item = play[i];
+    document.write(item.title);
+  }
 }
