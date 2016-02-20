@@ -22,6 +22,6 @@ function onReqLoad(data){
 function displayList(){
   for(var i in play){
     var item = play[i];
-    document.write(item.title);
+    document.write("<iframe src='" + item.url + "'></iframe>");
   }
 }
