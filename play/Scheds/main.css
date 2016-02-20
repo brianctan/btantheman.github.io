@@ -1,0 +1,195 @@
+body{
+  margin: 0;
+  font-family: sans-serif;
+  height: 100%;
+  position: relative;
+  font-size: 14px;
+}
+
+*{
+  outline: 0;
+}
+
+#calendarScroll{
+  width: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+#calendar{
+  position: relative;
+  height: 100%;
+  width: 120%;
+  min-width: 250px;
+}
+
+#schedules .day, .days .day{
+  width: 16.666666666666666666666666666666666666666666666666666666666666666666666666%;
+}
+
+.days .day{
+  float: left;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  background-color: #333;
+  color: white;
+  padding: 15px 10px;
+  text-align: center;
+}
+
+.days .day.light{
+  background-color: #444;
+}
+
+.clear{
+  clear:both;
+  margin: 0;
+}
+
+#schedules{
+  height: 600px;
+  width: 100%;
+  position: relative;
+}
+
+.people h1{
+  padding: 15px 20px;
+  margin: 0;
+  color: #CCC;
+}
+
+.people .list{
+  background-color: #EEE;
+  padding: 20px;
+}
+
+.people .person{
+  color: #555;
+  background-color: #FFF;
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+#visible .person{
+  color: white;
+}
+
+.people .person:hover{
+  color: white;
+  background-color: #555 !important;
+}
+
+#schedules .day{
+  float: left;
+  position: relative;
+  height: 100%;
+  transition: all 0.2s;
+	z-index: 100;
+  background-color: #e8e8e8;
+  transition: 0.2s all;
+}
+
+#schedules:hover .day{
+	opacity: 0.05;
+}
+
+#schedules:hover .day:hover{
+	opacity: 1;
+	/*box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);*/
+	z-index: 10000;
+	background-color: transparent;
+}
+
+#schedules .day.light{
+  background-color: #EEE;
+}
+
+#schedules .day .agendum{
+  position: absolute;
+  width: 50%;
+  background-color: white;
+  font-size: 12px;
+  color: white;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+#schedules .day .agendum:hover{
+  background-color: #444 !important;
+}
+
+#schedules .day .agendum h1, #schedules .day .agendum h2{
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+#schedules .day .agendum h1{
+  opacity: 1;
+}
+
+#schedules .day .agendum h2{
+  opacity: 0.5;
+}
+
+.timestamp{
+	transition: 0.2s opacity;
+	opacity: 0;
+	position: absolute;
+	padding: 5px;
+	font-size: 11px;
+	position: absolute;
+	width: 100%;
+	padding-left: 60px;
+	border-top: 1px dashed #DDD;
+	color: #777;
+	text-align: right;
+	transition: all 0.2s;
+}
+
+.timestamp:hover{
+	color: #333;
+	border-color: #333;
+}
+
+.timestamp.half{
+	padding-left: 120px;
+}
+
+.timestamp.odd{
+	padding-left: 180px;
+}
+
+#schedules:hover .day:hover .timestamp{
+	opacity: 1;
+}
+
+#navbar{
+	background-color: #555;
+	color: white;
+	padding: 10px;
+	text-align: right;
+}
+
+#navbar a:link, #navbar a:visited{
+	display:inline-block;
+	padding: 10px 15px;
+	color: white;
+	text-decoration: none;
+	background-color: #444;
+	border-radius: 5px;
+}
+
+#navbar a:hover{
+	background-color: #EEE;
+	color: #333;
+}

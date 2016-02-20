@@ -1,0 +1,60 @@
+{
+  "nickname": "Emman",
+  "lastname": "Ignacio",
+  "school": "Ateneo de Manila University",
+  "schoolCode": "ADMU",
+  "schedule": [
+    [
+      {"name": "InTACT", "location": "SOM 106",
+        "start": "0800", "end": "0900"},
+      {"name": "PE 112", "location": "COV COURTS",
+        "start": "0930", "end": "1030"},
+      {"name": "MA 19", "location": "SOM 103",
+        "start": "1100", "end": "1200"},
+      {"name": "FIL 12", "location": "SOM 203",
+        "start": "1200", "end": "1300"},
+      {"name": "EN 12", "location": "CTC 302",
+        "start": "1400", "end": "1500"},
+      {"name": "LIT 14", "location": "CTC 302",
+        "start": "1500", "end": "1600"}
+    ],
+    [
+      {"name": "ES 12", "location": "SEC-C307A",
+        "start": "1000", "end": "1200"},
+      {"name": "ES 10", "location": "SEC-A124A",
+        "start": "1230", "end": "1400"},
+      {"name": "MA 19", "location": "SEC-A203A",
+        "start": "1400", "end": "1530"}
+    ],
+    [
+      {"name": "PE 112", "location": "COV COURTS",
+        "start": "0930", "end": "1030"},
+      {"name": "MA 19", "location": "SOM 103",
+        "start": "1100", "end": "1200"},
+      {"name": "FIL 12", "location": "SOM 203",
+        "start": "1200", "end": "1300"},
+      {"name": "EN 12", "location": "CTC 302",
+        "start": "1400", "end": "1500"},
+      {"name": "LIT 14", "location": "CTC 302",
+        "start": "1500", "end": "1600"}
+    ],
+    [
+      {"name": "ES 10", "location": "SEC-A124A",
+        "start": "1230", "end": "1400"},
+      {"name": "MA 19", "location": "SEC-A203A",
+        "start": "1400", "end": "1530"}
+    ],
+    [
+      {"name": "PE 112", "location": "COV COURTS",
+        "start": "0930", "end": "1030"},
+      {"name": "MA 19", "location": "SOM 103",
+        "start": "1100", "end": "1200"},
+      {"name": "FIL 12", "location": "SOM 203",
+        "start": "1200", "end": "1300"},
+      {"name": "EN 12", "location": "CTC 302",
+        "start": "1400", "end": "1500"},
+      {"name": "LIT 14", "location": "CTC 302",
+        "start": "1500", "end": "1600"}
+    ]
+  ]
+}
