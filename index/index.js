@@ -16,13 +16,13 @@ window.addEventListener("load", windowLoad, false);
 
 function onReqLoad(data){
   play = JSON.parse(data);
-  displayList();
+  displayList(play);
 }
 
-function displayList(){
-  for(var i in play){
-    var item = play[i];
+function displayList(list){
+  for(var i in list){
+    var item = list[i];
     document.write("<iframe src='" + item.url + "'></iframe>");
-    
+
   }
 }
