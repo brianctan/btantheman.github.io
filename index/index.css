@@ -1,0 +1,98 @@
+@import url(avenir-next-lt-pro/style.css);
+
+body{
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.navigation .logo{
+  float: left;
+}
+
+.nav-container{
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.clear{
+  clear: both;
+}
+
+
+@media screen and (min-width: 1201px){
+  .navigation{
+    width: 1200px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 861px){
+  .navigation .logo{
+    width: 400px;
+  }
+
+  .navigation ul{
+    list-style: none;
+    float: right;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navigation ul li{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navigation a:link, .navigation a:visited{
+    text-decoration: none;
+    display: inline-block;
+    color: #555;
+    padding: 51px 30px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-family: 'Avenir Next LT Pro Regular';
+  }
+
+  .navigation a:hover{
+    color: #e00000;
+    border-bottom: 6px solid #e00000;
+    padding: 45px 30px;
+  }
+
+  .navigation #filter{
+    text-decoration: none;
+    display: block;
+    color: #555;
+    padding: 51px 30px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-family: 'Avenir Next LT Pro Regular';
+    font-size: 15px;
+    border: 0;
+    width: 50px;
+    margin: 0;
+  }
+
+  .navigation #filter:focus, .navigation #filter.expanded{
+    text-transform: none;
+    width: 200px;
+    outline: solid #e00000 1px;
+  }
+}
+
+@media screen and (min-width: 861px) and (max-width: 1200px){
+
+}
+
+@media screen and (max-width: 860px){
+  .navigation .logo{
+    width: 250px;
+  }
+
+  .navigation ul{
+    position: fixed;
+  }
+}

@@ -87,11 +87,17 @@ function update(){
       var star = stars[i];
       star.x += vx * star.z * ZC;
       star.y += vy * star.z * ZC;
+
+      /*
       ctx.beginPath();
       ctx.arc(star.x, star.y, Math.max(1/2, star.z/5 * star.size), 0, TAU);
       ctx.fillStyle = "rgba(255,255,255,1)";
       ctx.fill();
-      //ctx.drawImage(images['star.png'], star.x - star.z/2, star.y - star.z/2, star.z, star.z);
+
+      */
+
+      size = Math.round(Math.max(1, star.z * star.size * 1));
+      ctx.drawImage(images['star.png'], Math.round(star.x - size/2 + Math.random()), Math.round(star.y - size/2 + Math.random()), size, size);
 
       function replaceStar(n){
         if(n == 0){

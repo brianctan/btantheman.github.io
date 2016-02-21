@@ -14,7 +14,6 @@ function onReqLoad(data){
 function displayList(list){
   for(var i in list){
     var item = list[i];
-    document.write("<iframe src='" + item.url + "'></iframe>");
 
   }
 }
