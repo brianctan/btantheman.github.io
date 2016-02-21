@@ -14,6 +14,5 @@ function onReqLoad(data){
 function displayList(list){
   for(var i in list){
     var item = list[i];
-
   }
 }
