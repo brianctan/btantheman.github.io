@@ -5,6 +5,12 @@ body{
   font-family: sans-serif;
   font-size: 15px;
   background-color: #FAFAFA;
+  font-family: 'Avenir Next LT Pro Regular';
+}
+
+.navigation ul{
+  padding: 0;
+  margin: 0;
 }
 
 .navigation .logo{
@@ -14,11 +20,36 @@ body{
 .nav-container{
   width: 100%;
   background-color: white;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
 .clear{
   clear: both;
+}
+
+.play{
+  display: block;
+  background-color: #444;
+  color: white;
+  text-decoration: none;
+  max-width: 500px;
+}
+
+.play .tags a:link, .play .tags a:visited{
+  text-decoration: none;
+  color: #888;
+  font-family: 'Avenir Next LT Pro Regular';
+  font-weight: 900;
+  text-transform: lowercase;
+  font-size: 12px;
+  background-color: white;
+  padding: 10px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.play .tags a:before{
+  content: '#';
 }
 
 
@@ -37,8 +68,6 @@ body{
   .navigation ul{
     list-style: none;
     float: right;
-    padding: 0;
-    margin: 0;
   }
 
   .navigation ul li{
@@ -68,7 +97,7 @@ body{
     text-decoration: none;
     display: block;
     color: #555;
-    transition: border-bottom 0.2s, padding 0.2s, width 0.3s, margin 0.3s;
+    transition: border-bottom 0.2s, padding 0.2s, width 0.3s, margin 0.3s, color 0.2s;
     text-transform: uppercase;
     font-family: 'Avenir Next LT Pro Regular';
     font-size: 15px;
@@ -101,9 +130,37 @@ body{
 
   .navigation ul{
     position: fixed;
+    background-color: #FAFAFA;
+    height: 100%;
+    width: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   }
 
-  .navigation a:link, .navigation a:visited{
-    
+  .navigation ul li{
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+
+  .navigation a:link, .navigation a:visited, .navigation #filter{
+    text-decoration: none;
+    color: #555;
+    font-size: 17px;
+    padding: 20px 30px;
+    display: block;
+    background-color: white;
+    border: 0;
+    border-left: 10px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    transition: all 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .navigation a:hover, .navigation #filter:focus{
+    border-color: #e00000;
+    color: #e00000;
+    border-left-width: 20px;
+    outline: 0;
   }
 }
