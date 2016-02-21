@@ -27,25 +27,97 @@ body{
   clear: both;
 }
 
+.container.playlist{
+  box-sizing: border-box;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
 .play{
   display: block;
-  background-color: #444;
-  color: white;
+  background-color: white;
+  color: #555;
   text-decoration: none;
-  max-width: 500px;
+  height: 300px;
+  box-sizing: border-box;
+  border-left: 10px #FAFAFA solid;
+  border-bottom: 10px #FAFAFA solid;
+  float: left;
+  transition: background-position 0.2s;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.play:hover{
+  background-position: 0 300px;
+}
+
+.play h1{
+  padding: 10px;
+  padding-bottom: 5px;
+  margin: 20px;
+  display: inline-block;
+  margin-bottom: 5px;
+  background-color: white;
+  font-family: 'Avenir Next LT Pro Condensed';
+  text-transform: uppercase;
+}
+
+.play:hover p{
+  opacity: 1;
+}
+
+.play p{
+  transition: all 0.2s;
+  opacity: 0;
+  padding: 0 20px;
+  margin: 0;
+  color: #999;
+  line-height: 25px;
+}
+
+.play .tags{
+  position: absolute;
+  bottom: 0px;
+  height: 55px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s;
+  left: 0;
+  text-align: right;
+  padding: 10px;
+  opacity: 0;
+}
+
+.play:hover .tags{
+  opacity: 1;
+}
+
+.play:hover .tag sa:link, .play:hover .tags a:visited{
+  color: #888;
+  background-color: #F1F1F1;
+}
+
+.play .tags:hover{
+  height: 130px;
+  background-color: white;
 }
 
 .play .tags a:link, .play .tags a:visited{
+  transition: all 0.2s;
   text-decoration: none;
-  color: #888;
   font-family: 'Avenir Next LT Pro Regular';
   font-weight: 900;
   text-transform: lowercase;
   font-size: 12px;
-  background-color: white;
   padding: 10px 10px;
   border-radius: 5px;
   display: inline-block;
+  margin: 2px 0;
+  color: black;
+  background-color: white;
 }
 
 .play .tags a:before{
@@ -57,6 +129,10 @@ body{
   .navigation{
     width: 1200px;
     margin: auto;
+  }
+
+  .play{
+    width: 33.33%;
   }
 }
 
@@ -120,7 +196,9 @@ body{
 }
 
 @media screen and (min-width: 809px) and (max-width: 1200px){
-
+  .play{
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 808px){
@@ -137,6 +215,13 @@ body{
     max-width: 350px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
     box-sizing: border-box;
+    transition: all 0.2s;
+    z-index: 100000;
+    left: 0;
+  }
+
+  .navigation.hidden ul{
+    left: -370px;
   }
 
   .navigation ul li{
@@ -165,5 +250,9 @@ body{
     color: #e00000;
     border-left-width: 20px;
     outline: 0;
+  }
+
+  .play{
+    width: 100%;
   }
 }
