@@ -4,7 +4,7 @@ body{
   margin: 0;
   font-family: sans-serif;
   font-size: 15px;
-  background-color: #FAFAFA;
+  background-color: #F0F0F0;
   font-family: 'Avenir Next LT Pro Regular';
 }
 
@@ -20,7 +20,6 @@ body{
 .nav-container{
   width: 100%;
   background-color: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
 .clear{
@@ -40,20 +39,26 @@ body{
   text-decoration: none;
   height: 300px;
   box-sizing: border-box;
-  border-left: 10px #FAFAFA solid;
-  border-bottom: 10px #FAFAFA solid;
+  border-left: 10px #F0F0F0 solid;
+  border-bottom: 10px #F0F0F0 solid;
   float: left;
   transition: background-position 0.2s;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .play:hover{
   background-position: 0 300px;
 }
 
+.play:hover h1{
+  color: #e00000;
+}
+
 .play h1{
+  transition: all 0.2s;
   padding: 10px;
   padding-bottom: 5px;
   margin: 20px;
@@ -61,6 +66,7 @@ body{
   margin-bottom: 5px;
   background-color: white;
   font-family: 'Avenir Next LT Pro Condensed';
+  font-weight: 100;
   text-transform: uppercase;
 }
 
@@ -75,6 +81,14 @@ body{
   margin: 0;
   color: #999;
   line-height: 25px;
+  overflow: hidden;
+  max-height: 150px;
+}
+
+.play p time{
+  color: #CCC;
+  display: inline-block;
+  padding: 0 10px;
 }
 
 .play .tags{
@@ -95,29 +109,26 @@ body{
   opacity: 1;
 }
 
-.play:hover .tag sa:link, .play:hover .tags a:visited{
-  color: #888;
-  background-color: #F1F1F1;
-}
-
 .play .tags:hover{
   height: 130px;
   background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 
 .play .tags a:link, .play .tags a:visited{
-  transition: all 0.2s;
   text-decoration: none;
   font-family: 'Avenir Next LT Pro Regular';
   font-weight: 900;
   text-transform: lowercase;
   font-size: 12px;
-  padding: 10px 10px;
-  border-radius: 5px;
+  padding: 10px;
   display: inline-block;
   margin: 2px 0;
   color: black;
-  background-color: white;
+}
+
+.play .tags a:hover{
+  color: #e00000;
 }
 
 .play .tags a:before{
@@ -208,7 +219,7 @@ body{
 
   .navigation ul{
     position: fixed;
-    background-color: #FAFAFA;
+    background-color: #F0F0F0;
     height: 100%;
     width: 50%;
     min-width: 300px;
