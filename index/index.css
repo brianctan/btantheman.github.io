@@ -47,7 +47,7 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
 }
 
 .play:hover{
@@ -59,12 +59,14 @@ body{
   top: 0;
   left: 0;
   position: relative;
+  background-color: transparent;
 }
 
 .play h1{
   transition: all 0.2s;
   padding: 10px;
-  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 0;
   margin: 20px;
   display: inline-block;
   margin-bottom: 5px;
@@ -75,6 +77,7 @@ body{
   position: relative;
   top: -20px;
   left: -20px;
+  line-height: 50px;
 }
 
 .play:hover p{
@@ -96,6 +99,36 @@ body{
   color: #CCC;
   display: inline-block;
   padding: 0 10px;
+}
+
+.play .playButton:link, .play .playButton:visited{
+  width: 0;
+  height: 0;
+  margin: 0;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-radius: 25px;
+  position: relative;
+  display: inline-block;
+  background-image: url(play.png);
+  background-repeat: no-repeat;
+}
+
+.play:hover .playButton{
+  background-color: #e00000;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  margin-left: 0;
+  margin-bottom: -25px;
+  top: -5px;
+  left: 0;
+  background-size: 40px 40px;
+  background-position: 7px 5px;
+}
+
+.playButton:hover{
+
 }
 
 .play .tags{
