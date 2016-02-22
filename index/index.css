@@ -59,7 +59,7 @@ body{
 
 .play:hover h1{
   color: #e00000;
-  top: 0;
+  top: -1px;
   left: 0;
   position: relative;
   background-color: transparent;
@@ -132,7 +132,7 @@ body{
   margin: 10px;
   margin-left: 0;
   margin-bottom: -25px;
-  top: -5px;
+  top: -4px;
   left: 0;
   background-size: 40px 40px;
   background-position: 7px 5px;
