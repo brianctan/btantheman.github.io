@@ -72,8 +72,8 @@ body{
   font-family: 'Avenir Next LT Pro Condensed';
   font-weight: 100;
   text-transform: uppercase;
-  position: absolute;
-  top: 220px;
+  position: relative;
+  top: -20px;
   left: -20px;
 }
 
