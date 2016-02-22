@@ -78,6 +78,9 @@ body{
   top: -20px;
   left: -20px;
   line-height: 50px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .play:hover p{
@@ -93,6 +96,9 @@ body{
   line-height: 25px;
   overflow: hidden;
   max-height: 150px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .play p time{
@@ -134,7 +140,7 @@ body{
 .play .tags{
   position: absolute;
   bottom: 0px;
-  height: 55px;
+  height: 0;
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
@@ -143,10 +149,14 @@ body{
   text-align: right;
   padding: 10px;
   opacity: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .play:hover .tags{
   opacity: 1;
+  height: 55px;
 }
 
 .play .tags:hover{
