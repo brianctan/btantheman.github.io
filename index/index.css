@@ -28,8 +28,8 @@ body{
 
 .container.playlist{
   box-sizing: border-box;
-  padding-top: 10px;
-  padding-right: 10px;
+  padding-top: 0;
+  padding-right: 0;
 }
 
 .play{
@@ -39,8 +39,8 @@ body{
   text-decoration: none;
   height: 300px;
   box-sizing: border-box;
-  border-left: 10px #F0F0F0 solid;
-  border-bottom: 10px #F0F0F0 solid;
+  border-left: 0 #F0F0F0 solid;
+  border-bottom: 0 #F0F0F0 solid;
   float: left;
   transition: background-position 0.2s;
   position: relative;
@@ -157,6 +157,7 @@ body{
 .play:hover .tags{
   opacity: 1;
   height: 55px;
+  background-color: white;
 }
 
 .play .tags:hover{
