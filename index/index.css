@@ -58,6 +58,7 @@ body{
   color: #e00000;
   top: 0;
   left: 0;
+  position: relative;
 }
 
 .play h1{
