@@ -20,6 +20,9 @@ body{
 .nav-container{
   width: 100%;
   background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 100;
 }
 
 .clear{
@@ -60,6 +63,7 @@ body{
   left: 0;
   position: relative;
   background-color: transparent;
+  box-shadow: 0 0 0 transparent;
 }
 
 .play h1{
@@ -75,12 +79,13 @@ body{
   font-weight: 100;
   text-transform: uppercase;
   position: relative;
-  top: -20px;
-  left: -20px;
+  top: -10px;
+  left: -10px;
   line-height: 50px;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
 .play:hover p{
