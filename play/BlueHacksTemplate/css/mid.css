@@ -1,0 +1,33 @@
+@media screen and (min-width: 650px) and (max-width: 1199px){
+
+}
+
+@media screen and (min-width: 650px){
+  #navbutt{
+    display: none;
+  }
+
+  #navlinks{
+    padding-right: 10px;
+  }
+
+  #navlinks li{
+    display: inline-block;
+  }
+
+  #navlinks a:link, #navlinks a:visited{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 13px;
+    display: inline-block;
+    padding: 30px 10px;
+    opacity: 0.9;
+    transition: all 0.2s;
+  }
+
+  #navlinks a:hover{
+    opacity: 1;
+  }
+}

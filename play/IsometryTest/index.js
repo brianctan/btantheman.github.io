@@ -17,12 +17,18 @@ function windowLoad(){
   document.addEventListener("keydown", keyDown, false);
   document.addEventListener("keyup", keyUp, false);
 
+  assets.floor = new Image();
+  assets.floor.src = "block_floor.png";
+
+  assets.wall = new Image();
+  assets.wall.src = "block_wall.png";
+
   update();
 }
 
 var ISO = {
   ANGLE: Math.PI/6,
-  GRID_SIZE: 50
+  GRID_SIZE: 30
 };
 
 var player = {
@@ -32,11 +38,28 @@ var player = {
 }
 
 function getIsoPoint(x, y, z){
+  var nx = x * ISO.GRID_SIZE * 2 - z * ISO.GRID_SIZE * 2 + 700;
+  var ny = x * ISO.GRID_SIZE + z * ISO.GRID_SIZE - y * ISO.GRID_SIZE + 100
   return {
-    x: ISO.GRID_SIZE * x * Math.cos(0 - ISO.ANGLE) + ISO.GRID_SIZE * z * Math.cos(Math.PI - ISO.ANGLE),
-    y: -(ISO.GRID_SIZE * x * Math.sin(0 - ISO.ANGLE) - ISO.GRID_SIZE * z * Math.sin(Math.PI - ISO.ANGLE)) + y * (ISO.GRID_SIZE * Math.sin(0 - ISO.ANGLE) - ISO.GRID_SIZE * Math.sin(Math.PI - ISO.ANGLE))
+    x: nx,
+    y: ny
   }
 }
+
+var map = [
+  [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 1, 1, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
+  [0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+  [0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+  [0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+]
+
+var assets = {};
 
 function update(){
   ctx.clearRect(0, 0, c.width, c.height);
@@ -66,22 +89,15 @@ function update(){
 
   player.y = Math.max(player.y - 0.1, 0);
 
-  for(var x = -r; x <= r; x++){
-    var p1 = getIsoPoint(x, 0, -r);
-    var p2 = getIsoPoint(x, 0, r);
-    ctx.beginPath();
-    ctx.moveTo(p1.x, p1.y);
-    ctx.lineTo(p2.x, p2.y);
-    ctx.stroke();
-  }
-
-  for(var x = -r; x <= r; x++){
-    var p1 = getIsoPoint(-r, 0, x);
-    var p2 = getIsoPoint(r, 0, x);
-    ctx.beginPath();
-    ctx.moveTo(p1.x, p1.y);
-    ctx.lineTo(p2.x, p2.y);
-    ctx.stroke();
+  for(var z in map){
+    for(var x in map[z]){
+      var p = getIsoPoint(x, 0, z);
+      if(map[z][x] == 0){
+        ctx.drawImage(assets.floor, p.x - ISO.GRID_SIZE * 2, p.y - ISO.GRID_SIZE * 1, ISO.GRID_SIZE * 4, ISO.GRID_SIZE * 4);
+      } else{
+        ctx.drawImage(assets.wall, p.x - ISO.GRID_SIZE * 2, p.y - ISO.GRID_SIZE * 1, ISO.GRID_SIZE * 4, ISO.GRID_SIZE * 4);
+      }
+    }
   }
 
   var p = getIsoPoint(player.x, player.y, player.z);

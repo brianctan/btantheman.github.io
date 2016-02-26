@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fake Notes</title>
+    <script>
+      var n, c, u, f, text = "", i = 0;
+
+      var speed = 1;
+
+      window.addEventListener("load", function(){
+        n = document.getElementById("text");
+        c = document.getElementById("clear");
+        u = document.getElementById("update");
+        f = document.getElementById("note");
+
+        document.addEventListener("keydown", function(){
+          for(var reps = 0; reps < speed; reps++){
+            addNextLetter();
+            increment();
+            while(text.charAt(i) == " " || text.charAt(i) == "\n"){
+              addNextLetter();
+              increment();
+              if(i == text.length - 1) break;
+            }
+          }
+        }, false);
+
+        u.addEventListener("click", function(){
+          text = n.value;
+          i = 0;
+          f.innerHTML = "";
+        }, false);
+
+      }, false);
+
+      function increment(){
+        i = Math.min(i+1, text.length - 1);
+      }
+
+      function addNextLetter(){
+        f.innerHTML += text.charAt(i);
+      }
+
+    </script>
+  </head>
+  <body>
+    <textarea id="text"></textarea><button id="clear">Clear</button><button id="update">Update</button>
+    <pre id="note"></pre>
+  </body>
+</html>

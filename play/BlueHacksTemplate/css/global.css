@@ -1,0 +1,91 @@
+@import url(avenir-next-lt-pro/style.css);
+
+body{
+  margin: 0;
+  font-size: 15px;
+  font-family: sans-serif;
+  background-color: #F1F1F1;
+  width: 100%;
+}
+
+.container.navbar{
+  color: white;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+#navbutt{
+  width: 25px;
+  height: 25px;
+  background-image: url(../img/hamburger+arrow.png);
+  background-size: 25px 50px;
+  margin: 20px;
+  float: left;
+  transition: transform 0.2s, background-position 1s;
+}
+
+#navbutt:hover{
+  transform: rotate(-90deg);
+  background-position: bottom;
+}
+
+.container.navbar .logo{
+  float: left;
+  font-size: 30px;
+  padding: 15px;
+  font-weight: 100;
+}
+
+.container.navbar .leftside{
+  float: left;
+}
+
+.container.navbar .rightside{
+  float: right;
+}
+
+.container.mainSlideshow{
+  height: 50vw;
+  min-height: 500px;
+  max-height: 600px;
+  position: relative;
+}
+
+.container.mainSlideshow .contentImage{
+  background-image: url(../img/depth.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 50;
+}
+
+#navlinks ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#navlinks li{
+  margin: 0;
+  padding: 0;
+}
+
+.mainSlideshow .centeredText{
+  font-size: 30px;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 60;
+  color: white;
+  font-weight: 100;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+}
+
+.clear{
+  clear: both;
+}
