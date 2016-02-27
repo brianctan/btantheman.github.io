@@ -30,4 +30,14 @@
   #navlinks a:hover{
     opacity: 1;
   }
+
+  .threetier .tiercolumn{
+    width: 33.33%;
+    float: left
+  }
+
+  .twotier .tiercolumn{
+    width: 50%;
+    float: left
+  }
 }

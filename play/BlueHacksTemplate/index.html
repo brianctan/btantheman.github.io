@@ -13,11 +13,22 @@
       <div class="container center">
         <div class="leftside">
           <div id="navbutt"></div>
+          <script>
+            document.getElementById("navbutt").addEventListener("click", function(){
+              if(document.getElementById("navbutt").className == "opened"){
+                document.getElementById("navbutt").className = "";
+                document.getElementById("navlinks").className = "hidden";
+              } else{
+                document.getElementById("navbutt").className = "opened";
+                document.getElementById("navlinks").className = "";
+              }
+            }, false);
+          </script>
           <div class="logo">&clubs; tanamel</div>
           <br class="clear" />
         </div>
         <div class="rightside">
-          <div id="navlinks">
+          <div id="navlinks" class="hidden">
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">Stuff</a></li>
@@ -34,8 +45,32 @@
       <div class="contentImage"></div>
       <div class="centeredText">Nice to see you.</div>
     </div>
-    <div class="container content">
 
+    <div class="container content twotier">
+      <div class="tiercolumn">
+        <h1 class="tierheader">God</h1>
+        <p class="tierpar">Nullam euismod ex nec tempus consectetur. Donec leo mauris, laoreet sollicitudin porta at, hendrerit vitae sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi et lacinia arcu. In nec magna bibendum, volutpat nunc convallis, faucibus lacus. In at sodales enim, ac consequat ante. Etiam dictum nulla lacinia dolor aliquet tempor. Curabitur ultricies elit est, vitae accumsan erat egestas sed. Ut laoreet lectus libero, et facilisis tellus commodo eget. Quisque vitae commodo arcu, id laoreet nisi. Cras sit amet rutrum odio, eget placerat quam. Nulla luctus diam a ex lacinia dictum. Praesent mi lacus, rhoncus eu gravida vitae, aliquam quis ante. Suspendisse feugiat mi in rhoncus suscipit.</p>
+      </div>
+      <div class="tiercolumn">
+        <h1 class="tierheader">Damn</h1>
+        <p class="tierpar">Donec dui odio, sodales et ornare et, efficitur a velit. Quisque faucibus nec velit id finibus. Integer ac auctor ex. Praesent in congue nisl. Suspendisse at ante quis arcu venenatis malesuada eget nec felis. Fusce nisl risus, iaculis vitae ornare quis, efficitur sit amet urna. Vivamus congue efficitur nunc, id porta diam luctus eu. Nam tempor congue ante, ac auctor nulla gravida ac. Curabitur malesuada non nunc id eleifend. Vivamus sed posuere sapien. Etiam sit amet velit mattis, consectetur lacus ut, congue velit. Praesent non justo semper, euismod tortor eget, consequat ligula.</p>
+      </div>
+      <br class="clear" />
+    </div>
+    <div class="container content threetier">
+      <div class="tiercolumn">
+          <h1 class="tierheader">Who</h1>
+          <p class="tierpar">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut velit nibh, cursus non convallis eget, mattis accumsan dui. Morbi nec dolor augue. Vestibulum id orci quis nibh efficitur efficitur ac in lorem. Duis sollicitudin felis diam, sed ultricies felis cursus eget. Mauris fermentum sit amet neque et molestie. Sed hendrerit ornare ipsum, ac feugiat tortor tincidunt eu. Donec quis quam pulvinar, imperdiet nulla quis, condimentum urna. Praesent tempus id tellus quis feugiat.</p>
+      </div>
+      <div class="tiercolumn">
+        <h1 class="tierheader">What</h1>
+        <p class="tierpar">Donec augue augue, bibendum vitae condimentum eget, ultricies vitae ante. Quisque congue suscipit augue at pretium. Integer semper lacus eu magna eleifend porta. Donec consectetur nisi ac purus varius aliquet. Phasellus non nisi hendrerit, aliquet lacus quis, auctor enim. In ut nibh viverra, convallis mauris eu, cursus urna. Duis elementum massa vel ligula ornare, nec convallis augue volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut quis sapien eget metus facilisis volutpat nec et ex. Curabitur in tempus quam. Ut consequat, risus at vestibulum congue, risus orci semper ligula, vel tempus lorem nisl sit amet velit. Vestibulum placerat dictum maximus.</p>
+      </div>
+      <div class="tiercolumn">
+        <h1 class="tierheader">Where</h1>
+        <p class="tierpar">Donec id ante ac mauris fermentum efficitur. Praesent et orci at lectus vehicula condimentum imperdiet eu libero. Sed id tempus leo. Nullam egestas massa quam, vel feugiat metus luctus nec. Donec libero augue, dictum ac consequat eget, blandit a neque. Curabitur facilisis et est in pretium. Morbi nec nulla eleifend augue accumsan egestas et vel arcu. Ut imperdiet lorem ut turpis faucibus, in iaculis odio mollis. Pellentesque vitae porttitor neque.</p>
+      </div>
+      <br class="clear" />
     </div>
   </body>
 </html>

@@ -22,10 +22,11 @@ body{
   background-size: 25px 50px;
   margin: 20px;
   float: left;
-  transition: transform 0.2s, background-position 1s;
+  transition: transform 0.2s, background-position 0s;
+  cursor: pointer;
 }
 
-#navbutt:hover{
+#navbutt.opened{
   transform: rotate(-90deg);
   background-position: bottom;
 }
@@ -33,7 +34,7 @@ body{
 .container.navbar .logo{
   float: left;
   font-size: 30px;
-  padding: 15px;
+  padding: 13px;
   font-weight: 100;
 }
 
@@ -88,4 +89,31 @@ body{
 
 .clear{
   clear: both;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.tiercolumn{
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.tierheader{
+  padding: 10px;
+  margin: 0;
+  font-weight: 200;
+  text-align: center;
+  color: #999;
+}
+
+.tierpar{
+  margin: 0;
+  padding: 10px;
+  color: #555;
+  text-align: justify;
+  line-height: 25px;
+  font-weight: 100;
 }
