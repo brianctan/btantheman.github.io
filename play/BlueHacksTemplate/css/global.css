@@ -119,3 +119,8 @@ body{
   line-height: 25px;
   font-weight: 100;
 }
+
+.navbackground{
+  height: 65px;
+  background-color: #333;
+}
