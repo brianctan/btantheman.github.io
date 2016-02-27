@@ -27,8 +27,7 @@
         fire.authWithOAuthPopup('facebook', function(e, a){
           if(!e){
             console.log(a);
-            document.getElementById("loggedin").className = "";
-            document.getElementById("loggedout").className = "hiddenLink";
+            location.href = location.href;
           }
         });
       }
