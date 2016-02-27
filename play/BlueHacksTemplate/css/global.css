@@ -54,7 +54,7 @@ body{
 }
 
 .container.mainSlideshow .contentImage{
-  background-image: url(http://xdesktopwallpapers.com/wp-content/uploads/2011/11-3/Yosemite-National-Park-Nice-Scene.jpg);
+  background-image: url(../img/night.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -106,7 +106,7 @@ body{
   margin: 0;
   font-weight: 200;
   text-align: center;
-  color: #333;
+  color: #666;
   font-size: 30px;
   text-transform: uppercase;
   text-shadow: 0 2px 0 white;
