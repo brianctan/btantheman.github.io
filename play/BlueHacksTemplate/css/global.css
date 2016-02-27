@@ -18,7 +18,7 @@ body{
 #navbutt{
   width: 25px;
   height: 25px;
-  background-image: url(http://xdesktopwallpapers.com/wp-content/uploads/2011/11-3/Yosemite-National-Park-Nice-Scene.jpg);
+  background-image: url(../img/hamburger+arrow.png);
   background-size: 25px 50px;
   margin: 20px;
   float: left;
@@ -54,7 +54,7 @@ body{
 }
 
 .container.mainSlideshow .contentImage{
-  background-image: url(../img/depth.png);
+  background-image: url(http://xdesktopwallpapers.com/wp-content/uploads/2011/11-3/Yosemite-National-Park-Nice-Scene.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
