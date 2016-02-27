@@ -8,31 +8,8 @@
     <link href="css/mid.css" rel="stylesheet" type="text/css" />
     <link href="css/wide.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
-    <script>
-      var fire, user;
-
-      window.addEventListener("load", function(){
-         fire = new Firebase("https://torrid-torch-9856.firebaseio.com/");
-
-         user = fire.getAuth();
-
-         if(user == null){
-           document.getElementById("loggedin").className = "hiddenLink";
-         } else{
-           document.getElementById("loggedout").className = "hiddenLink";
-         }
-      }, false);
-
-      function login(){
-        fire.authWithOAuthPopup('facebook', function(e, a){
-          if(!e){
-            console.log(a);
-            location.href = location.href;
-          }
-        });
-      }
-
-    </script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
   </head>
   <body>
     <div class="container navbar">
