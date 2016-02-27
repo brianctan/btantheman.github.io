@@ -23,6 +23,16 @@
          }
       }, false);
 
+      function login(){
+        fire.authWithOAuthPopup('facebook', function(e, a){
+          if(!e){
+            console.log(a);
+            document.getElementById("loggedin").className = "";
+            document.getElementById("loggedout").className = "hiddenLink";
+          }
+        });
+      }
+
     </script>
   </head>
   <body>
@@ -38,7 +48,7 @@
             <ul>
               <div id="loggedout">
                 <li><a href="#">Home</a></li>
-                <li><a href="#" onclick="fire.authWithOAuthPopup('facebook', function(e, a){console.log(a)})">Log In</a></li>
+                <li><a href="#" onclick="login();">Log In</a></li>
               </div>
               <div id="loggedin">
                 <li><a href="#">Dashboard</a></li>
