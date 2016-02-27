@@ -77,7 +77,6 @@ body{
 
 .mainSlideshow .centeredText{
   font-size: 30px;
-  text-transform: uppercase;
   position: absolute;
   z-index: 60;
   color: white;

@@ -24,17 +24,22 @@
               }
             }, false);
           </script>
-          <div class="logo">&clubs; tanamel</div>
+          <div class="logo">&spades; HangTime</div>
           <br class="clear" />
         </div>
         <div class="rightside">
           <div id="navlinks" class="hidden">
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Stuff</a></li>
-              <li><a href="#">Long Ass Title</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">About Us</a></li>
+              <div id="loggedout" style="display: none">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Log In</a></li>
+              </div>
+              <div id="loggedin" style="display: block">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Find Friends</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Log Out</a></li>
+              </div>
             </ul>
           </div>
         </div>
@@ -43,7 +48,7 @@
     </div>
     <div class="container mainSlideshow">
       <div class="contentImage"></div>
-      <div class="centeredText">Nice to see you.</div>
+      <div class="centeredText">Hang with friends.</div>
     </div>
 
     <div class="container content twotier">

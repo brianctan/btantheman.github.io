@@ -1,0 +1,18 @@
+<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+<script>
+var ref;
+window.addEventListener("load", function(){
+  ref = new Firebase("https://torrid-torch-9856.firebaseio.com/");
+
+  //start code
+
+  console.log("o")
+
+  ref.authWithOAuthPopup("facebook", function(e, a){
+    console.log(e);
+  });
+
+  //end code
+
+}, false);
+</script>
