@@ -7,6 +7,23 @@
     <link href="css/narrow.css" rel="stylesheet" type="text/css" />
     <link href="css/mid.css" rel="stylesheet" type="text/css" />
     <link href="css/wide.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script>
+      var fire, user;
+
+      window.addEventListener("load", function(){
+         fire = new Firebase("https://torrid-torch-9856.firebaseio.com/");
+
+         user = fire.getAuth();
+
+         if(user == null){
+           document.getElementById("loggedin").className = "hiddenLink";
+         } else{
+           document.getElementById("loggedout").className = "hiddenLink";
+         }
+      }, false);
+
+    </script>
   </head>
   <body>
     <div class="container navbar">
@@ -19,11 +36,11 @@
         <div class="rightside">
           <div id="navlinks" class="hidden">
             <ul>
-              <div id="loggedout" style="display: none">
+              <div id="loggedout">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Log In</a></li>
+                <li><a href="#" onclick="fire.authWithOAuthPopup('facebook', function(e, a){console.log(a)})">Log In</a></li>
               </div>
-              <div id="loggedin" style="display: block">
+              <div id="loggedin">
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Find Friends</a></li>
                 <li><a href="#">My Account</a></li>
@@ -84,6 +101,9 @@
 
     <div id="TESTPAGE">
       <div class="navbackground"></div>
+      <div class="container center">
+
+      </div>
     </div>
 
     <style>

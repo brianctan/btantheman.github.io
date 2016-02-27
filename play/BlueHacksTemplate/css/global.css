@@ -124,3 +124,7 @@ body{
   height: 65px;
   background-color: #333;
 }
+
+.hiddenLink{
+  display: none;
+}
