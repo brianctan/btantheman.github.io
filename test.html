@@ -9,7 +9,7 @@ document.addEventListener("click", function(){
   console.log("o")
 
   ref.authWithOAuthPopup("facebook", function(e, authData ){
-    alert(authData);
+    console.log(authData);
   });
 
   //end code
