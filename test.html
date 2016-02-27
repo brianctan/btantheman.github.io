@@ -8,9 +8,8 @@ document.addEventListener("click", function(){
 
   console.log("o")
 
-  ref.authWithOAuthPopup("twitter", function(e, a){
-    console.log(e);
-    console.log(a);
+  ref.authWithOAuthPopup("facebook", function(e, authData ){
+    alert(authData);
   });
 
   //end code
