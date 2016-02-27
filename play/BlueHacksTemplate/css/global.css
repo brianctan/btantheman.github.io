@@ -1,4 +1,4 @@
-@import url(avenir-next-lt-pro/style.css);
+/*@import url(avenir-next-lt-pro/style.css);*/
 
 body{
   margin: 0;
@@ -76,14 +76,44 @@ body{
 }
 
 .mainSlideshow .centeredText{
-  font-size: 30px;
+  font-size: 50px;
   position: absolute;
   z-index: 60;
   color: white;
   font-weight: 100;
   text-align: center;
   width: 100%;
-  top: 50%;
+  top: 25%;
+}
+
+.mainSlideshow .centeredText span{
+  display: block;
+  font-size: 25px;
+  padding: 20px 50px;
+  max-width: 500px;
+  margin: auto;
+  font-weight: 100;
+  line-height: 40px;
+}
+
+#slidetext{
+  font-size: 50px;
+  position: relative;
+  top: 0;
+  margin-bottom: -20px;
+  line-height: 60px;
+}
+
+#slidetext.a1{
+  transition: 0s all;
+  top: 20px;
+  opacity: 0;
+}
+
+#slidetext.a2{
+  transition: 1s all;
+  top: 0px;
+  opacity: 1;
 }
 
 .clear{
@@ -122,9 +152,9 @@ body{
 
 .navbackground{
   height: 65px;
-  background-color: #333;
+  background-color: #113861;
 }
 
-.hiddenLink{
+.hiddenLink, .container.center.hidden{
   display: none;
 }

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blue Hacks Thing</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="css/global.css" rel="stylesheet" type="text/css" />
+    <link href="css/narrow.css" rel="stylesheet" type="text/css" />
+    <link href="css/mid.css" rel="stylesheet" type="text/css" />
+    <link href="css/wide.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+  </head>
+  <body>
+    <div class="container navbar">
+      <div class="container center">
+        <div class="leftside">
+          <div id="navbutt"></div>
+          <div class="logo">&spades; HangTime</div>
+          <br class="clear" />
+        </div>
+        <div class="rightside">
+          <div id="navlinks" class="hidden">
+            <ul>
+              <div id="loggedout">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="loginbutt">Log In</a></li>
+              </div>
+              <div id="loggedin">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">Find Friends</a></li>
+                <li><a href="account.html">My Account</a></li>
+                <li><a href="#" id="logoutbutt">Log Out</a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <script>
+          var navbutt = document.getElementById("navbutt"),
+              navlinks = document.getElementById("navlinks");
+
+          navbutt.addEventListener("click", function(){
+            if(navbutt.className == "opened"){
+              navbutt.className = "";
+              navlinks.className = "hidden";
+            } else{
+              navbutt.className = "opened";
+              navlinks.className = "";
+            }
+          }, false);
+        </script>
+        <br class="clear" />
+      </div>
+    </div>
+
+    <div id="SIGNUP">
+      <div class="navbackground"></div>
+      <div class="container center hidden" id="fblog">
+        <div class="signupcenter">
+          <h1>Sign in with Facebook</h1>
+          <p>
+            hey use facebok you fuckers hey use facebok you fuckers hey use facebok you fuckers hey use facebok you fuckers hey use facebok you fuckers hey use facebok you fuckers hey use facebok you fuckers
+          </p>
+          <button class="facebooklogin" onclick="login(true)">Log in with Facebook</button>
+        </div>
+      </div>
+      <div class="container center hidden" id="signup">
+        <div class="signupcenter">
+          <h1>Tell us about yourself</h1>
+          <p>
+            who the fuck are you who the fuck are you who the fuck are you who the fuck are you who the fuck are you
+          </p>
+          <form id="extrainfo" action="editsched.html">
+            <input placeholder="School" value="" id="school" type="text" />
+            <input placeholder="Student ID (Optional)" value="" id="id" type="text"/>
+            <input type="submit" value="Continue" />
+          </form>
+        </div>
+      </div>
+      <script>
+        window.addEventListener("load", function(){
+          if(user == null){
+            document.getElementById("fblog").className = "container center";
+          } else{
+            document.getElementById("signup").className = "container center";
+          }
+
+          document.getElementById("extrainfo").addEventListener("submit", function(){
+            var n = {};
+            n = {};
+            n.name = user.facebook.displayName;
+            n.school = document.getElementById("school").value;
+            n.id = document.getElementById("id").value;
+            n.sched = {};
+            n.sched.monday = {};
+            n.sched.tuesday = {};
+            n.sched.wednesday = {};
+            n.sched.thursday = {};
+            n.sched.firday = {};
+            n.sched.saturday = {};
+            console.log(n);
+            fire.child("accounts/" + user.facebook.id).set(n);
+          }, false);
+        }, false);
+      </script>
+      <style>
+        .signupcenter{
+          max-width: 600px;
+          margin: auto;
+          padding: 20px;
+        }
+
+        .signupcenter h1{
+          font-size: 40px;
+          font-weight: 100;
+          color: #555;
+          line-height: 50px;
+          margin: 0;
+          padding: 20px;
+        }
+
+        .signupcenter p{
+          color: #333;
+          font-weight: 100;
+          padding: 20px;
+          margin: 0;
+          padding-top: 0;
+          line-height: 30px;
+        }
+
+        .facebooklogin{
+          border: 0;
+          background-color: #3b5998;
+          color: white;
+          font-size: 20px;
+          padding: 20px;
+          font-weight: 300;
+          text-align: center;
+          width: 100%;
+          cursor: pointer;
+        }
+
+        .signupcenter input[type=text]{
+          box-sizing: border-box;
+          width: 100%;
+          padding: 20px;
+          font-size: 15px;
+          margin-bottom: 10px;
+        }
+
+        .signupcenter input[type=submit]{
+          box-sizing: border-box;
+          width: 100%;
+          padding: 20px;
+          font-size: 15px;
+          border: 0;
+          background-color: #076293;
+          color: white;
+          cursor: pointer;
+        }
+      </style>
+    </div>
+
+    <style>
+      #HOMEPAGE, #TESTPAGE{
+        display: none;
+      }
+
+      #SIGNUP{
+        display: block;
+      }
+    </style>
+  </body>
+</html>
