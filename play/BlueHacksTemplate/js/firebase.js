@@ -10,6 +10,10 @@ window.addEventListener("load", function(){
    } else{
      document.getElementById("loggedout").className = "hiddenLink";
    }
+
+   document.getElementById("loginbutt").addEventListener("click", login, false);
+   document.getElementById("logoutbutt").addEventListener("click", logout, false);
+
 }, false);
 
 function login(){
@@ -19,4 +23,9 @@ function login(){
       location.href = location.href;
     }
   });
+}
+
+function logout(){
+  fire.unauth();
+  
 }
