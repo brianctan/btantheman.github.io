@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HangTime</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="css/global.css" rel="stylesheet" type="text/css" />
+    <link href="css/narrow.css" rel="stylesheet" type="text/css" />
+    <link href="css/mid.css" rel="stylesheet" type="text/css" />
+    <link href="css/wide.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script>
+      window.addEventListener("load", function(){
+        if(user != null){
+          window.location.href = "dashboard.html";
+        }
+      }, false);
+    </script>
+  </head>
+  <body>
+    <div class="container navbar">
+      <div class="container center">
+        <div class="leftside">
+          <div id="navbutt"></div>
+          <div class="logo"><img src="img/hangtimewhite.png" /> HangTime</div>
+          <br class="clear" />
+        </div>
+        <div class="rightside">
+          <div id="navlinks" class="hidden">
+            <ul>
+              <div id="loggedout">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="loginbutt">Log In</a></li>
+              </div>
+              <div id="loggedin">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">Find Friends</a></li>
+                <li><a href="editsched.html">My Account</a></li>
+                <li><a href="#" id="logoutbutt">Log Out</a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <script>
+          var navbutt = document.getElementById("navbutt"),
+              navlinks = document.getElementById("navlinks");
+
+          navbutt.addEventListener("click", function(){
+            if(navbutt.className == "opened"){
+              navbutt.className = "";
+              navlinks.className = "hidden";
+            } else{
+              navbutt.className = "opened";
+              navlinks.className = "";
+            }
+          }, false);
+        </script>
+        <br class="clear" />
+      </div>
+    </div>
+    <div id="HOMEPAGE">
+      <div class="container mainSlideshow">
+        <div class="contentImage"></div>
+        <div class="centerHolder">
+          <div class="centerContent">
+            <img src="img/hangtimewhite.png" />
+            <span id="slidetext">Hang with friends.</span><span>HangTime is a scheduling app for students that is on a mission to make your student life more social, convenient, and productive.</span>
+          </div>
+        </div>
+        <script>
+        setInterval(function(){
+          slidetext.innerHTML = slideTexts[slideIndex = (slideIndex + 1)%slideTexts.length];
+          slidetext.className = "a1";
+
+          setTimeout(function(){
+            slidetext.className = "a2";
+          }, 1);
+        }, 3000);
+        </script>
+      </div>
+      <div class="container content threetier">
+        <div class="tiercolumn">
+            <h1 class="tierheader">Who</h1>
+            <img class="centeredImage" src="img/facebook.png" align="middle" width="20%">
+            <p class="tierpar">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut velit nibh, cursus non convallis eget, mattis accumsan dui. Morbi nec dolor augue. Vestibulum id orci quis nibh efficitur efficitur ac in lorem. Duis sollicitudin felis diam, sed ultricies felis cursus eget. Mauris fermentum sit amet neque et molestie. Sed hendrerit ornare ipsum, ac feugiat tortor tincidunt eu. Donec quis quam pulvinar, imperdiet nulla quis, condimentum urna. Praesent tempus id tellus quis feugiat.</p>
+        </div>
+        <div class="tiercolumn">
+          <h1 class="tierheader">What</h1>
+          <img class="centeredImage" src="img/drag.png" align="middle" width="20%">
+          <p class="tierpar">Donec augue augue, bibendum vitae condimentum eget, ultricies vitae ante. Quisque congue suscipit augue at pretium. Integer semper lacus eu magna eleifend porta. Donec consectetur nisi ac purus varius aliquet. Phasellus non nisi hendrerit, aliquet lacus quis, auctor enim. In ut nibh viverra, convallis mauris eu, cursus urna. Duis elementum massa vel ligula ornare, nec convallis augue volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut quis sapien eget metus facilisis volutpat nec et ex. Curabitur in tempus quam. Ut consequat, risus at vestibulum congue, risus orci semper ligula, vel tempus lorem nisl sit amet velit. Vestibulum placerat dictum maximus.</p>
+        </div>
+        <div class="tiercolumn">
+          <h1 class="tierheader">Where</h1>
+          <img class="centeredImage" src="img/friends.png" align="middle" width="20%">
+          <p class="tierpar">Donec id ante ac mauris fermentum efficitur. Praesent et orci at lectus vehicula condimentum imperdiet eu libero. Sed id tempus leo. Nullam egestas massa quam, vel feugiat metus luctus nec. Donec libero augue, dictum ac consequat eget, blandit a neque. Curabitur facilisis et est in pretium. Morbi nec nulla eleifend augue accumsan egestas et vel arcu. Ut imperdiet lorem ut turpis faucibus, in iaculis odio mollis. Pellentesque vitae porttitor neque.</p>
+        </div>
+
+        <br class="clear" />
+      </div>
+
+        <br class="clear" />
+      </div>
+    </div>
+  </body>
+</html>

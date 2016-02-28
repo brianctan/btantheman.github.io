@@ -1,0 +1,6 @@
+@media screen and (min-width: 1200px){
+  .container.navbar .container.center, .container.content{
+    width: 1200px;
+    margin: auto;
+  }
+}

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard | HangTime</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="css/global.css" rel="stylesheet" type="text/css" />
+    <link href="css/narrow.css" rel="stylesheet" type="text/css" />
+    <link href="css/mid.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="js/jquery.autocomplete.min.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dash.js"></script>
+  </head>
+  <body>
+    <div class="container navbar">
+      <div class="container center">
+        <div class="leftside">
+          <div id="navbutt"></div>
+          <div class="logo"><img src="img/hangtimewhite.png" /> HangTime</div>
+          <br class="clear" />
+        </div>
+        <div class="rightside">
+          <div id="navlinks" class="hidden">
+            <ul>
+              <div id="loggedout">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="loginbutt">Log In</a></li>
+              </div>
+              <div id="loggedin">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="editsched.html">My Account</a></li>
+                <li><a href="#" id="logoutbutt">Log Out</a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <script>
+          var navbutt = document.getElementById("navbutt"),
+              navlinks = document.getElementById("navlinks");
+
+          navbutt.addEventListener("click", function(){
+            if(navbutt.className == "opened"){
+              navbutt.className = "";
+              navlinks.className = "hidden";
+            } else{
+              navbutt.className = "opened";
+              navlinks.className = "";
+            }
+          }, false);
+        </script>
+        <br class="clear" />
+      </div>
+    </div>
+    <div id="DASHBOARD">
+      <div class="navbackground"></div>
+      <div id="dashscheds">
+        <div id="timelock"></div>
+        <div class="dashscroll">
+          <div id="dashscrollwide">
+            <div class="dashday">
+              <div class="dashdaytitle">Mon</div>
+              <div class="dashdaysched" id="monday"></div>
+            </div>
+            <div class="dashday light">
+              <div class="dashdaytitle">Tue</div>
+              <div class="dashdaysched" id="tuesday"></div>
+            </div>
+            <div class="dashday">
+              <div class="dashdaytitle">Wed</div>
+              <div class="dashdaysched" id="wednesday"></div>
+            </div>
+            <div class="dashday light">
+              <div class="dashdaytitle">Thu</div>
+              <div class="dashdaysched" id="thursday"></div>
+            </div>
+            <div class="dashday">
+              <div class="dashdaytitle">Fri</div>
+              <div class="dashdaysched" id="friday"></div>
+            </div>
+            <div class="dashday light">
+              <div class="dashdaytitle">Sat</div>
+              <div class="dashdaysched" id="saturday"></div>
+            </div>
+            <br class="clear" />
+          </div>
+        </div>
+        <br class="clear" />
+      </div>
+      <div id="dashside">
+        <h1>Display Mode</h1>
+        <div id="modebutts">
+          <div id="summarybutt" class="selected">summary</div><div id="detailedbutt">Detailed</div><br class="clear" />
+        </div>
+        <h1>Add Friends</h1>
+        <form id="friendform" onsubmit="this.value = ''; return false; event.preventDefault();">
+          <input type="text" id="friendfield" placeholder="Type a friend's name" />
+        </form>
+        <div class="dashselected">
+          <h1>Displaying</h1>
+          <div id="dashselected">
+          </div>
+        </div>
+        <h1>Legend</h1>
+        <div id="legend"></div>
+      </div>
+      <style>
+        #legend{
+          padding: 30px;
+        }
+
+        #legend img{
+          width: 100%;
+        }
+
+        #modebutts{
+          box-sizing: border-box;
+          border: 0;
+          width: calc(100% - 20px);
+          display: block;
+          font-size: 15px;
+          background-color: #F1F1F1;
+          border-radius: 20px;
+          margin: 10px;
+          outline: 0;
+          overflow: hidden;
+        }
+
+        #summarybutt, #detailedbutt{
+          padding: 17px;
+          box-sizing: border-box;
+          border: 0;
+          width: 50%;
+          display: block;
+          font-size: 13px;
+          outline: 0;
+          float: left;
+          text-align: center;
+          text-transform: uppercase;
+          cursor: pointer;
+          font-weight: 700;
+          color: #999;
+        }
+
+        #detailedbutt.selected, #summarybutt.selected{
+          color: white;
+          background-color: #081a2d;
+        }
+
+        #dashside h1{
+          font-weight: 100;
+          color: #777;
+          font-size: 20px;
+          padding: 10px 40px;
+          margin: 0;
+        }
+
+        #dashselected{
+          padding: 10px;
+          padding-top: 0;
+        }
+
+        #dashselected i, #legend{
+          padding: 10px;
+          text-align: center;
+          display: block;
+          color: #CCC;
+        }
+
+        #dashselected a:link, #dashselected a:visited{
+          display: inline-block;
+          background-color: #0d2947;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 100px;
+          text-decoration: none;
+          margin: 5px;
+          font-size: 13px;
+          overflow: hidden;
+          padding-right: 10px;
+        }
+
+        #dashselected img{
+          height: 33px;
+          margin: -15px;
+          border-radius: 100px;
+          margin-right: 2px;
+          position: relative;
+          top: -3px;
+          left: -4px;
+        }
+
+        #dashselected span{
+          position: relative;
+          top: 0px;
+        }
+
+        .autocomplete-suggestions{
+          color: gray;
+          background-color: #F1F1F1;
+        }
+
+        .autocomplete-suggestion {
+          padding: 10px;
+          display: block;
+          cursor: pointer;
+        }
+
+        .autocomplete-selected {
+          color: black;
+        }
+
+        #friendfield{
+          padding: 17px;
+          box-sizing: border-box;
+          border: 0;
+          width: calc(100% - 20px);
+          display: block;
+          font-size: 15px;
+          background-color: #F1F1F1;
+          border-radius: 20px;
+          border-radius-bottom-left: 0px;
+          margin: 10px;
+          outline: 0;
+        }
+
+        .dashday{
+          width: 16.66%;
+          float: left;
+          height: 100%;
+          position: relative;
+          background-color: #F1F1F1;
+        }
+
+        #timelock{
+          width: 70px;
+          height: calc(100% - 52px);
+          float: left;
+          background-color: #FFF;
+          margin-top: 52px;
+          box-sizing: border-box;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .dashscroll{
+          overflow-y: hidden;
+          float: left;
+          height: 100%;
+          width: calc(100% - 70px);
+        }
+
+        #dashscrollwide{
+          min-width: 120%;
+          height: 100%;
+          left: 20px;
+        }
+
+        .dashdaytitle{
+          color: #FFF;
+          color: white;
+          font-size: 10px;
+          text-transform: uppercase;
+          text-align: center;
+          padding: 20px;
+          background-color: #081a2d;
+          font-weight: 700;
+        }
+
+        .light .dashdaytitle{
+          background-color: #0d2947;
+        }
+
+        .dashday.light{
+          background-color: #f9f9f9;
+        }
+
+        #dashside{
+          padding-top: 10px;
+          background-color: white;
+        }
+
+        #dashscheds{
+          background-color: white;
+        }
+
+        #dashside, #dashscheds{
+          height: 100%;
+          box-sizing: border-box;
+        }
+
+        .dashdaysched{
+          position: relative;
+          height: calc(100% - 52px);
+        }
+
+        .summarynode{
+          background-color: #eb4141;
+          position: absolute;
+          width: calc(100%);
+        }
+
+        .detailednode{
+          box-sizing: border-box;
+          padding: 5px;
+          background-color: #333;
+          color: white;
+          font-size: 10px;
+          position: absolute;
+          width: 100%;
+          min-width: 50px;
+          overflow: hidden;
+        }
+
+        .detailednode b, .detailednode i{
+          display: block;
+        }
+
+
+        /*
+        .timelockperiod{
+          box-sizing: border-box;
+          position: absolute;
+          text-align: right;
+          font-size: 11px;
+          color: #555;
+          padding-right: 10px;
+          padding-top: 10px;
+          border-top: 1px dashed #CCC;
+          width: 70px;
+        }
+        */
+
+        .timelockperiod{
+          box-sizing: border-box;
+          position: absolute;
+          text-align: right;
+          font-size: 11px;
+          color: #999;
+          padding-right: 10px;
+          margin-top: -5px;
+          width: 70px;
+        }
+      </style>
+      <script>
+
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Schedule | HangTime</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="css/global.css" rel="stylesheet" type="text/css" />
+    <link href="css/narrow.css" rel="stylesheet" type="text/css" />
+    <link href="css/mid.css" rel="stylesheet" type="text/css" />
+    <link href="css/wide.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+  </head>
+  <body>
+    <div class="container navbar">
+      <div class="container center">
+        <div class="leftside">
+          <div id="navbutt"></div>
+          <div class="logo"><img src="img/hangtimewhite.png" /> HangTime</div>
+          <br class="clear" />
+        </div>
+        <div class="rightside">
+          <div id="navlinks" class="hidden">
+            <ul>
+              <div id="loggedout">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="loginbutt">Log In</a></li>
+              </div>
+              <div id="loggedin">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="editsched.html">My Account</a></li>
+                <li><a href="#" id="logoutbutt">Log Out</a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <script>
+          var navbutt = document.getElementById("navbutt"),
+              navlinks = document.getElementById("navlinks");
+
+          navbutt.addEventListener("click", function(){
+            if(navbutt.className == "opened"){
+              navbutt.className = "";
+              navlinks.className = "hidden";
+            } else{
+              navbutt.className = "opened";
+              navlinks.className = "";
+            }
+          }, false);
+        </script>
+        <br class="clear" />
+      </div>
+    </div>
+    <div id="EDITSCHED">
+      <div class="navbackground"></div>
+      <div id="dashscheds">
+        <div id="timelock"></div>
+        <div class="dashscroll">
+          <div id="dashscrollwide">
+            <div class="dashday">
+              <div class="dashdaytitle">Mon</div>
+              <div class="dashdaysched" id="monday"></div>
+            </div>
+            <div class="dashday light">
+              <div class="dashdaytitle">Tue</div>
+              <div class="dashdaysched" id="tuesday"></div>
+            </div>
+            <div class="dashday">
+              <div class="dashdaytitle">Wed</div>
+              <div class="dashdaysched" id="wednesday"></div>
+            </div>
+            <div class="dashday light">
+              <div class="dashdaytitle">Thu</div>
+              <div class="dashdaysched" id="thursday"></div>
+            </div>
+            <div class="dashday">
+              <div class="dashdaytitle">Fri</div>
+              <div class="dashdaysched" id="friday"></div>
+            </div>
+            <div class="dashday light">
+              <div class="dashdaytitle">Sat</div>
+              <div class="dashdaysched" id="saturday"></div>
+            </div>
+            <br class="clear" />
+          </div>
+        </div>
+        <br class="clear" />
+      </div>
+    <div id="addbutt" onclick="showForm()">+</div>
+    <style>
+    #addbutt{
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      background-color: #db3937;
+      display: block;
+      padding-left: 18px;
+      padding-top: 3px;
+      box-sizing: border-box;
+      font-size: 40px;
+      border-radius: 100px;
+      color: white;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      z-index: 500;
+    }
+    #addsub{
+      position: fixed;
+      bottom: 0;
+      background-color: white;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+      padding: 20px;
+      box-sizing: border-box;
+      width: calc(100% - 50px);
+      left: 25px;
+      z-index: 1000;
+      transition: 1s all;
+    }
+
+    #addsub.hidden{
+      bottom: -100vw;
+    }
+    </style>
+    <div id="addsub" class="hidden">
+      <table>
+        <tr>
+          <td colspan="2">
+            <h1>Subject</h1>
+          </td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td><input type="text" id="name" /></td>
+        </tr>
+        <tr>
+          <th>Location</th>
+          <td><input type="text" id="location" /></td>
+        </tr>
+        <tr>
+          <th>Start</th>
+          <td>
+            <select id="starth">
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            </select>
+            :
+            <select id="startm">
+              <option value="0">00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+              <option disabled role="separator">---</option>
+              <option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option>
+            </select>
+            <select id="startap">
+              <option value="0">AM</option>
+              <option value="12">PM</option>
+          </td>
+        </tr>
+        <tr>
+          <th>End</th>
+          <td>
+            <select id="endh">
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            </select>
+            :
+            <select id="endm">
+              <option value="0">00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+              <option disabled role="separator">---</option>
+              <option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option>
+            </select>
+            <select id="endap">
+              <option value="0">AM</option>
+              <option value="12">PM</option>
+          </td>
+        </tr>
+        <tr>
+          <th rowspan="6">Days</th>
+          <td><label><input type="checkbox" id="mon" /> Monday</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" id="tue" /> Tuesday</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" id="wed" /> Wednesday</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" id="thu" /> Thursday</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" id="fri" /> Friday</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" id="sat" /> Saturday</label></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button id="add" onclick="addForm()" >Add to Sched</button><!--<button id="clearForm" onclick="clearForm()">Clear Form</button><button id="clearSched">Clear Schedule</button>--><button onclick="clearForm(); hideForm();">Discard</button></td>
+        </tr>
+      </table>
+    </div>
+    <style>
+      .dashday{
+        width: 16.66%;
+        float: left;
+        height: 100%;
+        position: relative;
+        background-color: #F1F1F1;
+      }
+
+      #timelock{
+        width: 70px;
+        height: calc(100% - 52px);
+        float: left;
+        background-color: #FFF;
+        margin-top: 52px;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dashscroll{
+        overflow-y: hidden;
+        float: left;
+        height: 100%;
+        width: calc(100% - 70px);
+      }
+
+      #dashscrollwide{
+        min-width: 120%;
+        height: 100%;
+        left: 20px;
+      }
+
+      .dashdaytitle{
+        color: #FFF;
+        color: white;
+        font-size: 10px;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 20px;
+        background-color: #081a2d;
+        font-weight: 700;
+      }
+
+      .light .dashdaytitle{
+        background-color: #0d2947;
+      }
+
+      .dashday.light{
+        background-color: #f9f9f9;
+      }
+
+      .dashday:hover button{
+        opacity: 1;
+      }
+
+      .dashday button{
+        background-color: rgba(0, 0, 0, 0.25);
+        border: 0;
+        border-radius: 5px;
+        color: white;
+        float: right;
+        cursor: pointer;
+        opacity: 0.1;
+        transition: 0.2s all;
+      }
+
+      #dashscheds button:hover{
+
+      }
+
+      #dashscheds{
+        background-color: white;
+        height: calc(100vh - 65px);
+        min-height: 600px;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      .dashdaysched{
+        position: relative;
+        height: calc(100% - 52px);
+      }
+
+      .detailednode{
+        box-sizing: border-box;
+        padding: 5px;
+        background-color: #333;
+        color: white;
+        font-size: 10px;
+        position: absolute;
+        width: 100%;
+        min-width: 50px;
+        overflow: hidden;
+      }
+
+      .detailednode b, .detailednode i{
+        display: block;
+      }
+
+      .timelockperiod{
+        box-sizing: border-box;
+        position: absolute;
+        text-align: right;
+        font-size: 11px;
+        color: #999;
+        padding-right: 10px;
+        margin-top: -5px;
+        width: 70px;
+      }
+    </style>
+    <script>
+    var sched = {notupdated: true};
+    var days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
+    var visibleList, choicesList, schedulesHTML, mondayHTML, tuesdayHTML, wednesdayHTML, thursdayHTML, fridayHTML, saturdayHTML;
+    var nicknameHTML, lastnameHTML, schoolHTML, schoolCodeHTML, nameHTML, locationHTML, starthHTML, startmHTML, startapHTML, endhHTML, endmHTML, endapHTML, monHTML, tueHTML, wedHTML, thuHTML, friHTML, satHTML, addHTML, jsonHTML;
+
+    window.addEventListener("load", function(){
+
+      schedulesHTML = document.getElementById("schedules");
+
+      mondayHTML = document.getElementById("monday");
+      tuesdayHTML = document.getElementById("tuesday");
+      wednesdayHTML = document.getElementById("wednesday");
+      thursdayHTML = document.getElementById("thursday");
+      fridayHTML = document.getElementById("friday");
+      saturdayHTML = document.getElementById("saturday");
+
+      daysHTML = [mondayHTML, tuesdayHTML, wednesdayHTML, thursdayHTML, fridayHTML, saturdayHTML];
+
+      nicknameHTML = document.getElementById("nickname");
+      lastnameHTML = document.getElementById("lastname");
+      schoolHTML = document.getElementById("school");
+      schoolCodeHTML = document.getElementById("schoolCode");
+      locationHTML = document.getElementById("location");
+      nameHTML = document.getElementById("name");
+      starthHTML = document.getElementById("starth");
+      startmHTML = document.getElementById("startm");
+      startapHTML = document.getElementById("startap");
+      endhHTML = document.getElementById("endh");
+      endmHTML = document.getElementById("endm");
+      endapHTML = document.getElementById("endap");
+      monHTML = document.getElementById("mon");
+      tueHTML = document.getElementById("tue");
+      wedHTML = document.getElementById("wed");
+      thuHTML = document.getElementById("thu");
+      friHTML = document.getElementById("fri");
+      satHTML = document.getElementById("sat");
+      dayCheckboxesHTML = [monHTML, tueHTML, wedHTML, thuHTML, friHTML, satHTML];
+      jsonHTML = document.getElementById("json");
+
+      addHTML = document.getElementById("add");
+
+      fire.on("value", function(s){
+        if(sched.notupdated){
+          sched = s.val().accounts[user.facebook.id].sched;
+        }
+        if(sched == null){
+          sched = {};
+        }
+        displaySelection();
+      });
+    }, false);
+
+    function hideForm(){
+      document.getElementById("addsub").className = "hidden";
+    }
+
+    function showForm(){
+      document.getElementById("addsub").className = "";
+    }
+
+    function displaySelection(){
+      if(sched){
+        var html = "";
+        var daysHTML = [];
+
+        for(var i in days){
+          document.getElementById(days[i]).innerHTML = "";
+        }
+
+        earliestTime = mil2min(2400);
+        latestTime = 0;
+
+        for(var i in sched){
+          for(var c in sched[i]){
+            if(sched[i][c].start != null) earliestTime = Math.min(mil2min(sched[i][c].start), earliestTime);
+            if(sched[i][c].end != null) latestTime = Math.max(mil2min(sched[i][c].end), latestTime);
+          }
+        }
+
+        for(var i in days){
+          daysHTML[days[i]] = "";
+        }
+
+        for(var i in sched){
+          for(var c in sched[i]){
+            var html = "";
+
+            html += "<div class='detailednode' style='top: ";
+            html += Number(((mil2min(sched[i][c].start) - earliestTime)/(latestTime - earliestTime)) * 100).toFixed(2);
+            html += "%; height: ";
+            html += Number(((mil2min(sched[i][c].end) - mil2min(sched[i][c].start))/(latestTime - earliestTime)) * 100).toFixed(2);
+            html += "50%; background-color:";
+            html += "#40a4d8";
+            html += "; width: 100%;'><b>" + c.replace("_", ".") + "</b><i>" + sched[i][c].location + "</i>"
+            html += "<button onclick='editClass(\"" + i + "\", \"" + c + "\");'>Edit</button>";
+            //html += "<button onclick='deleteClass(" + i + ", " + c + ");'>Delete</button>";
+            html += "</div>";
+
+            daysHTML[i] += html;
+          }
+        }
+
+        for(var i in days){
+          document.getElementById(days[i]).innerHTML = daysHTML[days[i]];
+        }
+
+        html = "";
+
+        interval = (latestTime - earliestTime) > 540 ? 60 : 30;
+
+        for(var i = Math.ceil(earliestTime/interval) * interval; i <= latestTime; i += interval){
+          html += "<div class='timelockperiod' style='top: ";
+          html += Number((i - earliestTime)/(latestTime - earliestTime) * 100).toFixed(2);
+          html += "%;'>";
+          html += mil2stan(min2mil(i));
+          html += "</div>";
+        }
+
+        document.getElementById("timelock").innerHTML = html;
+      }
+    }
+
+    function clearForm(){
+      nameHTML.value = "";
+      locationHTML.value = "";
+      starthHTML.value = 8;
+      startmHTML.value = 0;
+      startapHTML.value = 0;
+      endhHTML.value = 9;
+      endmHTML.value = 0;
+      endapHTML.value = 0;
+    }
+
+    function mil2min(x){
+      x = Number(x);
+      var h = Math.floor(x/100);
+      var m = x - h * 100;
+      return h * 60 + m;
+    }
+
+    function min2mil(x){
+      x = Number(x);
+      var h = Math.floor(x/60);
+      var m = x%60;
+      return h * 100 + m;
+    }
+
+    function mil2stan(x){
+      x = Number(x);
+      var h = Math.floor(x/100);
+      var m = x - h * 100;
+      return (h > 12 ? h - 12 : h) + ":" + (m < 10 ? "0" + m : m) + " " + (h >= 12 ? "PM" : "AM");
+    }
+
+    function delSched(a, b){
+      delete sched[a][b];
+      displaySelection();
+    }
+
+    function editClass(a, b){
+      showForm();
+      nameHTML.value = b;
+      locationHTML.value = sched[a][b].location;
+
+      starthHTML.value = Math.floor(Number(sched[a][b].start)/100) > 12 ? Math.floor(Number(sched[a][b].start)/100) - 12 : Math.floor(Number(sched[a][b].start)/100);
+      startmHTML.value = Number(sched[a][b].start) - Math.floor(Number(sched[a][b].start)/100) * 100;
+      startapHTML.value = Number(sched[a][b].start) >= 1200 ? "12" : "0";
+
+      endhHTML.value = Math.floor(Number(sched[a][b].end)/100) > 12 ? Math.floor(Number(sched[a][b].end)/100) - 12 : Math.floor(Number(sched[a][b].end)/100);
+      endmHTML.value = Number(sched[a][b].end) - Math.floor(Number(sched[a][b].end)/100) * 100;
+      endapHTML.value = Number(Number(sched[a][b].end)) >= 1200 ? "12" : "0";
+
+      for(var i = 0; i < daysHTML.length; i++){
+        dayCheckboxesHTML[i].checked = days[i] == a;
+      }
+
+      delSched(a, b);
+      fire.child("accounts/" + user.facebook.id + "/sched").set(sched);
+    }
+
+    function addForm(){
+      for(var i = 0; i < daysHTML.length; i++){
+        if(dayCheckboxesHTML[i].checked){
+          sched[days[i]][nameHTML.value.replace(".", "_")] = {};
+          sched[days[i]][nameHTML.value.replace(".", "_")].location = locationHTML.value
+          sched[days[i]][nameHTML.value.replace(".", "_")].start = String(((Number(starthHTML.value)%12) + Number(startapHTML.value))%24) + String((Number(startmHTML.value) < 10 ? "0" + startmHTML.value : startmHTML.value));
+          sched[days[i]][nameHTML.value.replace(".", "_")].end = String(((Number(endhHTML.value)%12) + Number(endapHTML.value))%24) + String((Number(endmHTML.value) < 10 ? "0" + endmHTML.value : endmHTML.value));
+        }
+      }
+      clearForm();
+      hideForm();
+      displaySelection();
+      fire.child("accounts/" + user.facebook.id + "/sched").set(sched);
+    }
+
+    </script>
+  </body>
+</html>

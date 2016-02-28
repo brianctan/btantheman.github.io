@@ -54,7 +54,7 @@ body{
 }
 
 .container.mainSlideshow .contentImage{
-  background-image: url(../img/bluebackground.jpg);
+  background-image: url(../img/night.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

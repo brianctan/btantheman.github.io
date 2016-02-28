@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Friends | HangTime</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="css/global.css" rel="stylesheet" type="text/css" />
+    <link href="css/narrow.css" rel="stylesheet" type="text/css" />
+    <link href="css/mid.css" rel="stylesheet" type="text/css" />
+    <link href="css/wide.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+  </head>
+  <body>
+    <div class="container navbar">
+      <div class="container center">
+        <div class="leftside">
+          <div id="navbutt"></div>
+          <div class="logo"><img src="img/hangtimewhite.png" /> HangTime</div>
+          <br class="clear" />
+        </div>
+        <div class="rightside">
+          <div id="navlinks" class="hidden">
+            <ul>
+              <div id="loggedout">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="loginbutt">Log In</a></li>
+              </div>
+              <div id="loggedin">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="editsched.html">My Account</a></li>
+                <li><a href="#" id="logoutbutt">Log Out</a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <script>
+          var navbutt = document.getElementById("navbutt"),
+              navlinks = document.getElementById("navlinks");
+
+          navbutt.addEventListener("click", function(){
+            if(navbutt.className == "opened"){
+              navbutt.className = "";
+              navlinks.className = "hidden";
+            } else{
+              navbutt.className = "opened";
+              navlinks.className = "";
+            }
+          }, false);
+        </script>
+        <br class="clear" />
+      </div>
+    </div>
+    <div id="FRIENDS">
+      <div class="navbackground"></div>
+      <div class="container content twotier">
+        <div class="tiercolumn">
+          <h1>Find new friends</h1>
+          <div class="friendlist" id="everyone"></div>
+        </div>
+        <div class="tiercolumn">
+          <h1>Your friends list</h1>
+          <div class="friendlist" id="your"></div>
+        </div>
+        <br class="clear" />
+      </div>
+
+      <style>
+        #FRIENDS h1{
+          font-size: 30px;
+          text-transform: uppercase;
+          font-weight: 300;
+          color: #555;
+          line-height: 50px;
+          margin: 0;
+          padding: 20px;
+          text-align: left;
+        }
+
+        .frienditem{
+          background-color: white;
+          padding: 20px;
+          font-size: 17px;
+          border: 1px solid #EEE;
+          border-bottom: 0;
+          font-weight: 700;
+        }
+
+        .frienditem .butt{
+          float: right;
+          color: #113861;
+          border: 2px solid #113861;
+          border-radius: 5px;
+          text-transform: uppercase;
+          font-size: 12px;
+          padding: 10px;
+          cursor: pointer;
+          margin-top: -10px;
+          font-weight: 600;
+        }
+
+        .frienditem img{
+          border-radius: 100px;
+          margin: -10px;
+          margin-right: 13px;
+          height: 40px;
+        }
+
+        .frienditem span{
+          position: relative;
+          top: -4px;
+        }
+      </style>
+      <script>
+        window.addEventListener("load", function(){
+          fire.on("value", function(s){
+            document.getElementById("everyone").innerHTML = document.getElementById("your").innerHTML = "";
+            for(var u in s.val().accounts){
+              if(user.facebook.id != u){
+                html = "";
+                if(s.val().accounts[user.facebook.id].friends[u] == null){
+                  html += "<div class='frienditem'><img src=\"http://graph.facebook.com/" + u + "/picture\"/><span>" + s.val().accounts[u].name + "</span><div class='butt' onclick='follow(\""+u+"\");'>follow</div></div>";
+                  document.getElementById("everyone").innerHTML += html;
+                } else{
+                  html += "<div class='frienditem'><img src=\"http://graph.facebook.com/" + u + "/picture\"/><span>" + s.val().accounts[u].name + "</span><div class='butt' onclick='unfollow(\""+u+"\");'>unfollow</div></div>";
+                  document.getElementById("your").innerHTML += html;
+                }
+              }
+            }
+          });
+        }, false);
+
+        function unfollow(id){
+          fire.child("accounts/"+user.facebook.id+"/friends/"+id).set(null);
+        }
+
+        function follow(id){
+          fire.child("accounts/"+user.facebook.id+"/friends/"+id).set(0);
+        }
+      </script>
+    </div>
+  </body>
+</html>

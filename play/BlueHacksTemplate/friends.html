@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blue Hacks Thing</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="css/global.css" rel="stylesheet" type="text/css" />
+    <link href="css/narrow.css" rel="stylesheet" type="text/css" />
+    <link href="css/mid.css" rel="stylesheet" type="text/css" />
+    <link href="css/wide.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+  </head>
+  <body>
+    <div class="container navbar">
+      <div class="container center">
+        <div class="leftside">
+          <div id="navbutt"></div>
+          <div class="logo">&spades; HangTime</div>
+          <br class="clear" />
+        </div>
+        <div class="rightside">
+          <div id="navlinks" class="hidden">
+            <ul>
+              <div id="loggedout">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="loginbutt">Log In</a></li>
+              </div>
+              <div id="loggedin">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">Find Friends</a></li>
+                <li><a href="me.html">My Account</a></li>
+                <li><a href="#" id="logoutbutt">Log Out</a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <script>
+          var navbutt = document.getElementById("navbutt"),
+              navlinks = document.getElementById("navlinks");
+
+          navbutt.addEventListener("click", function(){
+            if(navbutt.className == "opened"){
+              navbutt.className = "";
+              navlinks.className = "hidden";
+            } else{
+              navbutt.className = "opened";
+              navlinks.className = "";
+            }
+          }, false);
+        </script>
+        <br class="clear" />
+      </div>
+    </div>
+    <div id="EDITSCHED">
+      <div class="navbackground"></div>
+      edit sched
+    </div>
+  </body>
+</html>
