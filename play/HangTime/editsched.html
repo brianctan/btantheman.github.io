@@ -499,6 +499,7 @@
     function addForm(){
       for(var i = 0; i < daysHTML.length; i++){
         if(dayCheckboxesHTML[i].checked){
+          if(sched[days[i]] == null) sched[days[i]] = {};
           sched[days[i]][nameHTML.value.replace(".", "_")] = {};
           sched[days[i]][nameHTML.value.replace(".", "_")].location = locationHTML.value
           sched[days[i]][nameHTML.value.replace(".", "_")].start = String(((Number(starthHTML.value)%12) + Number(startapHTML.value))%24) + String((Number(startmHTML.value) < 10 ? "0" + startmHTML.value : startmHTML.value));
