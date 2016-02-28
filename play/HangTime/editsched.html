@@ -115,9 +115,13 @@
       padding: 20px;
       box-sizing: border-box;
       width: calc(100% - 50px);
-      left: 25px;
+      right: 25px;
       z-index: 1000;
       transition: 1s all;
+    }
+
+    #addsub h1{
+      text-align: center;
     }
 
     #addsub.hidden{
@@ -513,5 +517,80 @@
     }
 
     </script>
+    <style>
+    #form, #addsub{
+      max-width: 800px;
+      margin: auto;
+      background-color: #FFF;
+      color: #333;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    table td{
+      padding: 5px;
+    }
+
+    #form h1, #addsub h1{
+      padding: 0;
+      margin: 0;
+      font-weight: 300;
+      color: #888;
+    }
+
+    input[type=text], textarea{
+      font-size: 14px;
+      padding: 5px 10px;
+      border: 0;
+      color: inherit;
+      width: 100%;
+      box-sizing: border-box;
+      border-bottom: 1px solid #d1d1d1;
+    }
+
+    textarea{
+      min-height: 400px;
+    }
+
+    table{
+      width: 100%;
+    }
+
+    #personalInfo th, #addsub table th{
+      padding: 5px;
+      text-align: right;
+      font-weight: 400;
+      color: #555;
+      width: 90px;
+    }
+
+    #addsub table th{
+      font-weight: 500;
+    }
+
+    input[type=checkbox]{
+      margin-right: 12px;
+    }
+
+    #addsub button{
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background-color: #EEE;
+      color: #333;
+      font-size: 14px;
+      border: none;
+    }
+
+    #addsub button:hover{
+      background-color: #555;
+      color: white;
+    }
+
+    #schedules button{
+      padding: 5px 10px;
+      font-size: 11px;
+    }
+    </style>
   </body>
 </html>
