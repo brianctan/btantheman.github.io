@@ -96,7 +96,7 @@ body{
 }
 
 .mainSlideshow img{
-  width: 200px;
+  width: 150px;
   display: block;
   margin: auto;
 }
@@ -112,14 +112,14 @@ body{
 .mainSlideshow .centerContent{
   position: relative;
   top: -170px;
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
   box-sizing: border-box;
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 15px;
+  line-height: 25px;
   font-weight: 100;
 }
 

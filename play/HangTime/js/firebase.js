@@ -26,6 +26,20 @@ window.addEventListener("load", function(){
 
 function login(x){
   fire.authWithOAuthPopup('facebook', function(e, a){
+    if(e){
+      fire.authWithOAuthRedirect('facebook', function(e, a){
+        if(!e){
+          fire.on("value", function(s){
+            console.log(s.val().accounts[a.facebook.id]);
+            if(s.val().accounts[a.facebook.id] == null && (x == false || x == null)){
+              window.location.href = "signup.html";
+            } else{
+              location.reload();
+            }
+          });
+        }
+      });
+    }
     if(!e){
       fire.on("value", function(s){
         console.log(s.val().accounts[a.facebook.id]);
