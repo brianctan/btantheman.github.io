@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Time Swap by Mike</title>
+    <style>
+      body{
+        background-color: black;
+        font-family: sans-serif;
+      }
+      .letter{
+        position: absolute;
+        transition: 1s all;
+        font-size: 60px;
+        color: white;
+      }
+
+      .letter[used=true]{
+        color: white;
+      }
+
+      .letter[used=false]{
+        color: #333;
+      }
+    </style>
+    <script>
+      var ATTR = "used";
+      var TEXT_X = 50;
+      var TEXT_Y = 50;
+      var POOL_X = 50;
+      var POOL_Y = 120;
+      var TEXT_PADDING = 50;
+      var POOL_PADDING = 50;
+
+      var letters = [];
+      var textWidth = 0;
+      var textHeight = 0;
+      var poolWidth = 0;
+      var poolHeight = 0;
+
+      function spell(text){
+        text = text.toLowerCase();
+        textWidth = 0;
+        textHeight = 0;
+        poolWidth = 0;
+        poolHeight = 0;
+
+        for(var i = 0; i < letters.length; i++){
+          letters[i].setAttribute(ATTR, false);
+        }
+
+        for(var i = 0; i < text.length; i++){
+          var found = null;
+          var char = text.charAt(i);
+          for(var j = 0; j < letters.length; j++){
+            var letter = letters[j];
+            if(letter.getAttribute("char") == char && letter.getAttribute(ATTR) == "false"){
+              found = letter;
+              letter.setAttribute(ATTR, true);
+              break;
+            }
+          }
+          if(found == null){
+            var found = document.createElement("div");
+            found.className = "letter";
+            found.innerHTML = char.replace(" ", "&nbsp;");
+            found.setAttribute("char", char);
+            found.setAttribute(ATTR, true);
+            found.style.left = TEXT_X + textWidth + "px";
+            found.style.top = "-100px";
+            document.body.appendChild(found);
+            found.style.transition = (Math.random() * 0.3 + 0.7) + "s all";
+            letters.push(found);
+          }
+          if(found.clientWidth + TEXT_X + textWidth >= window.innerWidth - TEXT_PADDING){
+            textHeight += found.clientHeight;
+            textWidth = 0;
+          }
+          found.style.left = TEXT_X + textWidth + "px";
+          found.style.top = TEXT_Y + textHeight + "px";
+          textWidth += found.clientWidth;
+        }
+
+        shuffle(letters);
+
+        for(var i = 0; i < letters.length; i++){
+          var letter = letters[i];
+          if(letter.getAttribute(ATTR) == "false"){
+            if(letter.clientWidth + POOL_X + poolWidth >= window.innerWidth - POOL_PADDING){
+              poolHeight += letter.clientHeight;
+              poolWidth = 0;
+            }
+            letter.style.left = POOL_X + poolWidth + "px";
+            letter.style.top = POOL_Y + poolHeight + textHeight + "px";
+            if(letter.getAttribute("char") != " ") poolWidth += letter.clientWidth;
+          }
+        }
+      }
+
+      function shuffle(a) {
+          var j, x, i;
+          for (i = a.length; i; i -= 1) {
+              j = Math.floor(Math.random() * i);
+              x = a[i - 1];
+              a[i - 1] = a[j];
+              a[j] = x;
+          }
+      }
+
+      var phrases = [
+        "Hi",
+        "hello",
+        "my name is mike",
+        "my name is mike del castillo",
+        "i'm really bored",
+        "and pretty sleepy",
+        "so",
+        "i decided to make this",
+        "this just looks cool",
+        "i'm planning to",
+        "make this into some watch",
+        "that tells the time",
+        "in a cool and fun way",
+        "heheheh",
+        "new letters fall from above",
+        "unused letters fall below",
+        "you can do interesting",
+        "text presentations hahaha",
+        "fml",
+        "why",
+        "does",
+        "this",
+        "remind",
+        "me",
+        "of",
+        "Harry Potter"
+      ];
+      var phraseCount = 0;
+
+      document.addEventListener("click", function(){
+        spell(phrases[phraseCount = (phraseCount + 1)%phrases.length]);
+      }, false);
+
+    </script>
+  </head>
+  <body>
+    <script>spell("Start clicking anywhere");</script>
+  </body>
+</html>
