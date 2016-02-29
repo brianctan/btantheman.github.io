@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Time Swap by Mike</title>
+    <meta charset="UTF-8" />
     <style>
       body{
         background-color: black;
@@ -11,7 +12,7 @@
       .letter{
         position: absolute;
         transition: 1s all;
-        font-size: 60px;
+        font-size: 30px;
         color: white;
       }
 
@@ -29,7 +30,7 @@
       var TEXT_X = 50;
       var TEXT_Y = 150;
       var POOL_X = 50;
-      var POOL_Y = 70;
+      var POOL_Y = 20 + 30;
       var TEXT_PADDING = 50;
       var POOL_PADDING = 50;
 
@@ -108,7 +109,35 @@
           }
       }
 
-      var phrases = [
+      var phrases = ["Zero Gravity",
+      "by Eric Gamalinda",
+      "The dry basin of the moon must have held the bones of a race, radiant minerals,",
+      "or something devoid of genesis, angel-heavy, idea-pure. All summer we had waited for it,",
+      "our faces off-blue in front of the TV screen. Nothing could be more ordinary — two figures Digging dirt in outer space — while mother repeated Neil Armstrong’s words like, a prayer",
+      "Electronically conveyed. The dunes were lit like ancient silk, like clandestine pearl.",
+      "In the constant lunar night this luminescence was all we hoped for. A creature unto itself,",
+      "it poured into the room like a gradual flood",
+      "of lighting, touching every object with the cool burn of something not quite on fire. If we stepped out Manila would be blank ether, way station,",
+      "a breathless abeyance. It didn’t matter,",
+      "at that moment, where our lives would lead: father would disown one brother,",
+      "one sister was going to die. Not yet unhappy,",
+      "we were ready to walk on the moon. Reckless",
+      "in our need for the possible, we knew",
+      "there was no turning back, our bags already packed, the future a religion we could believe in.",
+      "Next poem:",
+      "(591)",
+      "by Emily Dickinson",
+      "I heard a Fly buzz - when I died - The Stillness in the Room",
+      "Was like the Stillness in the Air - Between the Heaves of Storm -",
+      "The Eyes around - had wrung them dry - And Breaths were gathering firm",
+      "For that last Onset - when the King",
+      "Be witnessed - in the Room -",
+      "I willed my Keepsakes - Signed away What portion of me be",
+      "Assignable - and then it was",
+      "There interposed a Fly -",
+      "With Blue - uncertain - stumbling Buzz - Between the light - and me -",
+      "And then the Windows failed - and then I could not see to see -"];
+      [
         "Hi",
         "hello",
         "my name is mike",
@@ -136,7 +165,7 @@
         "of",
         "Harry Potter"
       ];
-      var phraseCount = 0;
+      var phraseCount = -1;
 
       document.addEventListener("click", function(){
         spell(phrases[phraseCount = (phraseCount + 1)%phrases.length]);
