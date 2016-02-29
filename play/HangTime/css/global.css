@@ -15,7 +15,6 @@ body{
   position: absolute;
   z-index: 100;
   width: 100%;
-  background-color: #113861;
 }
 
 #navbutt{
@@ -66,7 +65,7 @@ body{
 }
 
 .container.mainSlideshow .contentImage{
-  background-image: url(../img/bluebackground.jpg);
+  background-image: url(../img/night.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
