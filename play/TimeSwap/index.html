@@ -6,6 +6,7 @@
       body{
         background-color: black;
         font-family: sans-serif;
+        font-weight: 100;
       }
       .letter{
         position: absolute;
@@ -19,15 +20,16 @@
       }
 
       .letter[used=false]{
-        color: #333;
+        color: rgba(255, 255, 255, 0);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
       }
     </style>
     <script>
       var ATTR = "used";
       var TEXT_X = 50;
-      var TEXT_Y = 50;
+      var TEXT_Y = 150;
       var POOL_X = 50;
-      var POOL_Y = 120;
+      var POOL_Y = 70;
       var TEXT_PADDING = 50;
       var POOL_PADDING = 50;
 
@@ -38,7 +40,7 @@
       var poolHeight = 0;
 
       function spell(text){
-        text = text.toLowerCase();
+        //text = text.toLowerCase();
         textWidth = 0;
         textHeight = 0;
         poolWidth = 0;
@@ -90,7 +92,7 @@
               poolWidth = 0;
             }
             letter.style.left = POOL_X + poolWidth + "px";
-            letter.style.top = POOL_Y + poolHeight + textHeight + "px";
+            letter.style.top = POOL_Y + TEXT_Y + poolHeight + textHeight + "px";
             if(letter.getAttribute("char") != " ") poolWidth += letter.clientWidth;
           }
         }
@@ -143,6 +145,11 @@
     </script>
   </head>
   <body>
-    <script>spell("Start clicking anywhere");</script>
+    <script>
+      spell("Start clicking anywhere");
+      for(var i = 0; i < 100; i++){
+        phrases.push(String(Math.round(Math.random() * 100000000)));
+      }
+    </script>
   </body>
 </html>
