@@ -13,16 +13,16 @@
         position: absolute;
         transition: 1s all;
         font-size: 30px;
-        color: white;
+        color: rgba(255, 255, 255, 0);
+        text-shadow: 0 0 0 rgba(255, 255, 255, 1);
       }
 
       .letter[used=true]{
-        color: white;
+        opacity: 1;
       }
 
       .letter[used=false]{
-        color: rgba(255, 255, 255, 0);
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 7px rgba(255, 255, 255, 1);
       }
     </style>
     <script>
@@ -69,11 +69,11 @@
             found.setAttribute("char", char);
             found.setAttribute(ATTR, true);
             found.style.left = TEXT_X + textWidth + "px";
-            found.style.top = "-100px";
+            found.style.top =  "-50px";
             document.body.appendChild(found);
-            found.style.transition = (Math.random() * 0.3 + 0.7) + "s all";
             letters.push(found);
           }
+          found.style.transition = (Math.random() * i/50 + 1) + "s all";
           if(found.clientWidth + TEXT_X + textWidth >= window.innerWidth - TEXT_PADDING){
             textHeight += found.clientHeight;
             textWidth = 0;
@@ -92,6 +92,7 @@
               poolHeight += letter.clientHeight;
               poolWidth = 0;
             }
+            letter.style.transition = (Math.random() * 0.3 + 0.7) + "s all";
             letter.style.left = POOL_X + poolWidth + "px";
             letter.style.top = POOL_Y + TEXT_Y + poolHeight + textHeight + "px";
             if(letter.getAttribute("char") != " ") poolWidth += letter.clientWidth;
