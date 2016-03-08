@@ -42,7 +42,7 @@ var Ball = function(x, y, mass){
 }
 
 Ball.prototype.updateRadius = function(){
-  this.radius = Math.sqrt(this.mass/PI) * RADIUS_RATIO;
+  this.radius = Math.max(3, Math.sqrt(this.mass/PI) * RADIUS_RATIO);
 }
 
 Ball.prototype.updateChunk = function(){
