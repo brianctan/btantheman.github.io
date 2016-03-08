@@ -7,7 +7,8 @@ function initAudio(){
   audio.autoplay = true;
 
   navigator.webkitGetUserMedia({audio: true}, function(stream){
-    audio.src = window.URL.createObjectURL(stream);
+    audio.src = stream;
+    //audio.src = window.URL.createObjectURL(stream);
   }, function(e){
     console.log(e);
   });
