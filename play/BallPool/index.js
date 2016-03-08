@@ -28,7 +28,10 @@ function windowLoad(){
 }
 
 function update(){
-  ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x55 + ", " + 0x8C + ", 0.05)";
+  //ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x55 + ", " + 0x8C + ", 0.05)";
+  ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x0 + ", " + 0x0 + ", 0.05)";
+  //ctx.fillStyle = "rgba(" + Math.floor(100 ) + "," + Math.floor(0) + "," + Math.floor(100) + ", 0.5)";
+
   ctx.fillRect(0, 0, c.width, c.height);
 
   windowPosition.vx = (window.screenX - windowPosition.x);

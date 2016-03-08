@@ -33,6 +33,9 @@ var Ball = function(x, y, mass){
     y: y >> CHUNK_SIZE
   }
 
+  this.bumps = 0;
+  this.valueTransition = 0;
+
   balls.push(this);
   initChunk(this.chunk.x, this.chunk.y);
   ballsChunks[this.chunk.x][this.chunk.y].push(this);
@@ -44,12 +47,12 @@ Ball.prototype.updateRadius = function(){
 
 Ball.prototype.updateChunk = function(){
   if(this.chunk.x != this.x >> CHUNK_SIZE || this.chunk.y != this.y >> CHUNK_SIZE){
-  ballsChunks[this.chunk.x][this.chunk.y].splice(ballsChunks[this.chunk.x][this.chunk.y].indexOf(this), 1);
-  this.chunk.x = this.x >> CHUNK_SIZE;
-  this.chunk.y = this.y >> CHUNK_SIZE;
-  initChunk(this.chunk.x, this.chunk.y);
-  ballsChunks[this.chunk.x][this.chunk.y].push(this);
-}
+    ballsChunks[this.chunk.x][this.chunk.y].splice(ballsChunks[this.chunk.x][this.chunk.y].indexOf(this), 1);
+    this.chunk.x = this.x >> CHUNK_SIZE;
+    this.chunk.y = this.y >> CHUNK_SIZE;
+    initChunk(this.chunk.x, this.chunk.y);
+    ballsChunks[this.chunk.x][this.chunk.y].push(this);
+  }
 }
 
 Ball.prototype.update = function(){
@@ -104,6 +107,8 @@ Ball.prototype.update = function(){
     }
   }
 
+  this.bumps = 0;
+
   for(var i = 0; i < searchArray.length; i++){
     var ball = searchArray[i];
     if(this == ball) continue;
@@ -127,6 +132,8 @@ Ball.prototype.update = function(){
       ball.y -= py * s2;
       ball.vx -= px * s2 * COLLISION_COEFFICIENT;
       ball.vy -= py * s2 * COLLISION_COEFFICIENT;
+
+      this.bumps++;
     }
   }
 
@@ -142,12 +149,14 @@ Ball.prototype.update = function(){
   this.vx = Math.cos(velAngle) * vel;
   this.vy = Math.sin(velAngle) * vel;
 
+  this.valueTransition += (this.bumps - this.valueTransition)/10;
 
   this.updateChunk();
 }
 
 Ball.prototype.draw = function(){
-  ctx.fillStyle = "rgb(" + Math.floor(155 + 100 * (this.y/c.height)) + "," + Math.floor(200 - 100 * (this.x/c.width)) + "," + 100 + ")"
+  //ctx.fillStyle = "rgb(" + Math.floor(155 + 100 * (this.y/c.height)) + "," + Math.floor(200 - 100 * (this.x/c.width)) + "," + 100 + ")";
+  ctx.fillStyle = "rgb(" + Math.floor(100 + 30 * this.valueTransition) + "," + Math.floor(20 * this.valueTransition) + "," + Math.floor(100 + 10 * this.valueTransition) + ")";
   ctx.beginPath();
   ctx.arc(this.x, this.y, Math.max(1, this.radius - 1), 0, TAU);
   ctx.fill();
