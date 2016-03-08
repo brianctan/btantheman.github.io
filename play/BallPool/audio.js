@@ -1,4 +1,4 @@
-var ac, audio;
+var ac, audio, stream;
 
 function initAudio(){
   ac = new AudioContext();
@@ -6,8 +6,9 @@ function initAudio(){
   document.body.appendChild(audio);
   audio.autoplay = true;
 
-  navigator.webkitGetUserMedia({audio: true}, function(stream){
-    audio.src = stream;
+  navigator.webkitGetUserMedia({audio: true}, function(s){
+    stream = s;
+    audio.src = s;
     //audio.src = window.URL.createObjectURL(stream);
   }, function(e){
     console.log(e);
