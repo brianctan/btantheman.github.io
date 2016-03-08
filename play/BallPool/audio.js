@@ -12,7 +12,7 @@ function initAudio(){
     console.log(e);
   });
 
-  /*
+
   var audioSrc = ac.createMediaElementSource(audio);
   var analyser = ac.createAnalyser();
   // we have to connect the MediaElementSource with the analyser
@@ -24,6 +24,7 @@ function initAudio(){
 
   // we're ready to receive some data!
   // loop
+  /*
   function renderFrame() {
      requestAnimationFrame(renderFrame);
      // update data in frequencyData
