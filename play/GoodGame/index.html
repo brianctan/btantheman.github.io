@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Something by Mike</title>
+    <style>
+    body{
+      margin: 0;
+    }
+
+    canvas{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #stats{
+      background-color: rgba(0, 0, 0, 0.25);
+      color: white;
+      font-size: 12px;
+      font-family: monospace;
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    </style>
+    <script src="index.js"></script>
+    <script src="game.js"></script>
+    <script src="buildings.js"></script>
+    <script src="enemies.js"></script>
+    <script src="maps.js"></script>
+  </head>
+  <body>
+    <div id="stats">stats go here</div>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>

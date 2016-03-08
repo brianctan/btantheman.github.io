@@ -1,0 +1,73 @@
+var c, ctx,
+    mx = my = mux = muy = 0, md = false,
+    PI = Math.PI, TAU = PI * 2,
+    keyCodes = [];
+
+function windowLoad(){
+  c = document.getElementById("canvas");
+  ctx = c.getContext("2d");
+
+  windowResize();
+  window.addEventListener("resize", windowResize, false);
+
+  c.addEventListener("mousemove", mouseMove, false);
+  c.addEventListener("mousedown", mouseDown, false);
+  c.addEventListener("mouseup", mouseUp, false);
+
+  document.addEventListener("keydown", keyDown, false);
+  document.addEventListener("keyup", keyUp, false);
+
+  for(var i = 0; i < 2001; i++){
+    new Ball(Math.random() * c.width, Math.random() * c.height, Math.random() * 90 + 10);
+  }
+
+  update();
+}
+
+function update(){
+  ctx.fillStyle = "#00558C";
+  ctx.fillRect(0, 0, c.width, c.height);
+
+  for(var i in balls){
+    balls[i].update();
+    balls[i].draw();
+  }
+
+  window.requestAnimationFrame(update);
+}
+
+window.addEventListener("load", windowLoad, false);
+
+function windowResize(){
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+}
+
+function mouseMove(e){
+  setMousePosition(e);
+}
+
+function mouseDown(e){
+  setMousePosition(e);
+  md = true;
+}
+
+function mouseUp(e){
+  mux = mx;
+  muy = my;
+  setMousePosition(e);
+  md = false;
+}
+
+function setMousePosition(e){
+  mx = e.clientX;
+  my = e.clientY;
+}
+
+function keyDown(e){
+  keyCodes[e.keyCode] = true;
+}
+
+function keyUp(e){
+  keyCodes[e.keyCode] = false;
+}

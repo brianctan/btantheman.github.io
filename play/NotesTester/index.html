@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notes Tester by Mike</title>
+    <style>
+      body{
+        padding: 30px;
+        font-family: sans-serif;
+        font-weight: 100;
+      }
+
+      #value{
+        font-size: 60px;
+        font-weight: 900;
+        padding: 10px;
+        margin-top: 100px;
+        text-align: center;
+      }
+
+      #data{
+        font-size: 20px;
+        font-weight: 100;
+        padding: 0 30px;
+        text-align: center;
+      }
+
+
+      .letter{
+        position: absolute;
+        transition: 1s all;
+        font-size: 30px;
+        color: black;
+      }
+
+      .letter[used=true]{
+        opacity: 1;
+      }
+
+      .letter[used=false]{
+        opacity: 0.1;
+      }
+    </style>
+    <script>
+    var ATTR = "used";
+    var TEXT_X = 50;
+    var TEXT_Y = 150;
+    var POOL_X = 50;
+    var POOL_Y = 20 + 30;
+    var TEXT_PADDING = 50;
+    var POOL_PADDING = 50;
+
+    var spellIt = false;
+
+    var letters = [];
+    var textWidth = 0;
+    var textHeight = 0;
+    var poolWidth = 0;
+    var poolHeight = 0;
+
+    function spell(text){
+      //text = text.toLowerCase();
+      textWidth = 0;
+      textHeight = 0;
+      poolWidth = 0;
+      poolHeight = 0;
+
+      for(var i = 0; i < letters.length; i++){
+        letters[i].setAttribute(ATTR, false);
+      }
+
+      for(var i = 0; i < text.length; i++){
+        var found = null;
+        var char = text.charAt(i);
+        for(var j = 0; j < letters.length; j++){
+          var letter = letters[j];
+          if(letter.getAttribute("char") == char && letter.getAttribute(ATTR) == "false"){
+            found = letter;
+            letter.setAttribute(ATTR, true);
+            break;
+          }
+        }
+        if(found == null){
+          var found = document.createElement("div");
+          found.className = "letter";
+          found.innerHTML = char.replace(" ", "&nbsp;");
+          found.setAttribute("char", char);
+          found.setAttribute(ATTR, true);
+          found.style.left = TEXT_X + textWidth + "px";
+          found.style.top =  "-50px";
+          document.body.appendChild(found);
+          letters.push(found);
+        }
+        found.style.transition = (Math.random() * i/50 + 1) + "s all";
+        if(found.clientWidth + TEXT_X + textWidth >= window.innerWidth - TEXT_PADDING){
+          textHeight += found.clientHeight;
+          textWidth = 0;
+        }
+        found.style.left = TEXT_X + textWidth + "px";
+        found.style.top = TEXT_Y + textHeight + "px";
+        textWidth += found.clientWidth;
+      }
+
+      //shuffle(letters);
+
+      for(var i = 0; i < letters.length; i++){
+        var letter = letters[i];
+        if(letter.getAttribute(ATTR) == "false"){
+          if(letter.clientWidth + POOL_X + poolWidth >= window.innerWidth - POOL_PADDING){
+            poolHeight += letter.clientHeight;
+            poolWidth = 0;
+          }
+          letter.style.transition = (Math.random() * 0.3 + 0.7) + "s all";
+          letter.style.left = POOL_X + poolWidth + "px";
+          letter.style.top = POOL_Y + TEXT_Y + poolHeight + textHeight + "px";
+          if(letter.getAttribute("char") != " ") poolWidth += letter.clientWidth;
+        }
+      }
+    }
+
+      var notesHTML, updateHTML, valueHTML, dataHTML;
+      var notes = "";
+      var noteItems = [];
+      var done = [];
+      var i = 0;
+      var dataDisplayed = true;
+      window.addEventListener("load", function(){
+        notesHTML = document.getElementById("notes");
+        updateHTML = document.getElementById("update");
+        valueHTML = document.getElementById("value");
+        dataHTML = document.getElementById("data");
+
+        updateHTML.addEventListener("click", function(){
+          notes = notesHTML.value;
+          noteItems = [];
+          var lines = notes.split("\n");
+          for(var i = 0; i < lines.length; i++){
+            var split = lines[i].split("-");
+            noteItems.push({
+              value: split[0],
+              data: split[1]
+            });
+          }
+          valueHTML.innerHTML = "";
+          dataHTML.innerHTML = "";
+          dataDisplayed = true;
+          updateHTML.style.display = "none";
+          notesHTML.style.display = "none";
+        }, false);
+
+        document.addEventListener("click", function(){
+          if(notes.length > 0){
+            if(dataDisplayed){
+              if(done.length == noteItems.length) done = [];
+              do{
+                i = Math.floor(Math.random() * noteItems.length);
+              } while(done.indexOf(i) != -1);
+              done.push(i);
+
+              if(!spellIt){
+                valueHTML.innerHTML = "";
+                dataHTML.innerHTML = noteItems[i].data;
+              } else{
+                spell(noteItems[i].data);
+              }
+              dataDisplayed = false;
+            } else{
+              if(!spellIt){
+                valueHTML.innerHTML = noteItems[i].value;
+              } else{
+                spell(noteItems[i].value);
+              }
+
+              dataDisplayed = true;
+            }
+          }
+        }, false);
+
+      }, false);
+    </script>
+  </head>
+  <body>
+    <textarea id="notes"></textarea>
+    <button id="update">Update</button>
+    <div id="value"></div>
+    <div id="data"></div>
+  </body>
+</html>
