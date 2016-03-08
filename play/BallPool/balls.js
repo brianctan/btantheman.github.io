@@ -1,9 +1,15 @@
 var RADIUS_RATIO = 2;
 var COLLISION_COEFFICIENT = 1;
 var CHUNK_SIZE = 5;
-var FRICTION = 0.99;
+var FRICTION = 0.999;
 var GRAVITY = 0.1;
 var BOUNCE = 0.9;
+var G = 0;
+
+var windowPosition = {
+  x: 0,
+  y: 0
+};
 
 console.log("CHUNK SIZE: " + (1 << CHUNK_SIZE));
 
@@ -52,6 +58,11 @@ Ball.prototype.update = function(){
 
   this.vx *= FRICTION;
   this.vy *= FRICTION;
+
+  COEF = 0.01;
+
+  this.vx += windowPosition.vx * COEF;
+  this.vy += windowPosition.vy * COEF;
 
   this.x += this.vx;
   this.y += this.vy;
@@ -119,7 +130,12 @@ Ball.prototype.update = function(){
     }
   }
 
-  var vel = Math.min(5, Math.max(2, Math.sqrt(this.vx * this.vx + this.vy * this.vy)));
+  var mouseDist = Math.sqrt((this.x + mx) * (this.x + mx) + (this.y + my) * (this.y + my));
+  var velAngle = Math.atan2(my - this.y, mx - this.x);
+  this.vx += Math.cos(velAngle) * G/mouseDist*mouseDist;
+  this.vy += Math.sin(velAngle) * G/mouseDist*mouseDist;
+
+  var vel = 3;
   //var vel = Math.min(5, Math.sqrt(this.vx * this.vx + this.vy * this.vy));
   var velAngle = Math.atan2(this.vy, this.vx);
 
@@ -131,8 +147,8 @@ Ball.prototype.update = function(){
 }
 
 Ball.prototype.draw = function(){
-  ctx.fillStyle = "rgb(" + Math.floor(255 - 50 * (this.y/c.height)) + "," + Math.floor(200 - 100 * (this.x/c.width)) + "," + 100 + ")"
+  ctx.fillStyle = "rgb(" + Math.floor(155 + 100 * (this.y/c.height)) + "," + Math.floor(200 - 100 * (this.x/c.width)) + "," + 100 + ")"
   ctx.beginPath();
-  ctx.arc(this.x, this.y, this.radius, 0, TAU);
+  ctx.arc(this.x, this.y, Math.max(1, this.radius - 1), 0, TAU);
   ctx.fill();
 }

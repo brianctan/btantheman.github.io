@@ -17,7 +17,10 @@ function windowLoad(){
   document.addEventListener("keydown", keyDown, false);
   document.addEventListener("keyup", keyUp, false);
 
-  for(var i = 0; i < 2001; i++){
+  windowPosition.x = window.screenX + 0;
+  windowPosition.y = window.screenY + 0;
+
+  for(var i = 0; i < 2000; i++){
     new Ball(Math.random() * c.width, Math.random() * c.height, Math.random() * 90 + 10);
   }
 
@@ -25,8 +28,14 @@ function windowLoad(){
 }
 
 function update(){
-  ctx.fillStyle = "#00558C";
+  ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x55 + ", " + 0x8C + ", 0.05)";
   ctx.fillRect(0, 0, c.width, c.height);
+
+  windowPosition.vx = (window.screenX - windowPosition.x);
+  windowPosition.vy = (window.screenY - windowPosition.y);
+
+  windowPosition.x = window.screenX;
+  windowPosition.y = window.screenY;
 
   for(var i in balls){
     balls[i].update();
@@ -48,11 +57,13 @@ function mouseMove(e){
 }
 
 function mouseDown(e){
+  G = 0.1;
   setMousePosition(e);
   md = true;
 }
 
 function mouseUp(e){
+  G = 0;
   mux = mx;
   muy = my;
   setMousePosition(e);

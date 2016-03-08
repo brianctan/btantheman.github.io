@@ -18,7 +18,7 @@ function windowLoad(){
   document.addEventListener("keydown", keyDown, false);
   document.addEventListener("keyup", keyUp, false);
 
-  for(var i = 0; i < 300; i++){
+  for(var i = 0; i < 3000; i++){
     var ran = Math.random() * 90 + 10;
     points.push(new Point(Math.random() * c.width, Math.random() * c.height, ran, 1));
   }
