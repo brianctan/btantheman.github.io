@@ -7,7 +7,7 @@ function windowLoad(){
   c = document.getElementById("canvas");
   ctx = c.getContext("2d");
 
-  initAudio();
+  //initAudio();
 
   windowResize();
   window.addEventListener("resize", windowResize, false);
