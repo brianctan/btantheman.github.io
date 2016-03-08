@@ -1,4 +1,4 @@
-var ac, audio, stream;
+var ac, audio, stream, audioSrc, analyser;
 
 function initAudio(){
   ac = new AudioContext();
@@ -16,8 +16,8 @@ function initAudio(){
   });
 
 
-  var audioSrc = ac.createMediaElementSource(audio);
-  var analyser = ac.createAnalyser();
+  audioSrc = ac.createMediaElementSource(audio);
+  analyser = ac.createAnalyser();
   // we have to connect the MediaElementSource with the analyser
   audioSrc.connect(analyser);
   // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
