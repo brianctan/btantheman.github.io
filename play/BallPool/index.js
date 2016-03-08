@@ -20,7 +20,7 @@ function windowLoad(){
   windowPosition.x = window.screenX + 0;
   windowPosition.y = window.screenY + 0;
 
-  for(var i = 0; i < 2000; i++){
+  for(var i = 0; i < 500; i++){
     new Ball(Math.random() * c.width, Math.random() * c.height, Math.random() * 90 + 10);
   }
 
