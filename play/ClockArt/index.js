@@ -33,9 +33,18 @@ var date;
 
 var st, mt, ht;
 
+var r = 70, g = 50, b = 100;
+
 function update(){
   //ctx.clearRect(0, 0, c.width, c.height);
-  ctx.fillStyle = "rgb(70, 50, 100)";
+
+  d = 20;
+  s = 1;
+  r = Math.round(Math.cos(mt * 2 * s) * d + 30);
+  g = Math.round(Math.sin(mt * s) * d + 50);
+  b = Math.round(Math.sin(mt * 2/3 * s) * d + 100)
+
+  ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
   ctx.fillRect(0, 0, c.width, c.height);
 
   date = new Date();
@@ -81,7 +90,8 @@ function update(){
   ctangle = Math.atan(ctdist/cursorRadius);
   cangle = Math.atan2(cy - my, cx - mx);
 
-  shadowColor = "rgba(60, 40, 90, 0.95)";//"rgba(0, 0, 0, 0.25)";
+  d = 10;
+  shadowColor = "rgba(" + (r-d) + ", " + (g-d) + ", " + (b-d) + ", 0.95)";
   pathColor = "rgba(255, 255, 255, 0.1)";
 
   ctx.fillStyle = "white";
