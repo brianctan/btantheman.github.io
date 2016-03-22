@@ -1,7 +1,7 @@
 var RADIUS_RATIO = 2;
 var COLLISION_COEFFICIENT = 1;
 var CHUNK_SIZE = 5;
-var FRICTION = 0.999;
+var FRICTION = 0.99;
 var GRAVITY = 0.1;
 var BOUNCE = 0.9;
 var G = 0;
@@ -134,22 +134,36 @@ Ball.prototype.update = function(){
       ball.vy -= py * s2 * COLLISION_COEFFICIENT;
 
       this.bumps++;
+      ball.bumps++;
     }
   }
 
-  var mouseDist = Math.sqrt((this.x + mx) * (this.x + mx) + (this.y + my) * (this.y + my));
-  var velAngle = Math.atan2(my - this.y, mx - this.x);
-  this.vx += Math.cos(velAngle) * G/mouseDist*mouseDist;
-  this.vy += Math.sin(velAngle) * G/mouseDist*mouseDist;
+
+
+
+
+  if(G > 0){
+    //this.x = mx;
+    //this.y = my;
+    A = -1000000;
+    var mouseDist = ((this.x + mx) * (this.x + mx) + (this.y + my) * (this.y + my));
+    var velAngle = Math.atan2(my - this.y, mx - this.x);
+    this.vx += Math.cos(velAngle) * A / mouseDist;
+    this.vy += Math.sin(velAngle) * A / mouseDist;
+  }
+
+
+
+  this.valueTransition += (this.bumps - this.valueTransition)/10;
 
   var vel = 3;
-  //var vel = Math.min(5, Math.sqrt(this.vx * this.vx + this.vy * this.vy));
+  //var vel = 1 + this.valueTransition * 3;
+  var vel = Math.min(5, Math.sqrt(this.vx * this.vx + this.vy * this.vy));
+  //var vel = (Math.sqrt(this.vx * this.vx + this.vy * this.vy));
   var velAngle = Math.atan2(this.vy, this.vx);
 
   this.vx = Math.cos(velAngle) * vel;
   this.vy = Math.sin(velAngle) * vel;
-
-  this.valueTransition += (this.bumps - this.valueTransition)/10;
 
   this.updateChunk();
 }

@@ -3,11 +3,11 @@ var c, ctx,
     PI = Math.PI, TAU = PI * 2,
     keyCodes = [];
 
+var t = 0;
+
 function windowLoad(){
   c = document.getElementById("canvas");
   ctx = c.getContext("2d");
-
-  //initAudio();
 
   windowResize();
   window.addEventListener("resize", windowResize, false);
@@ -19,36 +19,32 @@ function windowLoad(){
   document.addEventListener("keydown", keyDown, false);
   document.addEventListener("keyup", keyUp, false);
 
-  windowPosition.x = window.screenX + 0;
-  windowPosition.y = window.screenY + 0;
-
-  n = Number(prompt("how many balls"));
-
-  for(var i = 0; i < n; i++){
-    new Ball(Math.random() * c.width, Math.random() * c.height, Math.random() * 90 + 10);
-  }
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, c.width, c.height);
 
   update();
 }
 
+
+
 function update(){
-  //ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x55 + ", " + 0x8C + ", 0.05)";
-  ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x0 + ", " + 0x0 + ", 1)";
-  //ctx.fillStyle = "rgba(" + Math.floor(100 ) + "," + Math.floor(0) + "," + Math.floor(100) + ", 0.5)";
+  //ctx.clearRect(0, 0, c.width, c.height);
 
-  ctx.fillRect(0, 0, c.width, c.height);
+  for(var reps = 0; reps < 20; reps++){
 
-  windowPosition.vx = (window.screenX - windowPosition.x);
-  windowPosition.vy = (window.screenY - windowPosition.y);
+    var a = Math.PI/3 * t;
+    var b = Math.pow(t, 1/4);
+    var r2 = t/10;
+    var r = 50 + t/10;
 
-  windowPosition.x = window.screenX;
-  windowPosition.y = window.screenY;
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+    ctx.beginPath();
+    ctx.moveTo(c.width/2 + r * Math.cos(a), c.height/2 +  r * Math.sin(a));
+    ctx.lineTo(c.width/2 + r2 * Math.cos(b), c.height/2 +  r2 * Math.sin(b));
+    ctx.stroke();
 
-  for(var i in balls){
-    balls[i].update();
-    balls[i].draw();
+    t++;
   }
-
   window.requestAnimationFrame(update);
 }
 
@@ -64,13 +60,11 @@ function mouseMove(e){
 }
 
 function mouseDown(e){
-  G = 0.1;
   setMousePosition(e);
   md = true;
 }
 
 function mouseUp(e){
-  G = 0;
   mux = mx;
   muy = my;
   setMousePosition(e);

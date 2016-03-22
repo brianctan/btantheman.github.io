@@ -7,8 +7,6 @@ function windowLoad(){
   c = document.getElementById("canvas");
   ctx = c.getContext("2d");
 
-  //initAudio();
-
   windowResize();
   window.addEventListener("resize", windowResize, false);
 
@@ -19,35 +17,30 @@ function windowLoad(){
   document.addEventListener("keydown", keyDown, false);
   document.addEventListener("keyup", keyUp, false);
 
-  windowPosition.x = window.screenX + 0;
-  windowPosition.y = window.screenY + 0;
-
-  n = Number(prompt("how many balls"));
-
-  for(var i = 0; i < n; i++){
-    new Ball(Math.random() * c.width, Math.random() * c.height, Math.random() * 90 + 10);
-  }
-
   update();
 }
 
+var Z_STEPS = -10;
+
+var DOTS = 1000;
+var RADIUS = 200;
+var SPACE = 1;
+
 function update(){
-  //ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x55 + ", " + 0x8C + ", 0.05)";
-  ctx.fillStyle = "rgba(" + 0x00 + ", " + 0x0 + ", " + 0x0 + ", 1)";
-  //ctx.fillStyle = "rgba(" + Math.floor(100 ) + "," + Math.floor(0) + "," + Math.floor(100) + ", 0.5)";
+  //ctx.clearRect(0, 0, c.width, c.height);
+  ctx.scale(1.005, 1.005);
+  var CX = c.width >> 1;
+  var CY = c.height >> 1;
 
-  ctx.fillRect(0, 0, c.width, c.height);
+  for(var x = -DOTS; x <= DOTS; x++){
+    var X = x * SPACE + Math.sin(Z_STEPS/5) * 25;
+    var Y = Math.sin(Z_STEPS/5) * 2 + Z_STEPS * SPACE + Math.cos(x/10) * 10;
+    //var Y = -Math.pow(Z_STEPS - 200, 2)/100 + Z_STEPS * SPACE + Math.cos(x/10) * 10;
 
-  windowPosition.vx = (window.screenX - windowPosition.x);
-  windowPosition.vy = (window.screenY - windowPosition.y);
-
-  windowPosition.x = window.screenX;
-  windowPosition.y = window.screenY;
-
-  for(var i in balls){
-    balls[i].update();
-    balls[i].draw();
+    ctx.fillRect(X, Y, 1, 1);
   }
+
+  Z_STEPS++;
 
   window.requestAnimationFrame(update);
 }
@@ -64,13 +57,11 @@ function mouseMove(e){
 }
 
 function mouseDown(e){
-  G = 0.1;
   setMousePosition(e);
   md = true;
 }
 
 function mouseUp(e){
-  G = 0;
   mux = mx;
   muy = my;
   setMousePosition(e);

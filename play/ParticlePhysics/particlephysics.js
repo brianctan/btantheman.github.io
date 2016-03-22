@@ -1,4 +1,10 @@
-var F = 1, G = 0.3, B = -0.75, BB = 0.5, C = 7, DC = 1, DG = 0;
+var F = 1,
+    G = 0,
+    B = -1,
+    BB = 0.5,
+    C = 7,
+    DC = 1,
+    DG = 0;
 
 var points = [];
 
@@ -151,6 +157,7 @@ var Point = function(x, y, mass, density){
 
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, TAU);
+    //ctx.arc(Math.round(this.x), Math.round(this.y), Math.round(this.size), 0, TAU);
     ctx.stroke();
   }
 
