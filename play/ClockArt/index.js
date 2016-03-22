@@ -27,7 +27,7 @@ function windowLoad(){
 
 var radius = 200, cx, cy;
 
-var PADDING = 125;
+var PADDING = 100;
 
 var date;
 
