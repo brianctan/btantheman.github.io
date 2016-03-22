@@ -95,11 +95,6 @@ function update(){
   ctx.arc(mx, my, cursorRadius, 0, TAU);
   ctx.fill();
 
-  ctx.fillStyle = "black";
-  ctx.textAlign = "center";
-  ctx.font = "900 30px sans-serif";
-  ctx.fillText(date.getHours()%12 == 0 ? 12 : date.getHours()%12, cx, cy + 10);
-
   ctx.strokeStyle = pathColor;
   ctx.setLineDash([10]);
   ctx.beginPath();
@@ -110,11 +105,10 @@ function update(){
 
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
+  ctx.font = "900 30px sans-serif";
+  ctx.fillText(date.getHours()%12 == 0 ? 12 : date.getHours()%12, cx, cy + 10);
   ctx.font = "100 20px sans-serif";
   ctx.fillText(date.getMinutes(), minx, miny + 7);
-
-  ctx.fillStyle = "black";
-  ctx.textAlign = "center";
   ctx.font = "100 12px sans-serif";
   ctx.fillText(date.getSeconds(), secx, secy + 4);
 
@@ -133,13 +127,15 @@ function update(){
   ctx.lineTo(secx + swidth * Math.cos(sangle + stangle) - maxDist * Math.cos(sangle + stangle - PI/2),
              secy + swidth * Math.sin(sangle + stangle) - maxDist * Math.sin(sangle + stangle - PI/2));
   ctx.closePath();
-  ctx.moveTo(mx + cursorRadius * Math.cos(cangle + ctangle), my + cursorRadius * Math.sin(cangle + ctangle));
-  ctx.arc(mx, my, cursorRadius, cangle + ctangle, cangle - ctangle);
-  ctx.lineTo(mx + cursorRadius * Math.cos(cangle - ctangle) - maxDist * Math.cos(cangle - ctangle + PI/2),
-             my + cursorRadius * Math.sin(cangle - ctangle) - maxDist * Math.sin(cangle - ctangle + PI/2));
-  ctx.lineTo(mx + cursorRadius * Math.cos(cangle + ctangle) - maxDist * Math.cos(cangle + ctangle - PI/2),
-             my + cursorRadius * Math.sin(cangle + ctangle) - maxDist * Math.sin(cangle + ctangle - PI/2));
-  ctx.closePath();
+  if((cx - mx) * (cx - mx) + (cy - my) * (cy - my) > 2500){
+    ctx.moveTo(mx + cursorRadius * Math.cos(cangle + ctangle), my + cursorRadius * Math.sin(cangle + ctangle));
+    ctx.arc(mx, my, cursorRadius, cangle + ctangle, cangle - ctangle);
+    ctx.lineTo(mx + cursorRadius * Math.cos(cangle - ctangle) - maxDist * Math.cos(cangle - ctangle + PI/2),
+               my + cursorRadius * Math.sin(cangle - ctangle) - maxDist * Math.sin(cangle - ctangle + PI/2));
+    ctx.lineTo(mx + cursorRadius * Math.cos(cangle + ctangle) - maxDist * Math.cos(cangle + ctangle - PI/2),
+               my + cursorRadius * Math.sin(cangle + ctangle) - maxDist * Math.sin(cangle + ctangle - PI/2));
+    ctx.closePath();
+  }
   ctx.fill();
 
   /*
