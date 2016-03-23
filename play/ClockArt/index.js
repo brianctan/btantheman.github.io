@@ -35,6 +35,8 @@ var st, mt, ht;
 
 var r = 70, g = 50, b = 100;
 
+var planets = [];
+
 function update(){
   //ctx.clearRect(0, 0, c.width, c.height);
 
@@ -70,7 +72,21 @@ function update(){
 
   d = 10;
   shadowColor = "rgba(" + (r-d) + ", " + (g-d) + ", " + (b-d) + ", 0.95)";
-  pathColor = "rgba(255, 255, 255, 0.1)";
+  d = -20;
+  pathColor = "rgb(" + (r-d) + ", " + (g-d) + ", " + (b-d) + ")";
+
+  ctx.strokeStyle = pathColor;
+  ctx.setLineDash([10]);
+  ctx.beginPath();
+  ctx.arc(cx, cy, mradius, 0, TAU);
+  ctx.moveTo(minx + sradius, miny);
+  ctx.arc(minx, miny, sradius, 0, TAU);
+  for(var i in planets){
+    var p = planets[i];
+    ctx.moveTo(cx + p.centerRadius, cy);
+    ctx.arc(cx, cy, p.centerRadius, 0, TAU);
+  }
+  ctx.stroke();
 
   ctx.fillStyle = "white";
   ctx.beginPath();
@@ -81,15 +97,29 @@ function update(){
   ctx.arc(secx, secy, swidth, 0, TAU);
   ctx.moveTo(mx, my);
   ctx.arc(mx, my, cursorRadius, 0, TAU);
-  ctx.fill();
+  eatSpeed = 0.1;
+  for(var i in planets){
+    var p = planets[i];
+    p.angle += p.multiplier;
+    p.x = cx + p.centerRadius * Math.cos(p.angle);
+    p.y = cy + p.centerRadius * Math.sin(p.angle);
+    for(var j in planets){
+      var q = planets[j];
+      if(Math.sqrt((p.x-q.x)*(p.x-q.x)+(p.y-q.y)*(p.y-q.y)) < p.radius + q.radius && q != p){
+        q.radius -= eatSpeed;
+      }
+    }
+    ctx.moveTo(p.x, p.y);
+    ctx.arc(p.x, p.y, p.radius, 0, TAU);
 
-  ctx.strokeStyle = pathColor;
-  ctx.setLineDash([10]);
-  ctx.beginPath();
-  ctx.arc(cx, cy, mradius, 0, TAU);
-  ctx.moveTo(minx + sradius, miny);
-  ctx.arc(minx, miny, sradius, 0, TAU);
-  ctx.stroke();
+    if(Math.sqrt((p.x-minx)*(p.x-minx)+(p.y-miny)*(p.y-miny)) < p.radius + cradius ||
+       Math.sqrt((p.x-secx)*(p.x-secx)+(p.y-secy)*(p.y-secy)) < p.radius + swidth){
+         p.radius -= eatSpeed;
+    }
+
+    if(p.radius <= 2) planets.splice(i, 1);
+  }
+  ctx.fill();
 
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
@@ -106,6 +136,10 @@ function update(){
   drawShadow(secx, secy, swidth, cx, cy);
   if((cx - mx) * (cx - mx) + (cy - my) * (cy - my) > 2500){
     drawShadow(mx, my, cursorRadius, cx, cy);
+  }
+  for(var i in planets){
+    var p = planets[i];
+    drawShadow(p.x, p.y, p.radius, cx, cy);
   }
   ctx.fill();
 
@@ -148,6 +182,17 @@ function mouseMove(e){
 function mouseDown(e){
   setMousePosition(e);
   md = true;
+  var r = 0;
+  do{
+    r = (Math.random() - 0.5) * 0.005;
+  } while(r == 0);
+  planets.push({
+    centerRadius: Math.sqrt((mx - cx) * (mx - cx) + (my - cy) * (my - cy)),
+    angle: Math.atan2(my - cy, mx - cx),
+    radius: Math.random() * 9 + 1,
+    multiplier: r,
+    random: Math.random() * PI
+  });
 }
 
 function mouseUp(e){

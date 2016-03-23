@@ -4,11 +4,31 @@ var particleGrid = {};
 var particles = [];
 
 function initGame(){
-  for(var i = 0; i < 1000; i++){
+  n = 1000;
+  for(var i = 0; i < n; i++){
     var p = new Particle(Math.random() * c.width, Math.random() * c.height, 0);
     p.g = 0.1;
     p.f = 0.98;
+    p.d = 10;
     p.color = "gold";
+    particles.push(p);
+  }
+
+  for(var i = 0; i < n; i++){
+    var p = new Particle(Math.random() * c.width, Math.random() * c.height, 0);
+    p.g = 0.1;
+    p.f = 0.98;
+    p.d = 5;
+    p.color = "blue";
+    particles.push(p);
+  }
+
+  for(var i = 0; i < n; i++){
+    var p = new Particle(Math.random() * c.width, Math.random() * c.height, 0);
+    p.g = 0.01;
+    p.f = 0.98;
+    p.d = 1;
+    p.color = "red";
     particles.push(p);
   }
 }
@@ -37,7 +57,31 @@ function updateGame(){
 
     initParticleGrid(p.gridX, p.gridY + 1)
     var q = particleGrid[p.gridX][p.gridY + 1];
-    if()
+
+    if(q){
+      if(p.d <= q.d){
+        p.vy = 0;
+        p.y = p.gridY * particleSize;
+      } else{
+        tx = p.x;
+        ty = p.y;
+        p.x = q.x;
+        p.y = q.y;
+        q.x = tx;
+        q.y = ty;
+        p.updateXY();
+        q.updateXY();
+      }
+    }
+
+    n = Math.random() > 1/2 ? 1 : -1;
+
+    if(q && !initParticleGrid(p.gridX + n, p.gridY) && !initParticleGrid(p.gridX + n, p.gridY + 1)){
+      if((p.gridX + n) * particleSize >= 0 && (p.gridX + n) * particleSize < c.width)
+      p.x = (p.gridX + n) * particleSize;
+      //p.y = (p.gridY + 1) * particleSize;
+      //p.vx += n/100;
+    }
 
     p.updateXY();
 
@@ -81,9 +125,9 @@ function updateGame(){
 
 
     ctx.fillStyle = p.color;
-    ctx.strokeStyle = "red";
-    ctx.fillRect(p.x, p.y, particleSize, particleSize);
-    ctx.strokeRect(p.gridX * particleSize, p.gridY * particleSize, particleSize, particleSize);
+    //ctx.strokeStyle = "red";
+    //ctx.fillRect(p.x, p.y, 1, 1);
+    ctx.fillRect(p.gridX * particleSize, p.gridY * particleSize, particleSize, particleSize);
 
   }
 }
@@ -116,4 +160,5 @@ Particle.prototype.updateXY = function (arguments) {
 function initParticleGrid(x, y){
   if(particleGrid[x] == null) particleGrid[x] = {};
   //if(particleGrid[x][y] == null) particleGrid[x][y] = null;
+  return particleGrid[x][y];
 }
