@@ -62,33 +62,11 @@ function update(){
   mradius = radius - cradius;
   minx = cx + mradius * Math.cos(mt);
   miny = cy + mradius * Math.sin(mt);
-
-  mdist = Math.sqrt((minx - cx) * (minx - cx) + (miny - cy) * (miny - cy));
-
-  mtdist = Math.sqrt(mdist * mdist - cradius * cradius);
-
-  mtangle = Math.atan(mtdist/cradius);
-  mangle = Math.atan2(cy - miny, cx - minx);
-
   sradius = cradius + 50;
   secx = minx + sradius * Math.cos(st);
   secy = miny + sradius * Math.sin(st);
   swidth = 15;
-
-  sdist = Math.sqrt((secx - cx) * (secx - cx) + (secy - cy) * (secy - cy));
-
-  stdist = Math.sqrt(sdist * sdist - swidth * swidth);
-
-  stangle = Math.atan(stdist/swidth);
-  sangle = Math.atan2(cy - secy, cx - secx);
-
   cursorRadius = 10;
-  cdist = Math.sqrt((mx - cx) * (mx - cx) + (my - cy) * (my - cy));
-
-  ctdist = Math.sqrt(cdist * cdist - cursorRadius * cursorRadius);
-
-  ctangle = Math.atan(ctdist/cursorRadius);
-  cangle = Math.atan2(cy - my, cx - mx);
 
   d = 10;
   shadowColor = "rgba(" + (r-d) + ", " + (g-d) + ", " + (b-d) + ", 0.95)";
@@ -124,68 +102,36 @@ function update(){
 
   ctx.fillStyle = shadowColor;
   ctx.beginPath();
-  ctx.arc(minx, miny, cradius, mangle + mtangle, mangle - mtangle);
-  ctx.lineTo(minx + cradius * Math.cos(mangle - mtangle) - maxDist * Math.cos(mangle - mtangle + PI/2),
-             miny + cradius * Math.sin(mangle - mtangle) - maxDist * Math.sin(mangle - mtangle + PI/2));
-  ctx.lineTo(minx + cradius * Math.cos(mangle + mtangle) - maxDist * Math.cos(mangle + mtangle - PI/2),
-             miny + cradius * Math.sin(mangle + mtangle) - maxDist * Math.sin(mangle + mtangle - PI/2));
-  ctx.closePath();
-  ctx.moveTo(secx + swidth * Math.cos(sangle + stangle), secy + swidth * Math.sin(sangle + stangle));
-  ctx.arc(secx, secy, swidth, sangle + stangle, sangle - stangle);
-  ctx.lineTo(secx + swidth * Math.cos(sangle - stangle) - maxDist * Math.cos(sangle - stangle + PI/2),
-             secy + swidth * Math.sin(sangle - stangle) - maxDist * Math.sin(sangle - stangle + PI/2));
-  ctx.lineTo(secx + swidth * Math.cos(sangle + stangle) - maxDist * Math.cos(sangle + stangle - PI/2),
-             secy + swidth * Math.sin(sangle + stangle) - maxDist * Math.sin(sangle + stangle - PI/2));
-  ctx.closePath();
+  drawShadow(minx, miny, cradius, cx, cy);
+  drawShadow(secx, secy, swidth, cx, cy);
   if((cx - mx) * (cx - mx) + (cy - my) * (cy - my) > 2500){
-    ctx.moveTo(mx + cursorRadius * Math.cos(cangle + ctangle), my + cursorRadius * Math.sin(cangle + ctangle));
-    ctx.arc(mx, my, cursorRadius, cangle + ctangle, cangle - ctangle);
-    ctx.lineTo(mx + cursorRadius * Math.cos(cangle - ctangle) - maxDist * Math.cos(cangle - ctangle + PI/2),
-               my + cursorRadius * Math.sin(cangle - ctangle) - maxDist * Math.sin(cangle - ctangle + PI/2));
-    ctx.lineTo(mx + cursorRadius * Math.cos(cangle + ctangle) - maxDist * Math.cos(cangle + ctangle - PI/2),
-               my + cursorRadius * Math.sin(cangle + ctangle) - maxDist * Math.sin(cangle + ctangle - PI/2));
-    ctx.closePath();
+    drawShadow(mx, my, cursorRadius, cx, cy);
   }
   ctx.fill();
 
-  /*
-
-  ctx.beginPath();
-  ctx.arc(cx, cy, hradius, 0, TAU);
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
-  ctx.setLineDash([15]);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(cx + hradius * Math.cos(ht), cy + hradius * Math.sin(ht), cradius, 0, TAU);
-  ctx.fill();
-
-  */
-
-  /*
-  ctx.fillStyle = "white";
-  ctx.beginPath();
-  ctx.moveTo(cx, cy);
-  var w = 0.01;
-  ctx.arc(cx, cy, radius, st - w, st + w);
-  ctx.fill();
-
-  ctx.fillStyle = "red";
-  ctx.beginPath();
-  ctx.moveTo(cx, cy);
-  var w = 0.05;
-  ctx.arc(cx, cy, radius * 0.95, mt - w, mt + w);
-  ctx.fill();
-
-  ctx.fillStyle = "blue";
-  ctx.beginPath();
-  ctx.moveTo(cx, cy);
-  var w = 0.1;
-  ctx.arc(cx, cy, radius * 0.9, ht - w, ht + w);
-  ctx.fill();
-  */
-
   window.requestAnimationFrame(update);
+}
+
+function drawShadow(x, y, r, cenx, ceny){
+  dist = Math.sqrt((x - cenx) * (x - cenx) + (y - ceny) * (y - ceny));
+  tdist = Math.sqrt(dist * dist - r * r);
+  tangle = Math.atan(tdist/r);
+  angle = Math.atan2(ceny - y, cenx - x);
+  lx = x + r * Math.cos(angle - tangle);
+  ly = y + r * Math.sin(angle - tangle);
+  rx = x + r * Math.cos(angle + tangle);
+  ry = y + r * Math.sin(angle + tangle);
+  ctx.moveTo(rx, ry);
+  //bd = 0;
+  //br = Math.sqrt((x + bd * Math.cos(angle) - lx) * (x + bd * Math.cos(angle) - lx) + (y + bd * Math.sin(angle) - ly) * (y + bd * Math.sin(angle) - ly));
+  //mangle = Math.atan2((tdist - bd)/br);
+  //ctx.arc(x + bd * Math.cos(angle), y + bd * Math.sin(angle), br, angle + (mangle), angle - (mangle));
+  ctx.arc(x, y, r, angle + tangle, angle - tangle);
+  ctx.lineTo(x + r * Math.cos(angle - tangle) - maxDist * Math.cos(angle - tangle + PI/2),
+             y + r * Math.sin(angle - tangle) - maxDist * Math.sin(angle - tangle + PI/2));
+  ctx.lineTo(x + r * Math.cos(angle + tangle) - maxDist * Math.cos(angle + tangle - PI/2),
+             y + r * Math.sin(angle + tangle) - maxDist * Math.sin(angle + tangle - PI/2));
+  ctx.closePath();
 }
 
 window.addEventListener("load", windowLoad, false);
