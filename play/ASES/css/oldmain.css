@@ -103,9 +103,9 @@ body{
 #blue.mountain{
   width: 30vw;
   z-index: 100;
-  left: 30vw;
+  left: 27vw;
   bottom: -10vw;
-  transition: bottom 1.5s;
+  transition: bottom 2s;
 }
 
 #yellow.mountain{
@@ -121,9 +121,13 @@ body{
   z-index: 150;
   left: 70vw;
   bottom: -10vw;
-  transition: bottom 2.5s;
+  transition: bottom 3s;
 }
 
 .mountain.pre{
   bottom: -50vw !important;
+}
+
+#red.mountain.pre{
+  bottom: -100vw !important;
 }

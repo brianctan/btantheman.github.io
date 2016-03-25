@@ -31,12 +31,12 @@
       <script>
         var animatedElemets = ["blue", "red", "yellow"];
 
-        setTimeout(function(){
+        window.addEventListener("load", function(){
           for(var i in animatedElemets){
             var e = document.getElementById(animatedElemets[i]);
             e.className = e.className.replace(" pre", "");
           }
-        }, 100);
+        }, false);
 
       </script>
     </div>
