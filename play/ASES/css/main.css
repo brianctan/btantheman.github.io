@@ -20,6 +20,9 @@ body{
 .section.splash{
   height: 100vh;
   width: 100vw;
+  background-image: url(../img/splashbg.png);
+  background-size: cover;
+  background-position: center center;
 }
 
 .logoHolder{
@@ -41,7 +44,7 @@ body{
   font-size: 20px;
   padding-top: 10px;
   padding-left: 10px;
-  color: black;
+  color: white;
 }
 
 .navlinks{
@@ -59,7 +62,7 @@ body{
 }
 
 .navlinks li a:link, .navlinks li a:visited{
-  color: #333;
+  color: white;
   display: block;
   padding: 37px 15px;
   font-size: 12px;
@@ -73,18 +76,18 @@ body{
 }
 
 .navlinks li a.blue{
-  background-image: url(../img/banner_blue.png);
+  background-image: url(../img/banner_white.png);
 }
 
 .navlinks li a.yellow{
-  background-image: url(../img/banner_yellow.png);
+  background-image: url(../img/banner_white.png);
 }
 
 .navlinks li a.red{
-  background-image: url(../img/banner_red.png);
+  background-image: url(../img/banner_white.png);
 }
 
 .navlinks li a:hover{
   background-position: center -150px;
-  color: white;
+  color: #333;
 }

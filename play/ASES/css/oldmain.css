@@ -72,7 +72,7 @@ body{
   font-size: 12px;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   background-position: center -240px;
   background-size: 200px auto;
   background-repeat: no-repeat;
