@@ -81,11 +81,6 @@ function update(){
   ctx.arc(cx, cy, mradius, 0, TAU);
   ctx.moveTo(minx + sradius, miny);
   ctx.arc(minx, miny, sradius, 0, TAU);
-  for(var i in planets){
-    var p = planets[i];
-    ctx.moveTo(cx + p.centerRadius, cy);
-    ctx.arc(cx, cy, p.centerRadius, 0, TAU);
-  }
   ctx.stroke();
 
   ctx.fillStyle = "white";
