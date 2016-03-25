@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ASES Philippines</title>
+    <link type="text/css" rel="stylesheet" href="css/oldmain.css" />
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="section splash">
+      <div class="section center navigation">
+        <div class="logoHolder">
+          <img src="img/logo_small.png" class="logo" />
+          <div class="logoText"><b>ASES</b> Summit Manila</div>
+        </div>
+        <div class="navlinks">
+          <ul>
+            <li><a href="#about" class="blue">About</a></li>
+            <li><a href="#details" class="yellow">Details</a></li>
+            <li><a href="#events" class="red">Events</a></li>
+            <li><a href="#sponsors" class="blue">Sponsors</a></li>
+            <li><a href="#contact" class="yellow">Contact Us</a></li>
+          </ul>
+        </div>
+        <br class="clear" />
+      </div>
+
+      <img class="mountain pre" id="blue" src="img/mountain_blue.png" />
+      <img class="mountain pre" id="red" src="img/mountain_red.png" />
+      <img class="mountain pre" id="yellow" src="img/mountain_yellow.png" />
+
+      <script>
+        var animatedElemets = ["blue", "red", "yellow"];
+
+        setTimeout(function(){
+          for(var i in animatedElemets){
+            var e = document.getElementById(animatedElemets[i]);
+            e.className = e.className.replace(" pre", "");
+          }
+        }, 100);
+
+      </script>
+    </div>
+  </body>
+</html>

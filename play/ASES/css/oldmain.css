@@ -1,0 +1,129 @@
+@import url(fonts/avenir-next-lt-pro/style.css);
+
+body{
+  margin: 0;
+  font-size: 12px;
+  font-family: 'Avenir Next LT Pro Regular', sans-serif;
+}
+
+.clear{
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+.section.center{
+  margin: auto;
+  max-width: 1100px;
+}
+
+.section.center.navigation{
+  z-index: 500;
+  position: relative;
+}
+
+.section.splash{
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoHolder{
+  float: left;
+  padding: 20px;
+}
+
+.logoHolder .logo, .logoHolder .logoText{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logoHolder .logo{
+  height: 50px;
+}
+
+.logoHolder .logoText{
+  font-family: 'Melbourne', sans-serif;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: black;
+}
+
+.navlinks{
+  float: right;
+}
+
+.navlinks ul, .navlinks li{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navlinks li{
+  display: inline-block;
+}
+
+.navlinks li a:link, .navlinks li a:visited{
+  color: #333;
+  display: block;
+  padding: 37px 15px;
+  font-size: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background-position: center -240px;
+  background-size: 200px auto;
+  background-repeat: no-repeat;
+  font-family: 'Avenir Next LT Pro Medium Condensed', sans-serif;
+}
+
+.navlinks li a.blue{
+  background-image: url(../img/banner_blue.png);
+}
+
+.navlinks li a.yellow{
+  background-image: url(../img/banner_yellow.png);
+}
+
+.navlinks li a.red{
+  background-image: url(../img/banner_red.png);
+}
+
+.navlinks li a:hover{
+  background-position: center -150px;
+  color: white;
+}
+
+.mountain{
+  position: absolute;
+}
+
+#blue.mountain{
+  width: 30vw;
+  z-index: 100;
+  left: 30vw;
+  bottom: -10vw;
+  transition: bottom 1.5s;
+}
+
+#yellow.mountain{
+  width: 50vw;
+  z-index: 200;
+  left: 42vw;
+  bottom: -10vw;
+  transition: bottom 1s;
+}
+
+#red.mountain{
+  width: 40vw;
+  z-index: 150;
+  left: 70vw;
+  bottom: -10vw;
+  transition: bottom 2.5s;
+}
+
+.mountain.pre{
+  bottom: -50vw !important;
+}
