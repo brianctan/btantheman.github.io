@@ -24,6 +24,21 @@
       .letter[used=false]{
         text-shadow: 0 0 7px rgba(255, 255, 255, 1);
       }
+
+      input{
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-family: 15px;
+        padding: 10px;
+        outline: 0;
+        border: 0;
+        margin: 0;
+        box-sizing: border-box;
+        width: 100%;
+        background-color: #333;
+        color: #CCC;
+      }
     </style>
     <script>
       var ATTR = "used";
@@ -169,6 +184,7 @@
       var phraseCount = -1;
 
       document.addEventListener("click", function(){
+        document.getElementById("text").focus();
         spell(phrases[phraseCount = (phraseCount + 1)%phrases.length]);
       }, false);
 
@@ -176,10 +192,17 @@
   </head>
   <body>
     <script>
-      spell("Start clicking anywhere");
+      spell("Start clicking anywhere or typing anything");
       for(var i = 0; i < 100; i++){
         phrases.push(String(Math.round(Math.random() * 100000000)));
       }
+    </script>
+    <input type="text" id="text"  />
+    <script>
+      document.getElementById("text").focus();
+      document.getElementById("text").addEventListener("input", function(e){
+        spell(document.getElementById("text").value);
+      }, false);
     </script>
   </body>
 </html>
