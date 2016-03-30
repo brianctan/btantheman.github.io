@@ -1,4 +1,6 @@
 @import url(fonts/avenir-next-lt-pro/style.css);
+@import url(fonts/melbourne-webfontkit-20160330-112725/stylesheet.css);
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 body{
   margin: 0;
@@ -40,7 +42,7 @@ body{
 }
 
 .logoHolder .logoText{
-  font-family: 'Melbourne', sans-serif;
+  font-family: 'melbournebold', sans-serif;
   font-size: 20px;
   padding-top: 10px;
   padding-left: 10px;
@@ -49,6 +51,7 @@ body{
 
 .navlinks{
   float: right;
+  margin-right: 25px;
 }
 
 .navlinks ul, .navlinks li{
@@ -73,21 +76,114 @@ body{
   background-size: 200px auto;
   background-repeat: no-repeat;
   font-family: 'Avenir Next LT Pro Medium Condensed', sans-serif;
-}
-
-.navlinks li a.blue{
-  background-image: url(../img/banner_white.png);
-}
-
-.navlinks li a.yellow{
-  background-image: url(../img/banner_white.png);
-}
-
-.navlinks li a.red{
   background-image: url(../img/banner_white.png);
 }
 
 .navlinks li a:hover{
   background-position: center -150px;
   color: #333;
+}
+
+.floatingSplash{
+  font-size: 40px;
+  font-family: 'melbournelight', sans-serif;
+  color: white;
+  width: 352px;
+  height: 90px;
+  text-align: center;
+  line-height: 50px;
+  opacity: 1;
+  transition: 1s all;
+  position: absolute;
+  left: calc(50% - 176px);
+  top: calc(50% - 75px);
+}
+
+.floatingSplash.pre{
+  top: 50%;
+  opacity: 0;
+}
+
+.applyButton:link, .applyButton:visited{
+  padding: 15px 30px;
+  border: 3px solid white;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  position: absolute;
+  left: calc(50% - 76px);
+  top: calc(50% + 50px);
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  width: 152px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.2s background-color, 0.2s color, 1s top, 1s opacity;
+  opacity: 1;
+}
+
+.applyButton.pre{
+  top: calc(50% + 150px);
+  opacity: 0;
+}
+
+.applyButton:hover{
+  background-color: white;
+  color: black;
+}
+
+.logoText span{
+  font-family: 'Permanent Marker';
+  opacity: 0.75;
+  margin: 3px;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.learnMoreButton:link, .learnMoreButton:visited{
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 20px);
+  display: block;
+  width: 40px;
+  transition: all 2s;
+  opacity: 1;
+}
+
+.learnMoreButton span{
+  color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.learnMoreButton.pre{
+  bottom: -30px;
+  opacity: 0;
+}
+
+.learnMoreButton:hover span{
+  color: white;
+}
+
+.learnMoreButton:hover img{
+  width: 35px;
+  height: 35px;
+  opacity: 1;
+}
+
+.learnMoreButton img{
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: auto;
+  transition: 0.2s all;
+  border-radius: 100px;
+  opacity: 0.5;
 }
