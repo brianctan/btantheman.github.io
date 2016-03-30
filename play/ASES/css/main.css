@@ -22,9 +22,12 @@ body{
 .section.splash{
   height: 100vh;
   width: 100vw;
+  min-height: 500px;
   background-image: url(../img/splashbg.png);
   background-size: cover;
   background-position: center center;
+  position: relative;
+  min-width: 700px;
 }
 
 .logoHolder{
@@ -186,4 +189,22 @@ body{
   transition: 0.2s all;
   border-radius: 100px;
   opacity: 0.5;
+}
+
+.section.about{
+  height: 100vh;
+}
+
+.section.about .left img{
+  width: 100%;
+}
+
+.section.about .left{
+  float: left;
+  width: 40%;
+}
+
+.section.about .right{
+  float: right;
+  width: 60%;
 }
