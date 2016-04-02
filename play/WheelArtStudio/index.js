@@ -229,7 +229,7 @@ function download(alpha){
   ctx.fillStyle = "white";
   if(!alpha) ctx.fillRect(0, 0, project.width, project.height);
   for(var i = layers.length - 1; i >= 0; i--){
-    ctx.drawImage(layers[i].canvas, 0, 0);
+    if(layers[i].visible) ctx.drawImage(layers[i].canvas, 0, 0);
   }
   var link = document.createElement("a");
   link.download = "wheel_art.png";
