@@ -159,7 +159,19 @@ canvas.guides{
   z-index: 100;
 }
 
-td[rowspan="2"]{
+td[rowspan="2"], td[rowspan="3"]{
   padding-top: 5px;
   vertical-align: top;
+}
+
+span.key{
+  font-family: monospace;
+  background-color: #444;
+  color: #999;
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  position: relative;
 }

@@ -64,7 +64,7 @@
               <td><input type="number" id="swidthdisplay" min="1" max="50" /></td>
             </tr>
             <tr>
-              <td rowspan="2">Stroke Lag:</td>
+              <td rowspan="3">Stroke Lag:</td>
               <td><input type="range" id="lag" min="0" max="20"  value="5" /></td>
               <td><input type="number" id="lagdisplay" min="0" max="20" /></td>
             </tr>
@@ -75,6 +75,13 @@
                 <a class="presets" href="javascript: setLag(10);">Smoother</a>
                 <a class="presets" href="javascript: setLag(20);">Slow</a>
               </td>
+            </tr>
+            <tr>
+              <td>
+                <label><input type="checkbox" id="strokefollow" checked /> Follow Mousement (BETA)</label>
+              </td>
+              <td></td>
+            </tr>
             <tr>
               <td rowspan="2">Angle Count:</td>
               <td><input type="range" id="angles" min="1" max="128"  value="8" /></td>
@@ -114,7 +121,7 @@
         </div>
       </div>
       <div class="module">
-        <div class="title">Download</title></div>
+        <div class="title">Download</div>
         <div class="content">
           <a class="download" href="javascript: download(true);">Clear Background</a>
           <a class="download" href="javascript: download(false);">White Background</a>

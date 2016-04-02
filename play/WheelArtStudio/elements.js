@@ -14,7 +14,8 @@ var elementIds = [
   "canvases",
   "guides",
   "layers",
-  "colorPreview"
+  "colorPreview",
+  "strokefollow"
 ];
 var guideString = "guide";
 var elementsForGuides = [
@@ -63,6 +64,10 @@ function initElements(){
       guides[this.id.replace(guideString, "")] = this.checked;
     }, false);
   }
+
+  elements.strokefollow.addEventListener("change", function(){
+    stroke.follow = this.checked;
+  }, false);
 
   elements.canvases.addEventListener("mousedown", mouseDown, false);
   elements.canvases.addEventListener("mouseup", mouseUp, false);

@@ -8,7 +8,8 @@ var stroke = {
   x: 0, y: 0,
   tx: 0, ty: 0,
   px: 0, py: 0,
-  draw: false
+  draw: false,
+  follow: true
 };
 
 var project = {
@@ -103,8 +104,8 @@ function update(){
 }
 
 function mouseDown(e){
-  setStrokeTarget(e);
   stroke.draw = true;
+  setStrokeTarget(e);
 }
 
 function mouseUp(e){
@@ -113,7 +114,7 @@ function mouseUp(e){
 }
 
 function mouseMove(e){
-  setStrokeTarget(e);
+  if(stroke.follow) setStrokeTarget(e);
 }
 
 function setStrokeTarget(e){
