@@ -204,7 +204,11 @@ function deleteLayer(){
   elements.layers.removeChild(layer.layerElement);
   elements.canvases.removeChild(layer.canvas);
   layers.splice(i, 1);
-  if(layers.length) layers[Math.max(0, i - 1)].switchSelected();
+  if(layers.length){
+    layers[Math.max(0, i - 1)].switchSelected();
+  } else{
+    newLayer();
+  }
   updateLayers();
 }
 
