@@ -44,6 +44,10 @@ function windowLoad(){
   newLayer();
 
   update();
+
+  window.onbeforeunload = function() {
+    return "Exiting will delete all progress.";
+  }
 }
 
 window.addEventListener("load", windowLoad, false);
