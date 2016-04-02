@@ -220,3 +220,20 @@ function moveLayerDown(){
   }
   updateLayers();
 }
+
+function download(alpha){
+  var temp = document.createElement("canvas");
+  var ctx = temp.getContext("2d");
+  temp.width = project.width;
+  temp.height = project.height;
+  ctx.fillStyle = "white";
+  if(!alpha) ctx.fillRect(0, 0, project.width, project.height);
+  for(var i = layers.length - 1; i >= 0; i--){
+    ctx.drawImage(layers[i].canvas, 0, 0);
+  }
+  var link = document.createElement("a");
+  link.download = "wheel_art.png";
+  link.target = "_blank";
+  link.href = temp.toDataURL("image/png");
+  link.click();
+}
