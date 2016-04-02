@@ -83,7 +83,12 @@ function update(){
     var anglp = Math.atan2((project.height/2 - stroke.py), (project.width/2 - stroke.px));
     var dist = Math.sqrt((project.width/2 - stroke.x) * (project.width/2 - stroke.x) + (project.height/2 - stroke.y) * (project.height/2 - stroke.y));
     var angl = Math.atan2((project.height/2 - stroke.y), (project.width/2 - stroke.x));
+    if(stroke.angles % 2 == 1){
+      anglp += Math.PI;
+      angl += Math.PI;
+    }
     for(var i = 0; i < Math.PI * 1.999; i += Math.PI * 2 / stroke.angles){
+
       selectedLayer.ctx.moveTo(project.width/2 + distp * Math.cos(anglp + i), project.height/2 + distp * Math.sin(anglp + i));
       selectedLayer.ctx.lineTo(project.width/2 + dist * Math.cos(angl + i), project.height/2 + dist * Math.sin(angl + i));
     }
