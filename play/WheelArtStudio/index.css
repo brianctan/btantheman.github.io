@@ -91,6 +91,8 @@ body{
 
 #layers{
   padding-top: 5px;
+  height: 200px;
+  overflow: auto;
 }
 
 .layer{
@@ -159,19 +161,17 @@ canvas.guides{
   z-index: 100;
 }
 
-td[rowspan="2"], td[rowspan="3"]{
-  padding-top: 5px;
+td{
   vertical-align: top;
 }
 
-span.key{
-  font-family: monospace;
-  background-color: #444;
-  color: #999;
+.colorPresets{
+  padding-top: 10px;
+}
+
+.colorPresets a:link, .colorPresets a:visited{
   display: inline-block;
-  font-size: 10px;
-  padding: 2px 7px;
-  padding-bottom: 5px;
-  border-radius: 5px;
-  position: relative;
+  width: 20%;
+  height: 30px;
+  float: left;
 }

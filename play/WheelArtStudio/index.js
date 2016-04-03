@@ -9,7 +9,8 @@ var stroke = {
   tx: 0, ty: 0,
   px: 0, py: 0,
   draw: false,
-  follow: true
+  follow: true,
+  newlayer: false
 };
 
 var project = {
@@ -81,7 +82,7 @@ function update(){
   }
 
   if(stroke.draw && selectedLayer){
-    selectedLayer.ctx.strokeStyle = rgbString(stroke.color.r, stroke.color.g, stroke.color.b, stroke.color.a);
+    selectedLayer.ctx.strokeStyle = selectedLayer.ctx.fillStyle = rgbString(stroke.color.r, stroke.color.g, stroke.color.b, stroke.color.a);
     selectedLayer.ctx.lineWidth = stroke.width;
     selectedLayer.ctx.beginPath();
     var distp = Math.sqrt((project.width/2 - stroke.px) * (project.width/2 - stroke.px) + (project.height/2 - stroke.py) * (project.height/2 - stroke.py));
@@ -92,11 +93,11 @@ function update(){
       anglp += Math.PI;
       angl += Math.PI;
     }
-    for(var i = 0; i < Math.PI * 1.999; i += Math.PI * 2 / stroke.angles){
-
+    for(var i = 0; i < Math.PI * 1.9999; i += Math.PI * 2 / stroke.angles){
       selectedLayer.ctx.moveTo(project.width/2 + distp * Math.cos(anglp + i), project.height/2 + distp * Math.sin(anglp + i));
       selectedLayer.ctx.lineTo(project.width/2 + dist * Math.cos(angl + i), project.height/2 + dist * Math.sin(angl + i));
     }
+    selectedLayer.ctx.lineCap = "square";
     selectedLayer.ctx.stroke();
   }
 
@@ -104,6 +105,7 @@ function update(){
 }
 
 function mouseDown(e){
+  if(stroke.newlayer) newLayer();
   stroke.draw = true;
   setStrokeTarget(e);
 }
@@ -170,6 +172,8 @@ function newLayer(){
   textfield.className = "layerName";
   layerElement.appendChild(textfield);
 
+  layer.textfield = textfield;
+
   var clear = document.createElement("br");
   clear.className = "clear";
   layerElement.appendChild(clear);
@@ -187,7 +191,9 @@ function newLayer(){
   }
 
   textfield.addEventListener("focus", switchSelected, false);
-  textfield.focus();
+  layer.switchSelected();
+  elements.layers.scrollTop = elements.layers.scrollHeight;
+  //textfield.focus();
 
   updateLayers();
 }
@@ -231,6 +237,19 @@ function moveLayerDown(){
     var temp = layers[i + 1];
     layers[i + 1] = selectedLayer;
     layers[i] = temp;
+  }
+  updateLayers();
+}
+
+function mergeLayerDown(){
+  var i = layers.indexOf(selectedLayer);
+  if(i < layers.length - 1){
+    var layerBelow = layers[Math.min(layers.length - 1, i + 1)];
+    layerBelow.ctx.drawImage(selectedLayer.canvas, 0, 0);
+    //layerBelow.name += " + " + selectedLayer.name;
+    layerBelow.textfield.value = selectedLayer.textfield.value + " + " + layerBelow.textfield.value;
+    deleteLayer();
+    layerBelow.switchSelected();
   }
   updateLayers();
 }

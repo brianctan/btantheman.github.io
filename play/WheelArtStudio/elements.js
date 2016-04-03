@@ -14,13 +14,17 @@ var elementIds = [
   "canvases",
   "guides",
   "layers",
-  "colorPreview",
-  "strokefollow"
+  "colorPreview"
 ];
 var guideString = "guide";
 var elementsForGuides = [
   "anglesguide",
   "strokeguide"
+];
+var strokeString = "stroke";
+var elementsForStroke = [
+  "strokenewlayer",
+  "strokefollow"
 ];
 
 function initElements(){
@@ -65,9 +69,13 @@ function initElements(){
     }, false);
   }
 
-  elements.strokefollow.addEventListener("change", function(){
-    stroke.follow = this.checked;
-  }, false);
+  for(var i = 0; i < elementsForStroke.length; i++){
+    var id = elementsForStroke[i];
+    elements[id] = document.getElementById(id);
+    elements[id].addEventListener("change", function(){
+      stroke[this.id.replace(strokeString, "")] = this.checked;
+    }, false);
+  }
 
   elements.canvases.addEventListener("mousedown", mouseDown, false);
   elements.canvases.addEventListener("mouseup", mouseUp, false);
@@ -89,6 +97,18 @@ function updateColor(){
   stroke.color.b = Number(elements.colorB.value);
   stroke.color.a = Number(elements.colorA.value)/100;
   elements.colorPreview.style.backgroundColor = rgbString(stroke.color.r, stroke.color.g, stroke.color.b, stroke.color.a);
+}
+
+function setColor(elem){
+  elements.colorR.value = elem.getAttribute("r");
+  elements.colorRdisplay.value = elem.getAttribute("r");
+  elements.colorG.value = elem.getAttribute("g");
+  elements.colorGdisplay.value = elem.getAttribute("g");
+  elements.colorB.value = elem.getAttribute("b");
+  elements.colorBdisplay.value = elem.getAttribute("b");
+  elements.colorA.value = elem.getAttribute("a");
+  elements.colorAdisplay.value = elem.getAttribute("a");
+  updateColor();
 }
 
 function updateWidth(){
