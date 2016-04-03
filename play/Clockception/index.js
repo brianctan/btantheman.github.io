@@ -7,6 +7,9 @@ function windowLoad(){
   c = document.getElementById("canvas");
   ctx = c.getContext("2d");
 
+  c.style.minWidth = (clockRadius * 2 * width + clockRadius) + "px";
+  c.style.minHeight = (clockRadius * 2 * height + clockRadius) + "px";
+
   windowResize();
   window.addEventListener("resize", windowResize, false);
 
@@ -28,6 +31,8 @@ function windowLoad(){
       });
     }
   }
+
+
 
   update();
 }
@@ -64,8 +69,8 @@ function update(){
   ctx.lineWidth = 3;
   ctx.fillRect(0, 0, c.width, c.height);
 
-  startX = c.width/2 - clockRadius * 2 * width/2 + clockRadius/2;
-  startY = c.height/2 - clockRadius * 2 * height/2 + clockRadius/2;
+  startX = c.width/2 - clockRadius * 2 * (width-1)/2
+  startY = c.height/2 - clockRadius * 2 * (height-1)/2
 
   date = new Date();
 
@@ -174,8 +179,8 @@ function spell(x, y, s){
 window.addEventListener("load", windowLoad, false);
 
 function windowResize(){
-  c.width = window.innerWidth;
-  c.height = window.innerHeight;
+  c.width = c.offsetWidth;
+  c.height = c.offsetHeight;
 }
 
 function mouseMove(e){
