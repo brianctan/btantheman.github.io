@@ -5,6 +5,7 @@
     <link href="index.css" rel="stylesheet" type="text/css" />
     <script src="index.js"></script>
     <script src="elements.js"></script>
+    <script src="files.js"></script>
   </head>
   <body>
     <div class="modules">
@@ -135,10 +136,13 @@
         </div>
       </div>
       <div class="module">
-        <div class="title">Download</div>
+        <div class="title">Actions</div>
         <div class="content">
-          <a class="download" href="javascript: download(true);">Clear Background</a>
-          <a class="download" href="javascript: download(false);">White Background</a>
+          <a class="action" href="javascript: exportToJson(false);">Export All Layers</a>
+          <a class="action" href="javascript: exportToJson(true);">Export Visible Layers</a>
+          <a class="action" href="javascript: download(true);">Download PNG (transparent)</a>
+          <a class="action" href="javascript: download(false);">Download PNG (white backgorund)</a>
+          <!--<input class="action" type="file" accept=".json" />-->
         </div>
       </diV>
       <div class="module">

@@ -128,9 +128,9 @@ function rgbString(r, g, b, a){
   return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
 }
 
-function newLayer(){
+function newLayer(name){
   var layer = {
-    name: "Layer " + (layers.length + 1),
+    name: name == null ? "Layer " + (layers.length + 1) : name,
     visible: true,
     switchSelected: switchSelected
   };
@@ -193,9 +193,9 @@ function newLayer(){
   textfield.addEventListener("focus", switchSelected, false);
   layer.switchSelected();
   elements.layers.scrollTop = elements.layers.scrollHeight;
-  //textfield.focus();
 
   updateLayers();
+  return layer;
 }
 
 function updateLayers(){
@@ -252,21 +252,4 @@ function mergeLayerDown(){
     layerBelow.switchSelected();
   }
   updateLayers();
-}
-
-function download(alpha){
-  var temp = document.createElement("canvas");
-  var ctx = temp.getContext("2d");
-  temp.width = project.width;
-  temp.height = project.height;
-  ctx.fillStyle = "white";
-  if(!alpha) ctx.fillRect(0, 0, project.width, project.height);
-  for(var i = layers.length - 1; i >= 0; i--){
-    if(layers[i].visible) ctx.drawImage(layers[i].canvas, 0, 0);
-  }
-  var link = document.createElement("a");
-  link.download = "wheel_art.png";
-  link.target = "_blank";
-  link.href = temp.toDataURL("image/png");
-  link.click();
 }

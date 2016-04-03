@@ -11,6 +11,7 @@ body{
   user-select: none;           /* non-prefixed version, currently
                                   not supported by any browser */
   cursor: default;
+  min-width: 1000px;
 }
 
 .clear{
@@ -73,7 +74,7 @@ body{
   display: block;
 }
 
-.presets:link, .presets:visited, .download:link, .download:visited, .layerFunctions a:link, .layerFunctions a:visited{
+.presets:link, .presets:visited, .layerFunctions a:link, .layerFunctions a:visited{
   display: inline-block;
   color: #DDD;
   text-decoration: none;
@@ -84,7 +85,7 @@ body{
   transition: background-color 0.2s;
 }
 
-.presets:hover, .layerFunctions a:hover, .download a:hover{
+.presets:hover, .layerFunctions a:hover{
   color: white;
   background-color: #777;
 }
@@ -174,4 +175,22 @@ td{
   width: 20%;
   height: 30px;
   float: left;
+}
+
+input.action, .action:link, .action:visited{
+  display: block;
+  border: 0;
+  margin: 0;
+  text-decoration: none;
+  color: white;
+  padding: 0;
+  padding: 10px;
+  background-color: #444;
+  color: #DDD;
+  margin-bottom: 1px;
+}
+
+.action:hover{
+  background-color: #333;
+  color: white;
 }
