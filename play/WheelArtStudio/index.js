@@ -97,7 +97,7 @@ function update(){
       selectedLayer.ctx.moveTo(project.width/2 + distp * Math.cos(anglp + i), project.height/2 + distp * Math.sin(anglp + i));
       selectedLayer.ctx.lineTo(project.width/2 + dist * Math.cos(angl + i), project.height/2 + dist * Math.sin(angl + i));
     }
-    selectedLayer.ctx.lineCap = "square";
+    selectedLayer.ctx.lineCap = "round";
     selectedLayer.ctx.stroke();
   }
 
