@@ -78,7 +78,7 @@ function update(){
   DEFAULT[1] = TAU * ((date.getHours()%12) + (date.getMinutes() + (date.getSeconds() + date.getMilliseconds()/1000)/60)/60)/12 - PI/2;
 
   if(date.getSeconds() >= 60 - minuteSwitchDuration/1000 || date.getSeconds() <= minuteSwitchDuration/1000){
-    spell(1, 1, getStringTime());
+    spell(getStringTime());
     cleared = false;
   } else{
     if(!cleared){
@@ -162,10 +162,12 @@ function resetClocks(){
 function getStringTime(){
   var a = new Date().toLocaleTimeString().split(":");
   a.pop();
-  return (Number(a[0]) < 10 ? "0" : "") + a.join(":");
+  return a.join(":");
 }
 
-function spell(x, y, s){
+function spell(s){
+  var y = 1;
+  var x = (width >> 1) - (getStringWidth(s) >> 1);
   resetClocks();
   var split = s.split("");
   var offset = 0;
@@ -189,7 +191,7 @@ function mouseMove(e){
 
 function mouseDown(e){
   if(resetTimeout) clearTimeout(resetTimeout);
-  spell(1, 1, getStringTime());
+  spell(getStringTime());
   resetTimeout = setTimeout(resetClocks, displayDuration);
   setMousePosition(e);
   md = true;
