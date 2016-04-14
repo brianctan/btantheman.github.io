@@ -1,0 +1,160 @@
+body{
+  margin: 0;
+  font-size: 10px;
+  font-family: 'Roboto', 'Helvetica Neue', 'Avenir Next', 'Avenir', sans-serif;
+}
+
+.clear{
+  clear: both;
+}
+
+.settingsHolder{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100vh;
+  background-color: #B0BEC5;
+}
+
+.framesHolder{
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: calc(100vw - 50px);
+  height: 100px;
+  background-color: #CFD8DC;
+}
+
+.canvasesHolder{
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  width: calc(100vw - 50px);
+  height: calc(100vh - 100px);
+  background-color: #607D8B;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+#canvases{
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: calc(50% - 250px);
+  top: calc(50% - 250px);
+  background-color: white;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.framesHolder .buttons{
+  padding: 5px;
+}
+
+.framesHolder .buttons a:link, .framesHolder .buttons a:visited{
+  float: left;
+  display: block;
+  background-color: #90A4AE;
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  background-size: 17px 17px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 5px;
+}
+
+.framesHolder .buttons a:hover{
+  background-color: #E91E63;
+  display: block;
+  color: white;
+}
+
+.framesHolder .buttons a:hover:after{
+  content: attr(hint);
+  position: absolute;
+  background-color: #455A64;
+  padding: 7px 10px;
+  border-radius: 5px;
+  width: auto;
+  box-sizing: border-box;
+  margin-top: 30px;
+  z-index: 999;
+  border-top-left-radius: 0;
+}
+
+#framesScroll{
+  overflow: auto;
+  box-sizing: border-box;
+  height: 60px;
+}
+
+#frames{
+  box-sizing: border-box;
+  width: 700px;
+  top: 16px;
+  position: relative;
+}
+
+#playToggle{
+  background-image: url(pause.png);
+}
+
+#newFrame{
+  background-image: url(plus.png);
+}
+
+#frames .frame{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 3px solid #455A64;
+  color: #455A64;
+  background-color: white;
+  float: left;
+  overflow: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  margin-left: 10px;
+}
+
+#frames .frame img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+#frames .frame .number{
+  display: block;
+  font-weight: 900;
+  margin-top: 5px;
+  z-index: 100;
+}
+
+.timeline{
+  width: 100%;
+  background-color: #455A64;
+  height: 3px;
+  position: absolute;
+  top: 30px;
+}
+
+#framesScroll::-webkit-scrollbar {
+   -webkit-appearance: none;
+}
+
+#framesScroll::-webkit-scrollbar:horizontal {
+    height: 3px;
+}
+
+#framesScroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #455A64;
+}

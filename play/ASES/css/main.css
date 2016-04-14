@@ -14,6 +14,10 @@ body{
   padding: 0;
 }
 
+.unbreakable{
+  display: inline-block;
+}
+
 .section.center{
   margin: auto;
   max-width: 1100px;
@@ -207,4 +211,155 @@ body{
 .section.about .right{
   float: right;
   width: 60%;
+}
+
+.section.majorevents .section.center{
+  max-width: 900px;
+}
+
+.section.majorevents .section.header{
+  font-family: 'melbournelight';
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-align: center;
+  font-size: 50px;
+  color: #b24744;
+  margin: 100px 0;
+  padding: 0;
+}
+
+.section.majorevents .event{
+  padding: 20px;
+  padding-top: 0;
+  box-sizing: border-box;
+}
+
+.section.majorevents .event .image{
+  width: 175px;
+  height: 175px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 200px;
+}
+
+.section.majorevents .event.left .image, .section.majorevents .event.right .content{
+  float: left;
+}
+
+.section.majorevents .event.right .image, .section.majorevents .event.left .content{
+  float: right;
+}
+
+.section.majorevents .event .content{
+  width: calc(100% - 175px);
+}
+
+.section.majorevents .event .content h1{
+  margin: 0;
+  padding: 0;
+  font-family: 'melbourneregular';
+  color: #0082bc;
+  padding: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 40px;
+}
+
+.section.majorevents .event .content h1 span{
+  color: #CCC;
+  font-family: 'melbournelight';
+}
+
+.section.majorevents .event.left .content h1{
+  text-align: left;
+  text-indent: -20px;
+  padding-left: 40px;
+}
+
+.section.majorevents .event.right .content h1{
+  text-align: right;
+}
+
+.section.majorevents .event .content p{
+  font-size: 15px;
+  line-height: 25px;
+  padding: 20px;
+  padding-top: 5px;
+  margin: 0;
+  text-align: justify;
+}
+
+.section.testimonials .test{
+  background-position: center;
+  background-size: cover;
+  /*
+  color: #333;
+  background: none !important;
+  /**/
+  color: white;
+  /**/
+}
+
+.section.testimonials .test .holder{
+  max-width: 900px;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 20px;
+  position: relative;
+}
+
+.section.testimonials .test .image{
+  background-position: center;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  float: left;
+}
+
+.section.testimonials .test .content{
+  float: left;
+  width: calc(100% - 100px);
+  box-sizing: border-box;
+  padding: 0 20px;
+  font-size: 16px;
+  line-height: 25px;
+  position: relative;
+}
+
+.section.testimonials .test .content .quote{
+  position: relative;
+  text-indent: 50px;
+  margin-top: 20px;
+}
+
+.section.testimonials .test .content .quote:before{
+  font-family: 'Times New Roman', 'Garamond', sans-serif;
+  position: absolute;
+  font-size: 150px;
+  letter-spacing: -10px;
+  opacity: 0.1;
+  top: 20px;
+  left: -70px;
+  content: "\2018\2018";
+}
+
+.section.testimonials .test .content .author{
+  text-align: right;
+  font-style: italic;
+  font-family: 'Avenir Next LT Pro Condensed';
+}
+
+.section.testimonials .section.header{
+  font-family: 'melbournelight';
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  background-color: #333;
+  padding: 100px 0;
+  margin: 0;
+  margin-top: 50px;
+  display: block;
 }

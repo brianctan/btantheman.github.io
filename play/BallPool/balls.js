@@ -156,9 +156,10 @@ Ball.prototype.update = function(){
 
   this.valueTransition += (this.bumps - this.valueTransition)/10;
 
-  var vel = 3;
+
   //var vel = 1 + this.valueTransition * 3;
   var vel = Math.min(5, Math.sqrt(this.vx * this.vx + this.vy * this.vy));
+  var vel = 3;
   //var vel = (Math.sqrt(this.vx * this.vx + this.vy * this.vy));
   var velAngle = Math.atan2(this.vy, this.vx);
 

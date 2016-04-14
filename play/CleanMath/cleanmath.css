@@ -1,0 +1,67 @@
+.cleanMath{
+  position: relative;
+  font-family: serif;
+  font-size: 20px;
+  vertical-align: middle;
+  cursor: default;
+}
+
+.cleanMath .clear{
+  clear: both;
+}
+
+.cleanMath div, .cleanMath span{
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.cleanMath .grouping{
+  border: 2px solid black;
+  border-top: 0;
+  border-bottom: 0;
+  border-radius: 7px;
+  padding: 2px 5px;
+  margin: 2px;
+}
+
+.cleanMath .symbol{
+  padding: 0 5px;
+}
+
+.cleanMath .fraction{
+  text-align: center;
+  margin: 0 2px;
+}
+
+.cleanMath .numerator{
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 0 5px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.cleanMath .denominator{
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.cleanMath .variable{
+  font-style: italic;
+}
+
+.cleanMath .exponent{
+  font-size: 75%;
+  position: relative;
+  padding-bottom: 30px;
+  /*
+  top: -15px;
+  margin-top: 15px;
+  padding: 3px;
+  */
+}
