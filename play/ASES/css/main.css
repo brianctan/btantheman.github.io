@@ -27,11 +27,12 @@ body{
   height: 100vh;
   width: 100vw;
   min-height: 500px;
+  box-sizing: border-box;
   background-image: url(../img/splashbg.png);
   background-size: cover;
   background-position: center center;
   position: relative;
-  min-width: 700px;
+  min-width: 400px;
 }
 
 .logoHolder{
@@ -230,35 +231,18 @@ body{
 
 .section.majorevents .event{
   padding: 20px;
-  padding-top: 0;
   box-sizing: border-box;
 }
 
-.section.majorevents .event .image{
-  width: 175px;
-  height: 175px;
-  background-position: center;
-  background-size: cover;
-  border-radius: 200px;
-}
-
-.section.majorevents .event.left .image, .section.majorevents .event.right .content{
-  float: left;
-}
-
-.section.majorevents .event.right .image, .section.majorevents .event.left .content{
-  float: right;
-}
-
-.section.majorevents .event .content{
-  width: calc(100% - 175px);
+.section.majorevents .event.left{
+  background-color: rgb(250, 250, 250);
 }
 
 .section.majorevents .event .content h1{
   margin: 0;
   padding: 0;
   font-family: 'melbourneregular';
-  color: #0082bc;
+  color: #b24744;
   padding: 20px;
   padding-top: 0;
   padding-bottom: 0;
@@ -270,16 +254,6 @@ body{
   font-family: 'melbournelight';
 }
 
-.section.majorevents .event.left .content h1{
-  text-align: left;
-  text-indent: -20px;
-  padding-left: 40px;
-}
-
-.section.majorevents .event.right .content h1{
-  text-align: right;
-}
-
 .section.majorevents .event .content p{
   font-size: 15px;
   line-height: 25px;
@@ -289,15 +263,52 @@ body{
   text-align: justify;
 }
 
+@media screen and (max-width: 550px){
+  .section.majorevents .event .image{
+    width: 100vw;
+    height: 175px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    top: -20px;
+    left: -20px;
+  }
+}
+
+@media screen and (min-width: 551px){
+  .section.majorevents .event .image{
+    width: 175px;
+    height: 175px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 200px;
+  }
+
+  .section.majorevents .event.left .image, .section.majorevents .event.right .content{
+    float: left;
+  }
+
+  .section.majorevents .event.right .image, .section.majorevents .event.left .content{
+    float: right;
+  }
+
+  .section.majorevents .event .content{
+    width: calc(100% - 175px);
+  }
+
+  .section.majorevents .event.right .content h1{
+    text-align: right;
+  }
+}
+
+
 .section.testimonials .test{
-  background-position: center;
   background-size: cover;
-  /*
   color: #333;
-  background: none !important;
-  /**/
-  color: white;
-  /**/
+  background-repeat: no-repeat;
+  background-position: -100vw 0;
+  padding-top: 10px;
+  transition: all 0.5s;
 }
 
 .section.testimonials .test .holder{
@@ -360,12 +371,13 @@ body{
   background-color: #333;
   padding: 100px 0;
   margin: 0;
-  margin-top: 50px;
   display: block;
+
+  margin-bottom: 30px;
 }
 
 .section.testimonials .section.header .sub{
   display: block;
   font-size: 20px;
-  letter-spacing: 7px;
+  letter-spacing: 3px;
 }
