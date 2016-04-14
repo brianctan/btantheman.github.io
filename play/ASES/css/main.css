@@ -363,3 +363,9 @@ body{
   margin-top: 50px;
   display: block;
 }
+
+.section.testimonials .section.header .sub{
+  display: block;
+  font-size: 20px;
+  letter-spacing: 7px;
+}
