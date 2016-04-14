@@ -218,17 +218,6 @@ body{
   max-width: 900px;
 }
 
-.section.majorevents .section.header{
-  font-family: 'melbournelight';
-  text-transform: uppercase;
-  letter-spacing: 10px;
-  text-align: center;
-  font-size: 50px;
-  color: #b24744;
-  margin: 100px 0;
-  padding: 0;
-}
-
 .section.majorevents .event{
   padding: 20px;
   box-sizing: border-box;
@@ -307,7 +296,7 @@ body{
   color: #333;
   background-repeat: no-repeat;
   background-position: -100vw 0;
-  padding-top: 10px;
+  padding: 5px 0;
   transition: all 0.5s;
 }
 
@@ -315,27 +304,45 @@ body{
   max-width: 900px;
   margin: auto;
   box-sizing: border-box;
-  padding: 20px;
   position: relative;
 }
 
-.section.testimonials .test .image{
-  background-position: center;
-  background-size: cover;
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
-  float: left;
-}
-
 .section.testimonials .test .content{
-  float: left;
-  width: calc(100% - 100px);
   box-sizing: border-box;
   padding: 0 20px;
   font-size: 16px;
   line-height: 25px;
   position: relative;
+}
+
+@media screen and (max-width: 640px){
+  .section.testimonials .test .image{
+    display: none;
+  }
+
+  .section.testimonials .test .holder{
+    padding: 0 20px;
+  }
+}
+
+@media screen and (min-width: 641px){
+  .section.testimonials .test .image{
+    background-position: center;
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    float: left;
+  }
+
+  .section.testimonials .test .content{
+    float: left;
+    width: calc(100% - 100px);
+  }
+
+  .section.testimonials .test .holder{
+    padding: 20px;
+  }
 }
 
 .section.testimonials .test .content .quote{
@@ -361,23 +368,48 @@ body{
   font-family: 'Avenir Next LT Pro Condensed';
 }
 
-.section.testimonials .section.header{
-  font-family: 'melbournelight';
-  text-transform: uppercase;
-  letter-spacing: 10px;
-  text-align: center;
-  font-size: 50px;
-  color: white;
-  background-color: #333;
-  padding: 100px 0;
-  margin: 0;
-  display: block;
+@media screen and (max-width: 560px){
+  .section .section.header{
+    font-size: 30px;
+    letter-spacing: 5px;
+    padding: 50px 0;
+  }
 
-  margin-bottom: 30px;
+  .section.testimonials .section.header .sub{
+    display: block;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
 }
 
-.section.testimonials .section.header .sub{
-  display: block;
-  font-size: 20px;
-  letter-spacing: 3px;
+@media screen and (min-width: 561px){
+  .section .section.header{
+    font-size: 50px;
+    letter-spacing: 10px;
+    padding: 100px 0;
+  }
+
+  .section.testimonials .section.header .sub{
+    display: block;
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+}
+
+.section .section.header{
+  font-family: 'melbournelight';
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+.section.majorevents .section.header{
+  color: #b24744;
+}
+
+.section.testimonials .section.header{
+  background-color: #333;
+  color: white;
+
+  margin-bottom: 30px;
 }
