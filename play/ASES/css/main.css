@@ -372,7 +372,7 @@ body{
   .section .section.header{
     font-size: 30px;
     letter-spacing: 5px;
-    padding: 50px 0;
+    padding: 50px 30px;
   }
 
   .section.testimonials .section.header .sub{
@@ -386,7 +386,7 @@ body{
   .section .section.header{
     font-size: 50px;
     letter-spacing: 10px;
-    padding: 100px 0;
+    padding: 100px 50px;
   }
 
   .section.testimonials .section.header .sub{
