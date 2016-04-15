@@ -1,10 +1,10 @@
 @import url(fonts/avenir-next-lt-pro/style.css);
 @import url(fonts/melbourne-webfontkit-20160330-112725/stylesheet.css);
-@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+/*@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);*/
 
 body{
   margin: 0;
-  font-size: 12px;
+  font-size: 15px;
   font-family: 'Avenir Next LT Pro Regular', sans-serif;
 }
 
@@ -236,6 +236,7 @@ body{
   padding-top: 0;
   padding-bottom: 0;
   line-height: 40px;
+  font-size: 27px;
 }
 
 .section.majorevents .event .content h1 span{
@@ -448,4 +449,49 @@ body{
 .section.sponsors .logos img{
   max-width: 200px;
   width: 50%;
+}
+
+.section.ases{
+  min-height: 100vh;
+}
+
+.section.ases .logos img{
+  width: 100%;
+  max-width: 300px;
+  display: inline-block;
+}
+
+.section.ases .valign{
+  margin: 0;
+  width: 100vw;
+  padding-top: calc(50vh - 248px);
+}
+
+.section.ases .hot{
+  font-size: 26px;
+  text-align: center;
+  padding: 50px 50px;
+  padding-bottom: 20px;
+  font-family: 'Avenir Next LT Pro Regular';
+}
+
+.section.ases .logos{
+  text-align: right;
+  width: 50vw;
+  float: left;
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+.section.ases .content p{
+  max-width: 300px;
+  line-height: 25px;
+  text-align: justify;
+}
+
+.section.ases .content{
+  padding: 50px;
+  box-sizing: border-box;
+  width: 50vw;
+  float: right;
 }
