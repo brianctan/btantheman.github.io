@@ -25,7 +25,6 @@ body{
 
 .section.splash{
   height: 100vh;
-  width: 100vw;
   min-height: 500px;
   box-sizing: border-box;
   background-image: url(../img/splashbg.png);
@@ -261,6 +260,7 @@ body{
     position: relative;
     top: -20px;
     left: -20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -368,6 +368,10 @@ body{
   font-family: 'Avenir Next LT Pro Condensed';
 }
 
+.section.testimonials{
+  padding-bottom: 20px;
+}
+
 @media screen and (max-width: 560px){
   .section .section.header{
     font-size: 30px;
@@ -379,6 +383,10 @@ body{
     display: block;
     font-size: 15px;
     letter-spacing: 0.5px;
+  }
+
+  .section.sponsors .logos{
+    padding-bottom: 50px;
   }
 }
 
@@ -393,6 +401,10 @@ body{
     display: block;
     font-size: 20px;
     letter-spacing: 3px;
+  }
+
+  .section.sponsors .logos{
+    padding-bottom: 100px;
   }
 }
 
@@ -412,4 +424,26 @@ body{
   color: white;
 
   margin-bottom: 30px;
+}
+
+.section.sponsors .section.header{
+  color: #666;
+  padding-bottom: 50px;
+}
+
+.section.sponsors{
+  background-color: rgb(240, 240, 240);
+  text-align: center;
+}
+
+.section.sponsors .logos{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0;
+  max-width: 1600px;
+}
+
+.section.sponsors .logos img{
+  max-width: 200px;
+  width: 50%;
 }
