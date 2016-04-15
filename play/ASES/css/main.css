@@ -157,6 +157,7 @@ body{
   width: 40px;
   transition: all 2s;
   opacity: 1;
+  text-decoration: none;
 }
 
 .learnMoreButton span{
