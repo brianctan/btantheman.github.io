@@ -254,14 +254,14 @@ body{
 
 @media screen and (max-width: 550px){
   .section.majorevents .event .image{
-    width: calc(100vw - 15px);
-    box-sizing: border-box;
     height: 175px;
     background-position: center;
     background-size: cover;
     position: relative;
     top: -20px;
     left: -20px;
+    width: 100%;
+    padding: 20px;
     margin-bottom: 20px;
   }
 }
