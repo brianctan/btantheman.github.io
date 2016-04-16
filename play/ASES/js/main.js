@@ -47,7 +47,13 @@ function smoothScrollUpdate(){
   windowScroll += ((scrollTarget - windowScroll)/scrollEase);
   document.body.scrollTop = Math.round(windowScroll);
   if(Math.round(windowScroll - scrollTarget) == 0) stopScrolling = true;
-  if(!stopScrolling) window.requestAnimationFrame(smoothScrollUpdate);
+  if(!stopScrolling){
+    if(window.requestAnimationFrame){
+      window.requestAnimationFrame(smoothScrollUpdate);
+    } else{
+      setTimeout(smoothScrollUpdate, 1000/30);
+    }
+  }
 }
 
 function smoothScroll(e){

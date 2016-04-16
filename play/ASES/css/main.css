@@ -215,7 +215,7 @@ body{
 }
 
 .section.majorevents .section.center{
-  max-width: 900px;
+  max-width: 1100px;
 }
 
 .section.majorevents .event{
@@ -300,7 +300,6 @@ body{
   background-repeat: no-repeat;
   background-position: -100vw 0;
   padding: 5px 0;
-  transition: all 0.5s;
 }
 
 .section.testimonials .test .holder{
@@ -419,11 +418,22 @@ body{
 }
 
 .section.majorevents .section.header{
-  color: #b24744;
+  background-color: #b24744;
+  color: white;
+}
+
+.section.majordetails .section.header{
+  background-color: #40a4d8;
+  color: white;
+}
+
+.section.three .section.header{
+  background-color: #ffc059;
+  color: white;
 }
 
 .section.testimonials .section.header{
-  background-color: #333;
+  background-color: #627e87;
   color: white;
 
   margin-bottom: 30px;
@@ -447,12 +457,15 @@ body{
 }
 
 .section.sponsors .logos img{
-  max-width: 200px;
+  max-width: 300px;
   width: 50%;
 }
 
 .section.ases{
   min-height: 100vh;
+  background-image: url(../img/texture.jpg);
+  color: white;
+  background-position: center;
 }
 
 .section.ases .logos img{
@@ -463,21 +476,23 @@ body{
 
 .section.ases .valign{
   margin: 0;
-  width: 100vw;
-  padding-top: calc(50vh - 248px);
+  width: 100%;
+  padding-top: calc(50vh - 300px);
 }
 
-.section.ases .hot{
-  font-size: 26px;
+.section.ases .hot div{
+  font-size: 50px;
   text-align: center;
   padding: 50px 50px;
   padding-bottom: 20px;
-  font-family: 'Avenir Next LT Pro Regular';
+  font-family: 'Avenir Next';
+  font-weight: 100;
+  letter-spacing: 0px;
 }
 
 .section.ases .logos{
   text-align: right;
-  width: 50vw;
+  width: 50%;
   float: left;
   box-sizing: border-box;
   padding: 50px;
@@ -485,13 +500,204 @@ body{
 
 .section.ases .content p{
   max-width: 300px;
-  line-height: 25px;
+  line-height: 28px;
   text-align: justify;
+  font-size: 17px;
 }
 
 .section.ases .content{
   padding: 50px;
   box-sizing: border-box;
-  width: 50vw;
+  width: 50%;
   float: right;
+}
+
+.section.three .columns{
+  max-width: 1302px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.section.three .column .header{
+  font-size: 25px;
+  letter-spacing: 2px;
+  background-color: #ffc059;
+  color: white;
+  font-family: 'Avenir Next LT Pro Condensed';
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 20px;
+  margin: 10px;
+  margin-right: 20px;
+  position: relative;
+}
+
+.section.three .column .header:before{
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/triangle_dark_yellow.png);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  content: " ";
+}
+
+.section.three .column .image{
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  background-image: url(../img/texture.jpg);
+  border-radius: 150px;
+  margin: 50px auto;
+}
+
+.section.three .column .content{
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px 60px 0px 60px;
+  text-align: justify;
+  line-height: 25px;
+  max-width: 434px;
+}
+
+.section.three .column{
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media screen and (min-width: 650px){
+  .section.three .column .lastClear{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 651px){
+  .section.three .column{
+    float: left;
+  }
+}
+
+@media screen and (min-width: 651px) and (max-width: 901px){
+  .section.three .column{
+    width: 50%;
+  }
+
+  .section.three .column .lastClear{
+    clear: both;
+  }
+
+  .section.three .column.last{
+    clear: both;
+    float: none;
+    margin: auto;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 903px){
+  .section.three .column{
+    width: 33.33%;
+    max-width: 434px;
+  }
+
+  .section.three .column .lastClear{
+    display: none;
+  }
+}
+
+
+.section.majordetails .theme{
+  padding: 20px;
+}
+
+.section.majordetails .theme .sub{
+  font-size: 16px;
+  letter-spacing: 2px;
+  background-color: #40a4d8;
+  color: white;
+  font-family: 'Avenir Next LT Pro Condensed';
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 20px;
+  margin: 10px;
+  margin-right: 20px;
+  position: relative;
+  max-width: 200px;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.section.majordetails .theme .sub:before{
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/triangle_dark_blue.png);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  content: " ";
+  transform: rotate(-90deg);
+}
+
+.section.majordetails .theme .header{
+  font-size: 30px;
+  letter-spacing: 2px;
+  background-color: #40a4d8;
+  color: white;
+  font-family: 'Avenir Next LT Pro Condensed';
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 20px;
+  margin: 10px;
+  margin-right: 20px;
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.section.majordetails .theme .header:before{
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/triangle_dark_blue.png);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  content: " ";
+}
+
+.section.majordetails .theme .content{
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 2px;
+  background-color: #40a4d8;
+  color: white;
+  font-family: 'Avenir Next LT Pro Condensed';
+  text-align: center;
+  padding: 15px 20px;
+  margin: 10px;
+  margin-right: 20px;
+  position: relative;
+  max-width: 350px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.section.majordetails .theme .content:before{
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/triangle_dark_blue.png);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  content: " ";
+  transform: rotate(-90deg);
 }
