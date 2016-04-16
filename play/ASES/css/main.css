@@ -701,3 +701,31 @@ body{
   content: " ";
   transform: rotate(-90deg);
 }
+
+.section.majordetails .columns{
+
+}
+
+.section.majordetails .column{
+  float: left;
+  width: 50%;
+}
+
+.section.majordetails .colClear{
+  clear: both;
+}
+
+#people{
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  max-width: 640px;
+  margin: auto;
+}
+
+.section.majordetails #people img{
+  width: 25px;
+  height: auto;
+  display: inline-block;
+  margin: 2px;
+}
