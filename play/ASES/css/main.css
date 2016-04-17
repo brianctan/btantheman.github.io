@@ -706,6 +706,7 @@ body{
 .section.majordetails .columns{
   max-width: 700px;
   margin: auto;
+  padding: 20px 0;
 }
 
 @media screen and (max-width: 650px){
@@ -748,6 +749,14 @@ body{
 .section.majordetails .detail{
   background-color: rgb(240, 240, 240);
   display: inline-block;
+}
+
+.section.majordetails .calendar{
+  width: calc(100% - 100px);
+  max-width: 300px;
+  margin: auto;
+  display: block;
+  box-sizing: border-box;
 }
 
 .section.majordetails .detail .label{
