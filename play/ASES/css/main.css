@@ -887,3 +887,23 @@ body{
   color: black;
   background-color: white;
 }
+
+.section.contact .section.header{
+  padding-bottom: 20px;
+  padding-top: 100px;
+}
+
+.section.contact .center{
+  max-width: 370px;
+  margin: auto;
+  padding: 0 20px;
+  padding-bottom: 100px;
+}
+
+.section.contact img{
+  width: 50px;
+}
+
+.section.contact a{
+  color: white;
+}
