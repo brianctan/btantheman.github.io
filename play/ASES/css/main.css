@@ -610,6 +610,7 @@ body{
 
 .section.majordetails .theme{
   padding: 20px;
+  background-color: rgb(240, 240, 240);
 }
 
 .section.majordetails .theme .sub{
@@ -703,13 +704,22 @@ body{
 }
 
 .section.majordetails .columns{
+  max-width: 700px;
+  margin: auto;
+}
+
+@media screen and (max-width: 650px){
 
 }
 
-.section.majordetails .column{
-  float: left;
-  width: 50%;
+@media screen and (min-width: 651px){
+  .section.majordetails .column{
+    float: left;
+    width: 50%;
+  }
 }
+
+
 
 .section.majordetails .colClear{
   clear: both;
@@ -728,4 +738,30 @@ body{
   height: auto;
   display: inline-block;
   margin: 2px;
+}
+
+.section.majordetails .detailHolder{
+  text-align: center;
+  padding: 10px;
+}
+
+.section.majordetails .detail{
+  background-color: rgb(240, 240, 240);
+  display: inline-block;
+}
+
+.section.majordetails .detail .label{
+  background-color: rgb(240, 240, 240);
+  color: #555;
+  font-family: 'melbournebold';
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.section.majordetails .detail .value{
+  background-color: #40a4d8;
+  color: white;
+  padding: 10px 20px;
+  font-family: 'melbournelight';
+  font-size: 30px;
 }
