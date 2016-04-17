@@ -100,10 +100,17 @@ body{
   padding: 10px;
 }
 
+.splash .pitch{
+  width: 100%;
+  position: relative;
+}
+
 .splash .text{
   border-bottom: 1px solid white;
   border-top: 1px solid white;
   max-width: 450px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .logoText span{
