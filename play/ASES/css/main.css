@@ -1,6 +1,6 @@
 @import url(fonts/avenir-next-lt-pro/style.css);
 @import url(fonts/melbourne-webfontkit-20160330-112725/stylesheet.css);
-/*@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);*/
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 body{
   margin: 0;
@@ -854,11 +854,6 @@ body{
   padding-top: calc(50vh - 250px);
 }
 
-.section.contact{
-  background-color: #333;
-  color: white;
-}
-
 .section.apply .logo{
   display: block;
   margin: 15px auto;
@@ -886,6 +881,11 @@ body{
 .section.apply .applyButton:hover{
   color: black;
   background-color: white;
+}
+
+.section.contact{
+  background-color: #222;
+  color: white;
 }
 
 .section.contact .section.header{
