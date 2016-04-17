@@ -91,53 +91,19 @@ body{
   color: #333;
 }
 
-.floatingSplash{
-  font-size: 40px;
-  font-family: 'melbournelight', sans-serif;
+.splash .text, .splash .text2{
+  font-size: 30px;
+  font-family: 'melbournelight';
   color: white;
-  width: 352px;
-  height: 90px;
+  margin: auto;
   text-align: center;
-  line-height: 50px;
-  opacity: 1;
-  transition: 1s all;
-  position: absolute;
-  left: calc(50% - 176px);
-  top: calc(50% - 75px);
+  padding: 10px;
 }
 
-.floatingSplash.pre{
-  top: 50%;
-  opacity: 0;
-}
-
-.splash .applyButton:link, .splash .applyButton:visited{
-  padding: 15px 30px;
-  border: 3px solid white;
-  color: white;
-  font-size: 15px;
-  border-radius: 10px;
-  position: absolute;
-  left: calc(50% - 76px);
-  top: calc(50% + 50px);
-  text-align: center;
-  display: block;
-  box-sizing: border-box;
-  width: 152px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: 0.2s background-color, 0.2s color, 1s top, 1s opacity;
-  opacity: 1;
-}
-
-.splash .applyButton.pre{
-  top: calc(50% + 150px);
-  opacity: 0;
-}
-
-.splash .applyButton:hover{
-  background-color: white;
-  color: black;
+.splash .text{
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  max-width: 450px;
 }
 
 .logoText span{
@@ -861,7 +827,7 @@ body{
   max-width: 200px;
 }
 
-.section.apply .applyButton{
+.applyButton{
   padding: 15px 30px;
   border: 3px solid white;
   color: white;
@@ -878,7 +844,7 @@ body{
   margin: 20px auto;
 }
 
-.section.apply .applyButton:hover{
+.applyButton:hover{
   color: black;
   background-color: white;
 }
