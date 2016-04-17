@@ -67,3 +67,59 @@ function smoothScroll(e){
   }
   e.preventDefault();
 }
+
+function countimate(start, end, ease, action){
+  function loop(){
+    start += (end - start)/ease;
+    action(start);
+    if(Math.round(start - end) != 0){
+      window.requestAnimationFrame(loop);
+    }
+  }
+  loop();
+}
+
+var animScroll = [
+  {
+    id: "people",
+    anim: function(){
+      countimate(0, 40, 20, function(s){
+        document.getElementById("delegateCount").innerHTML = Math.round(s);
+        for(var i = 1; i <= Math.round(s); i++){
+          if(document.getElementById("person" + i).className == "hidden") document.getElementById("person" + i).className = "";
+        }
+      });
+    },
+    done: false
+  },
+  {
+    id: "earlybirdPrice",
+    anim: function(){
+      countimate(0, 350, 20, function(s){
+        document.getElementById("earlybirdPrice").innerHTML = "$" + Math.round(s);
+      });
+    },
+    done: false
+  },
+  {
+    id: "regularPrice",
+    anim: function(){
+      countimate(0, 400, 20, function(s){
+        document.getElementById("regularPrice").innerHTML = "$" + Math.round(s);
+      });
+    },
+    done: false
+  }
+];
+
+document.addEventListener("scroll", function(){
+  for(var i = 0; i < animScroll.length; i++){
+    var as = animScroll[i];
+    if(as.done) continue;
+    var elem = document.getElementById(as.id);
+    if(elem.offsetTop + elem.offsetHeight <= windowScroll + window.innerHeight && elem.offsetTop >= windowScroll && !as.done){
+      as.anim();
+      as.done = true;
+    }
+  }
+}, false);

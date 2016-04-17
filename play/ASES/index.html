@@ -85,7 +85,7 @@
     <h1 class="section header">Major Details</h1>
     <div class="theme">
       <div class="sub">Theme of the Summit</div>
-      <div class="header">Social Techno-preneurship</div>
+      <div class="header">Social Techno<wbr/>preneurship</div>
       <div class="content">Using technology to create scalable impact in emerging markets</div>
     </div>
     <div class="columns">
@@ -93,18 +93,18 @@
         <div class="detailHolder">
           <div class="detail">
             <div class="label">No. of Delegates</div>
-            <div class="value">40</div>
+            <div class="value" id="delegateCount">0</div>
           </div>
         </div>
         <div id="people">
-          <img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" /><img src="img/person_dark_blue.png" />
+          <img src="img/person_dark_blue.png" id="person1" class="hidden"><img src="img/person_dark_blue.png" id="person2" class="hidden"><img src="img/person_dark_blue.png" id="person3" class="hidden"><img src="img/person_dark_blue.png" id="person4" class="hidden"><img src="img/person_dark_blue.png" id="person5" class="hidden"><img src="img/person_dark_blue.png" id="person6" class="hidden"><img src="img/person_dark_blue.png" id="person7" class="hidden"><img src="img/person_dark_blue.png" id="person8" class="hidden"><img src="img/person_dark_blue.png" id="person9" class="hidden"><img src="img/person_dark_blue.png" id="person10" class="hidden"><img src="img/person_dark_blue.png" id="person11" class="hidden"><img src="img/person_dark_blue.png" id="person12" class="hidden"><img src="img/person_dark_blue.png" id="person13" class="hidden"><img src="img/person_dark_blue.png" id="person14" class="hidden"><img src="img/person_dark_blue.png" id="person15" class="hidden"><img src="img/person_dark_blue.png" id="person16" class="hidden"><img src="img/person_dark_blue.png" id="person17" class="hidden"><img src="img/person_dark_blue.png" id="person18" class="hidden"><img src="img/person_dark_blue.png" id="person19" class="hidden"><img src="img/person_dark_blue.png" id="person20" class="hidden"><img src="img/person_dark_blue.png" id="person21" class="hidden"><img src="img/person_dark_blue.png" id="person22" class="hidden"><img src="img/person_dark_blue.png" id="person23" class="hidden"><img src="img/person_dark_blue.png" id="person24" class="hidden"><img src="img/person_dark_blue.png" id="person25" class="hidden"><img src="img/person_dark_blue.png" id="person26" class="hidden"><img src="img/person_dark_blue.png" id="person27" class="hidden"><img src="img/person_dark_blue.png" id="person28" class="hidden"><img src="img/person_dark_blue.png" id="person29" class="hidden"><img src="img/person_dark_blue.png" id="person30" class="hidden"><img src="img/person_dark_blue.png" id="person31" class="hidden"><img src="img/person_dark_blue.png" id="person32" class="hidden"><img src="img/person_dark_blue.png" id="person33" class="hidden"><img src="img/person_dark_blue.png" id="person34" class="hidden"><img src="img/person_dark_blue.png" id="person35" class="hidden"><img src="img/person_dark_blue.png" id="person36" class="hidden"><img src="img/person_dark_blue.png" id="person37" class="hidden"><img src="img/person_dark_blue.png" id="person38" class="hidden"><img src="img/person_dark_blue.png" id="person39" class="hidden"><img src="img/person_dark_blue.png" id="person40" class="hidden">
         </div>
       </div>
       <div class="column">
         <div class="detailHolder">
           <div class="detail">
             <div class="label">Target Date</div>
-            <div class="value">July 25-31, 2016</div>
+            <div class="value">July 24-30, 2016</div>
           </div>
         </div>
         <img src="img/calendar.png" class="calendar" />
@@ -114,19 +114,19 @@
         <div class="detailHolder">
           <div class="detail">
             <div class="label">Earlybird Pricing</div>
-            <div class="value">$350</div>
+            <div class="value big" id="earlybirdPrice">$0</div>
           </div>
         </div>
-        The Earlybird ticket is available until May 9, 2016.
+        <div class="pricetext">The Earlybird ticket is available until May 9, 2016.</div>
       </div>
       <div class="column">
         <div class="detailHolder">
           <div class="detail">
             <div class="label">Regular Pricing</div>
-            <div class="value">$400</div>
+            <div class="value big" id="regularPrice">$0</div>
           </div>
         </div>
-        The Earlybird ticket is available until May 24, 2016.
+        <div class="pricetext">The Earlybird ticket is available until May 24, 2016.</div>
       </div>
       <br class="clear" />
     </div>

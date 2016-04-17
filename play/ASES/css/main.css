@@ -739,6 +739,16 @@ body{
   height: auto;
   display: inline-block;
   margin: 2px;
+  transition: all 0.5s;
+  opacity: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.section.majordetails #people img.hidden{
+  opacity: 0;
+  top: 10px;
 }
 
 .section.majordetails .detailHolder{
@@ -773,4 +783,14 @@ body{
   padding: 10px 20px;
   font-family: 'melbournelight';
   font-size: 30px;
+}
+
+.section.majordetails .detail .value.big{
+  font-size: 50px;
+}
+
+.section.majordetails .pricetext{
+  text-align: center;
+  padding: 20px;
+  color: #999;
 }
