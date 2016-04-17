@@ -27,7 +27,7 @@ body{
   height: 100vh;
   min-height: 500px;
   box-sizing: border-box;
-  background-image: url(../img/splashbg.png);
+  background-image: url(../img/splashbg.jpg);
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -111,7 +111,7 @@ body{
   opacity: 0;
 }
 
-.applyButton:link, .applyButton:visited{
+.splash .applyButton:link, .splash .applyButton:visited{
   padding: 15px 30px;
   border: 3px solid white;
   color: white;
@@ -130,12 +130,12 @@ body{
   opacity: 1;
 }
 
-.applyButton.pre{
+.splash .applyButton.pre{
   top: calc(50% + 150px);
   opacity: 0;
 }
 
-.applyButton:hover{
+.splash .applyButton:hover{
   background-color: white;
   color: black;
 }
@@ -827,4 +827,63 @@ body{
   text-align: center;
   padding: 20px;
   color: #999;
+}
+
+.section.apply{
+  color: white;
+  background-image: url(../img/white_mountains.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+}
+
+.section.apply .pitch{
+  text-align: center;
+  padding: 50px;
+  padding-bottom: 150px;
+  position: relative;
+}
+
+.section.apply .center .text{
+  font-size: 40px;
+  font-family: 'melbournelight';
+}
+
+.section.apply .center{
+  padding-top: calc(50vh - 250px);
+}
+
+.section.contact{
+  background-color: #333;
+  color: white;
+}
+
+.section.apply .logo{
+  display: block;
+  margin: 15px auto;
+  width: calc(100% - 50px);
+  max-width: 200px;
+}
+
+.section.apply .applyButton{
+  padding: 15px 30px;
+  border: 3px solid white;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  width: 170px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.2s background-color, 0.2s color, 1s top, 1s opacity;
+  opacity: 1;
+  margin: 20px auto;
+}
+
+.section.apply .applyButton:hover{
+  color: black;
+  background-color: white;
 }

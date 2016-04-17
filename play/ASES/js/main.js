@@ -58,7 +58,6 @@ function smoothScrollUpdate(){
 
 function smoothScroll(e){
   var goto = document.getElementById(this.getAttribute("data-link-id"));
-  console.log(goto);
   if(goto){
     scrollTarget = goto.offsetTop;
     scrollEase = Math.abs(scrollTarget - windowScroll)/150;
@@ -85,7 +84,7 @@ var animScroll = [
   {
     id: "people",
     anim: function(){
-      countimate(1, 40, 20, function(s, p){
+      countimate(1, 40, 40, function(s, p){
         document.getElementById("delegateCount").innerHTML = Math.round(s);
         for(var i = Math.round(p); i <= Math.round(s); i++){
           if(document.getElementById("person" + i).className == "hidden"){
