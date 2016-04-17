@@ -69,9 +69,11 @@ function smoothScroll(e){
 }
 
 function countimate(start, end, ease, action){
+  var prev = start;
   function loop(){
+    prev = start;
     start += (end - start)/ease;
-    action(start);
+    action(start, prev);
     if(Math.round(start - end) != 0){
       window.requestAnimationFrame(loop);
     }
@@ -83,10 +85,12 @@ var animScroll = [
   {
     id: "people",
     anim: function(){
-      countimate(0, 40, 20, function(s){
+      countimate(1, 40, 20, function(s, p){
         document.getElementById("delegateCount").innerHTML = Math.round(s);
-        for(var i = 1; i <= Math.round(s); i++){
-          if(document.getElementById("person" + i).className == "hidden") document.getElementById("person" + i).className = "";
+        for(var i = Math.round(p); i <= Math.round(s); i++){
+          if(document.getElementById("person" + i).className == "hidden"){
+            document.getElementById("person" + i).className = "";
+          }
         }
       });
     },
@@ -112,14 +116,17 @@ var animScroll = [
   }
 ];
 
-document.addEventListener("scroll", function(){
+document.addEventListener("scroll", checkAnimScroll, false);
+window.addEventListener("load", checkAnimScroll, false);
+
+function checkAnimScroll(){
   for(var i = 0; i < animScroll.length; i++){
     var as = animScroll[i];
     if(as.done) continue;
     var elem = document.getElementById(as.id);
-    if(elem.offsetTop + elem.offsetHeight <= windowScroll + window.innerHeight && elem.offsetTop >= windowScroll && !as.done){
+    if(elem.offsetTop + elem.offsetHeight/2 <= document.body.scrollTop + window.innerHeight && elem.offsetTop + elem.offsetHeight/2 >= document.body.scrollTop && !as.done){
       as.anim();
       as.done = true;
     }
   }
-}, false);
+}

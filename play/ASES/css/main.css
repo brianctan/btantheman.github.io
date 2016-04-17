@@ -471,16 +471,9 @@ body{
 .section.ases .logos img{
   width: 100%;
   max-width: 300px;
-  display: inline-block;
 }
 
-.section.ases .valign{
-  margin: 0;
-  width: 100%;
-  padding-top: calc(50vh - 300px);
-}
-
-.section.ases .hot div{
+.section.ases .hot{
   font-size: 50px;
   text-align: center;
   padding: 50px 50px;
@@ -491,25 +484,66 @@ body{
 }
 
 .section.ases .logos{
-  text-align: right;
-  width: 50%;
-  float: left;
-  box-sizing: border-box;
-  padding: 50px;
+  padding: 0px 50px;
+  padding-top: 20px;
 }
 
 .section.ases .content p{
-  max-width: 300px;
   line-height: 28px;
   text-align: justify;
   font-size: 17px;
 }
 
-.section.ases .content{
-  padding: 50px;
-  box-sizing: border-box;
-  width: 50%;
-  float: right;
+.section.ases .valign{
+  padding-bottom: 50px;
+}
+
+@media screen and (max-width: 800px){
+  .section.ases .logos img{
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin: auto;
+  }
+
+  .section.ases .logos{
+    text-align: center;
+  }
+
+  .section.ases .content{
+    padding: 0 50px;
+  }
+}
+
+@media screen and (min-width: 801px){
+  .section.ases .logos img{
+    display: inline-block;
+  }
+
+  .section.ases .valign{
+    margin: 0;
+    width: 100%;
+    padding-top: calc(50vh - 288px);
+  }
+
+  .section.ases .logos{
+    text-align: right;
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+  }
+
+  .section.ases .content{
+    padding: 0 50px;
+    padding-left: 0;
+    box-sizing: border-box;
+    width: 50%;
+    float: right;
+  }
+
+  .section.ases .content p{
+    max-width: 380px;
+  }
 }
 
 .section.three .columns{
