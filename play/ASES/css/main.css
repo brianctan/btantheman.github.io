@@ -555,8 +555,8 @@ body{
   width: 150px;
   height: 150px;
   margin: auto;
-  background-image: url(../img/texture.jpg);
-  border-radius: 150px;
+  background-position: center;
+  background-size: cover;
   margin: 50px auto;
 }
 

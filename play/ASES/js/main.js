@@ -31,9 +31,11 @@ function setLinkFunctions(){
 
   document.addEventListener("mousewheel", smoothScrollStop, false);
   document.addEventListener("touchstart", smoothScrollStop, false);
-  document.addEventListener("mousedown", smoothScrollStop, false);
+  //document.addEventListener("mousedown", smoothScrollStop, false);
   document.addEventListener("keydown", smoothScrollStop, false);
   window.addEventListener("resize", smoothScrollStop, false);
+
+  windowScroll = document.body.scrollTop;
 
   document.addEventListener("scroll", function(){
     windowScroll = document.body.scrollTop;
