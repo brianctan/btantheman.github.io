@@ -31,7 +31,7 @@ function setLinkFunctions(){
 
   document.addEventListener("mousewheel", smoothScrollStop, false);
   document.addEventListener("touchstart", smoothScrollStop, false);
-  //document.addEventListener("mousedown", smoothScrollStop, false);
+  document.addEventListener("mousedown", smoothScrollStop, false);
   document.addEventListener("keydown", smoothScrollStop, false);
   window.addEventListener("resize", smoothScrollStop, false);
 
@@ -50,6 +50,7 @@ function smoothScrollUpdate(){
   windowScroll += ((scrollTarget - windowScroll)/scrollEase);
   document.body.scrollTop = Math.round(windowScroll);
   if(Math.round(windowScroll - scrollTarget) == 0) stopScrolling = true;
+  console.log(scrollTarget - windowScroll);
   if(!stopScrolling){
     if(window.requestAnimationFrame){
       window.requestAnimationFrame(smoothScrollUpdate);
