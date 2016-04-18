@@ -1,6 +1,7 @@
 @import url(fonts/avenir-next-lt-pro/style.css);
 @import url(fonts/melbourne-webfontkit-20160330-112725/stylesheet.css);
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,100);
 
 body{
   margin: 0;
@@ -510,8 +511,13 @@ body{
   color: white;
 }
 
-.section.three .section.header, .section.speakers .section.header{
+.section.three .section.header{
   background-color: #ffc059;
+  color: white;
+}
+
+.section.speakers .section.header{
+  background-color: #c66431;
   color: white;
 }
 
@@ -599,7 +605,7 @@ body{
   text-align: center;
   padding: 50px 50px;
   padding-bottom: 20px;
-  font-family: 'Avenir Next';
+  font-family: 'Work Sans';
   font-weight: 100;
   letter-spacing: 0px;
 }
@@ -1053,6 +1059,7 @@ body{
   overflow: auto;
   overflow-y: hidden;
   box-sizing: border-box;
+  background-color: #000;
 }
 
 @media screen and (min-width: 722px) and (max-width: 1023px){
