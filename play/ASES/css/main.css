@@ -31,7 +31,7 @@ body{
   background-size: cover;
   background-position: center center;
   position: relative;
-  min-width: 400px;
+  overflow: hidden;
 }
 
 .logoHolder{
@@ -56,39 +56,124 @@ body{
   color: white;
 }
 
-.navlinks{
-  float: right;
-  margin-right: 25px;
-}
-
 .navlinks ul, .navlinks li{
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.navlinks li{
-  display: inline-block;
+@media screen and (max-width: 280px){
+  .splash .logo{
+    display: none;
+  }
+
+  .splash .logoText{
+    margin-bottom: 10px;
+    margin-top: 11px;
+  }
 }
 
-.navlinks li a:link, .navlinks li a:visited{
-  color: white;
-  display: block;
-  padding: 37px 15px;
-  font-size: 12px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  background-position: center -240px;
-  background-size: 200px auto;
-  background-repeat: no-repeat;
-  font-family: 'Avenir Next LT Pro Medium Condensed', sans-serif;
-  background-image: url(../img/banner_white.png);
+@media screen and (max-width: 415px){
+  .splash .logoText{
+    font-size: 15px;
+  }
+
+  .splash .logo{
+    height: 30px;
+    margin: 10px 0;
+  }
 }
 
-.navlinks li a:hover{
-  background-position: center -150px;
-  color: #333;
+@media screen and (max-width: 951px){
+  .navlinks{
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+    top: 90px;
+    transition: all 0.2s;
+  }
+
+  .navlinks.hidden{
+    right: -100vw;
+  }
+
+  .navlinks ul{
+    width: 100vw;
+    display: block;
+    max-width: 320px;
+  }
+
+  .navlinks li a:link, .navlinks li a:visited{
+    color: #555;
+    text-decoration: none;
+    display: block;
+    background-color: rgba(240, 240, 240, 1);
+    padding: 15px 20px;
+    box-sizing: border-box;
+    transition: background-color 0.2s;
+  }
+
+  .navlinks li a:hover{
+    color: black;
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  #hamburger{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    background-image: url(../img/hamburger+arrow.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top left;
+    margin: 32px;
+    margin-left: 0;
+    margin-right: 25px;
+    transition: transform 0.2s;
+  }
+
+  #hamburger.arrow{
+    background-position: bottom left;
+    transform: rotate(90deg);
+  }
+}
+
+@media screen and (min-width: 952px){
+  #hamburger{
+    display: none;
+  }
+
+  .navlinks{
+    float: right;
+    margin-right: 25px;
+  }
+
+  .navlinks li{
+    display: inline-block;
+  }
+
+  .navlinks li a:link, .navlinks li a:visited{
+    color: white;
+    display: block;
+    padding: 37px 15px;
+    font-size: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    background-position: center -240px;
+    background-size: 200px auto;
+    background-repeat: no-repeat;
+    font-family: 'Avenir Next LT Pro Medium Condensed', sans-serif;
+    background-image: url(../img/banner_white.png);
+  }
+
+  .navlinks li a:hover{
+    background-position: center -150px;
+    color: #333;
+  }
 }
 
 .splash .text, .splash .text2{
@@ -103,6 +188,7 @@ body{
 .splash .pitch{
   width: 100%;
   position: relative;
+  padding-top: calc(50vh - 200px);
 }
 
 .splash .text{
@@ -111,15 +197,25 @@ body{
   max-width: 450px;
   width: 100%;
   box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
+  text-align-last: center;
 }
 
 .logoText span{
-  font-family: 'Permanent Marker';
-  opacity: 0.75;
-  margin: 3px;
-  font-size: 15px;
-  display: inline-block;
+  /*font-family: 'Permanent Marker';*/
+  font-family: 'melbourneregular';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.5;
+  font-size: 75%;
+  margin: 3px 5px;
   position: relative;
+  top: -1px;
+  display: inline-block;
+  /*
+  position: relative;
+  */
 }
 
 .learnMoreButton:link, .learnMoreButton:visited{
@@ -357,7 +453,13 @@ body{
   .section.testimonials .section.header .sub{
     display: block;
     font-size: 15px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0px;
+  }
+
+  .section.contact .sub{
+    font-size: 15px;
+    letter-spacing: 1.7px;
+    margin: 10px 0;
   }
 
   .section.sponsors .logos{
@@ -380,6 +482,12 @@ body{
 
   .section.sponsors .logos{
     padding-bottom: 100px;
+  }
+
+  .section.contact .sub{
+    font-size: 20px;
+    letter-spacing: 6px;
+    margin: 10px 0;
   }
 }
 

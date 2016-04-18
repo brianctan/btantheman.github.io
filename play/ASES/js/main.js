@@ -6,6 +6,18 @@ window.addEventListener("load", function(){
     if(e == null) continue;
     e.className = e.className.replace(" pre", "");
   }
+
+  document.getElementById('hamburger').addEventListener("click", function(){
+    var ham = document.getElementById('hamburger');
+    var links = document.getElementById('links');
+    if(ham.className == "arrow"){
+      links.className = "navlinks hidden";
+      ham.className = "";
+    } else{
+      links.className = "navlinks";
+      ham.className = "arrow";
+    }
+  }, false);
 }, false);
 
 window.addEventListener("load", setLinkFunctions, false);
@@ -50,7 +62,7 @@ function smoothScrollUpdate(){
   windowScroll += ((scrollTarget - windowScroll)/scrollEase);
   document.body.scrollTop = Math.round(windowScroll);
   if(Math.round(windowScroll - scrollTarget) == 0) stopScrolling = true;
-  console.log(scrollTarget - windowScroll);
+  //console.log(scrollTarget - windowScroll);
   if(!stopScrolling){
     if(window.requestAnimationFrame){
       window.requestAnimationFrame(smoothScrollUpdate);
@@ -123,13 +135,24 @@ document.addEventListener("scroll", checkAnimScroll, false);
 window.addEventListener("load", checkAnimScroll, false);
 
 function checkAnimScroll(){
+  var alldone = true;
+
   for(var i = 0; i < animScroll.length; i++){
     var as = animScroll[i];
-    if(as.done) continue;
+    if(as.done){
+      continue;
+    } else{
+      alldone = false;
+    }
     var elem = document.getElementById(as.id);
     if(elem.offsetTop + elem.offsetHeight/2 <= document.body.scrollTop + window.innerHeight && elem.offsetTop + elem.offsetHeight/2 >= document.body.scrollTop && !as.done){
       as.anim();
       as.done = true;
     }
+  }
+
+  if(alldone){
+    console.log("All done!");
+    document.removeEventListener("scroll", checkAnimScroll);
   }
 }
