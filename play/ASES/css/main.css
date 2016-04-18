@@ -443,6 +443,8 @@ body{
   padding-bottom: 20px;
 }
 
+
+
 @media screen and (max-width: 560px){
   .section .section.header{
     font-size: 30px;
@@ -508,32 +510,70 @@ body{
   color: white;
 }
 
-.section.three .section.header{
+.section.three .section.header, .section.speakers .section.header{
   background-color: #ffc059;
   color: white;
+}
+
+.majordetails .wyg td{
+
+}
+
+.majordetails .wyg{
+  background-color: rgb(240, 240, 240);
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+
+.majordetails .wyg .center{
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.majordetails .wyg .text{
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.majordetails .wyg img{
+  width: 30px;
+  height: 30px;
+}
+
+@media screen and (min-width: 343px){
+  .majordetails .wyg .col{
+    float: left;
+    width: 50%;
+  }
 }
 
 .section.testimonials .section.header{
   background-color: #627e87;
   color: white;
+  /*background-color: #40a4d8;*/
 
   margin-bottom: 30px;
 }
 
-.section.sponsors .section.header{
-  color: #666;
-  padding-bottom: 50px;
-}
 
 .section.sponsors{
   background-color: rgb(240, 240, 240);
   text-align: center;
 }
 
+.section.sponsors .section.header{
+  padding-bottom: 20px;
+  color: #666;
+}
+
 .section.sponsors .logos{
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 0;
   max-width: 1600px;
 }
 
@@ -987,4 +1027,50 @@ body{
 
 .section.contact a{
   color: white;
+}
+
+.speakers{
+  background-color: rgb(240, 240, 240);
+}
+
+.speakers .scrollText{
+  display: none;
+  background-color: #333;
+  color: #CCC;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 7px;
+}
+
+.speakers img{
+  display: block;
+  float: left;
+  width: 33.33%;
+}
+
+.speakers .scroll{
+  width: 100%;
+  overflow: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 722px) and (max-width: 1023px){
+  .speakers .scrollText{
+    display: block;
+  }
+
+  .speakers .scrollMove{
+    width: 150vw;
+  }
+}
+
+@media screen and (max-width: 721px) {
+  .speakers .scrollMove{
+    width: 300vw;
+  }
+
+  .speakers .scrollText{
+    display: block;
+  }
 }
