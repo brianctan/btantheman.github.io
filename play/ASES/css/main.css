@@ -518,6 +518,7 @@ body{
 
 .section.speakers .section.header{
   background-color: #c66431;
+  background-color: #ffc059;
   color: white;
 }
 
@@ -561,7 +562,7 @@ body{
 .section.testimonials .section.header{
   background-color: #627e87;
   color: white;
-  /*background-color: #40a4d8;*/
+  background-color: #40a4d8;
 
   margin-bottom: 30px;
 }
@@ -569,12 +570,13 @@ body{
 
 .section.sponsors{
   background-color: rgb(240, 240, 240);
+  background-color: #b24744;
   text-align: center;
+  color: white;
 }
 
 .section.sponsors .section.header{
   padding-bottom: 20px;
-  color: #666;
 }
 
 .section.sponsors .logos{

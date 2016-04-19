@@ -76,7 +76,7 @@ function smoothScroll(e){
   var goto = document.getElementById(this.getAttribute("data-link-id"));
   if(goto){
     scrollTarget = goto.offsetTop;
-    scrollEase = Math.abs(scrollTarget - windowScroll)/150;
+    //scrollEase = Math.abs(scrollTarget - windowScroll)/150;
     stopScrolling = false;
     smoothScrollUpdate();
   }
